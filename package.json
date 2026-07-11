@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-dashboard-shared",
+  "version": "1.0.0",
+  "description": "Portfolio Dashboard landing page",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static site - no build required'"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.1.0"
+  }
+}
