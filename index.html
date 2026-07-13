@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio Dashboard — din portefølje, live på Mac</title>
+<meta name="description" content="Følg dine aktier, ETF'er og udbytter live fra Yahoo Finance. En hurtig, native Mac-app med flere porteføljer, udbytte-prognose og privacy mode." />
+<link rel="icon" href="favicon.ico" />
+<style>
+  :root{
+    --bg:#0b0e14; --surface:#131722; --surface-2:#1a1f2e; --border:#232838;
+    --text:#e6e9f0; --dim:#8b93a7; --green:#26a69a; --red:#ef5350; --accent:#6c7dff;
+    --accent-2:#9b7dff; --radius:16px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text); font-family:var(--font);
+    line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .glow{position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(600px 400px at 15% -5%, rgba(108,125,255,.18), transparent 60%),
+      radial-gradient(700px 500px at 90% 0%, rgba(155,125,255,.14), transparent 55%);
+  }
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+    background:rgba(11,14,20,.7);border-bottom:1px solid var(--border)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;font-size:16px}
+  .brand img{width:32px;height:32px;border-radius:8px}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang{display:inline-flex;border:1px solid var(--border);border-radius:9px;overflow:hidden;background:var(--surface)}
+  .lang button{appearance:none;-webkit-appearance:none;border:0;background:transparent;color:var(--dim);
+    font:inherit;font-size:12px;font-weight:700;letter-spacing:.03em;padding:7px 11px;cursor:pointer;
+    transition:color .15s ease,background .15s ease}
+  .lang button[aria-pressed="true"]{background:var(--accent);color:#fff}
+  .lang button:hover{color:var(--text)}
+  .lang button[aria-pressed="true"]:hover{color:#fff}
+  .nav-cta{background:var(--accent);color:#fff;padding:9px 18px;border-radius:10px;
+    font-weight:600;font-size:14px;transition:transform .15s ease,background .15s ease}
+  .nav-cta:hover{background:#5566ff;transform:translateY(-1px)}
+
+  /* HERO */
+  header{padding:90px 0 60px;text-align:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--dim);
+    border:1px solid var(--border);background:var(--surface);padding:7px 14px;border-radius:999px;margin-bottom:26px}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+  h1{font-size:clamp(38px,6vw,66px);line-height:1.04;letter-spacing:-.03em;font-weight:800;margin-bottom:22px}
+  h1 .grad{background:linear-gradient(120deg,var(--accent),var(--accent-2) 60%,#5be0c8);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:clamp(17px,2.4vw,21px);color:var(--dim);max-width:640px;margin:0 auto 38px}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center}
+  .btn-primary{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#fff;
+    padding:16px 30px;border-radius:14px;font-weight:700;font-size:17px;
+    box-shadow:0 12px 40px -12px rgba(108,125,255,.7);transition:transform .15s ease,box-shadow .15s ease}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 50px -12px rgba(108,125,255,.85)}
+  .btn-primary svg{width:22px;height:22px}
+  .btn-meta{font-size:13px;color:var(--dim)}
+
+  /* MOCK WINDOW */
+  .shot{margin:64px auto 0;max-width:920px;position:relative}
+  .window{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
+    background:var(--surface);box-shadow:0 40px 120px -30px rgba(0,0,0,.8);}
+  .titlebar{display:flex;align-items:center;gap:8px;padding:13px 16px;background:#0e131d;border-bottom:1px solid var(--border)}
+  .traffic{width:12px;height:12px;border-radius:50%}
+  .tr-r{background:#ff5f57}.tr-y{background:#febc2e}.tr-g{background:#28c840}
+  .titlebar .t{margin-left:10px;font-size:13px;color:var(--dim)}
+  .app{display:grid;grid-template-columns:224px 1fr;min-height:380px}
+  .sidebar{background:#0e131d;border-right:1px solid var(--border);padding:14px 12px;display:flex;flex-direction:column;gap:7px}
+  .ptab{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:10px;font-size:13px;color:var(--text)}
+  .ptab .picon{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#2a3350,#0a0d15);display:grid;place-items:center;font-size:13px;flex-shrink:0}
+  .ptab .pname{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ptab-all{background:linear-gradient(135deg,var(--green),#2bbf9f);color:#052a22;font-weight:700}
+  .ptab-all .picon{background:rgba(255,255,255,.28)}
+  .ptab .pb{display:flex;align-items:center;gap:5px;font-size:11px;font-variant-numeric:tabular-nums}
+  .pdot{width:7px;height:7px;border-radius:50%}
+  .pdot.up{background:var(--green)}.pdot.down{background:var(--red)}.pdot.flat{background:var(--dim)}
+  .ptab .pb.up{color:var(--green)}.ptab .pb.down{color:var(--red)}.ptab .pb.flat{color:var(--dim)}
+  .body{padding:22px 24px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(115px,1fr));gap:14px;margin-bottom:20px}
+  .kpi{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+  .kpi .l{font-size:12px;color:var(--dim);margin-bottom:6px}
+  .kpi .v{font-size:19px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+  .kpi .v.g{color:var(--green)}
+  .chart{height:120px;border:1px solid var(--border);border-radius:12px;background:
+    linear-gradient(180deg,rgba(108,125,255,.10),transparent);position:relative;overflow:hidden;margin-bottom:16px}
+  .rows{display:flex;flex-direction:column;gap:9px}
+  .row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;
+    background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px}
+  .row .tk{font-weight:600}
+  .row .mut{color:var(--dim)}
+  .up{color:var(--green)}.down{color:var(--red)}
+  .bar{height:6px;border-radius:3px;background:var(--surface-2)}
+
+  /* SECTIONS */
+  section{padding:70px 0}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:12px}
+  h2{font-size:clamp(28px,4vw,40px);text-align:center;letter-spacing:-.02em;font-weight:800;margin-bottom:14px}
+  .lead{color:var(--dim);text-align:center;max-width:560px;margin:0 auto 46px;font-size:17px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;
+    transition:transform .18s ease,border-color .18s ease}
+  .card:hover{transform:translateY(-4px);border-color:#33405e}
+  .card .em{font-size:26px;margin-bottom:14px;display:block}
+  .card h3{font-size:18px;margin-bottom:8px;letter-spacing:-.01em}
+  .card p{color:var(--dim);font-size:15px}
+
+  /* SECURITY BOX */
+  .secbox{display:flex;gap:22px;align-items:center;max-width:780px;margin:0 auto;
+    background:linear-gradient(135deg,rgba(38,166,154,.12),rgba(108,125,255,.06));
+    border:1px solid rgba(38,166,154,.38);border-radius:18px;padding:26px 30px}
+  .secbox .lock{font-size:38px;line-height:1;flex-shrink:0}
+  .secbox h3{font-size:20px;margin-bottom:8px;letter-spacing:-.01em}
+  .secbox p{color:var(--dim);font-size:15px;line-height:1.6}
+  .secbox b{color:var(--text)}
+  @media(max-width:560px){.secbox{flex-direction:column;text-align:center;gap:14px;padding:24px}}
+
+  /* DOWNLOAD */
+  #download{text-align:center}
+  .dl-card{max-width:640px;margin:0 auto;background:linear-gradient(180deg,var(--surface),#0e131d);
+    border:1px solid var(--border);border-radius:22px;padding:44px 34px;position:relative;overflow:hidden}
+  .dl-card::before{content:"";position:absolute;inset:0;z-index:0;
+    background:radial-gradient(400px 200px at 50% -10%,rgba(108,125,255,.25),transparent 70%)}
+  .dl-card>*{position:relative;z-index:1}
+  .dl-card img{width:84px;height:84px;border-radius:20px;margin-bottom:18px;box-shadow:0 16px 40px -12px rgba(0,0,0,.7)}
+  .req{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:22px 0 4px;font-size:13px;color:var(--dim)}
+  .req span{background:var(--surface-2);border:1px solid var(--border);padding:6px 12px;border-radius:999px}
+  .note{margin-top:30px;text-align:left;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:18px 20px;font-size:14px;color:var(--dim)}
+  .note b{color:var(--text)}
+  .note code{background:#0b0e14;border:1px solid var(--border);border-radius:6px;padding:2px 7px;font-size:13px;color:var(--text)}
+  .steps{margin:8px 0 0;padding-left:20px}
+  .steps li{margin:4px 0}
+
+  footer{border-top:1px solid var(--border);padding:34px 0;text-align:center;color:var(--dim);font-size:14px}
+
+  @media(max-width:700px){
+    .brand span.label{display:none}
+  }
+  @media(max-width:620px){
+    .app{grid-template-columns:1fr}.sidebar{display:none}
+    .kpis{grid-template-columns:1fr 1fr}
+    header{padding:60px 0 40px}
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><img src="appicon.png" alt="" /> <span class="label">Portfolio Dashboard</span></div>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language / Sprog">
+        <button type="button" data-lang="da">DA</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a class="nav-cta" href="#download" data-i18n="nav_download">Download</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="pill"><span class="dot"></span> <span data-i18n="hero_pill">Live kurser fra Yahoo Finance</span></span>
+    <h1 data-i18n="hero_h1">Hele din portefølje.<br /><span class="grad">Live på din Mac.</span></h1>
+    <p class="sub" data-i18n="hero_sub">Følg dine aktier, ETF'er og udbytter i realtid — flere porteføljer, udbytte-prognose og fuld privacy mode. En hurtig, native app der åbner på ét sekund.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/latest/download/Portfolio-Dashboard-autoupdate.dmg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        <span data-i18n="hero_cta">Download til Mac</span>
+      </a>
+      <span class="btn-meta" data-i18n="hero_meta">macOS 12+ · Apple Silicon · 12 MB · opdaterer sig selv</span>
+    </div>
+
+    <div class="shot">
+      <div class="window">
+        <div class="titlebar">
+          <span class="traffic tr-r"></span><span class="traffic tr-y"></span><span class="traffic tr-g"></span>
+          <span class="t">Portfolio Dashboard</span>
+        </div>
+        <div class="app">
+          <div class="sidebar">
+            <div class="ptab ptab-all"><span class="picon">🌐</span><span class="pname">Portfolio Overview</span></div>
+            <div class="ptab"><span class="picon">🏦</span><span class="pname">Nordnet</span><span class="pb up"><span class="pdot up"></span>+0,6%</span></div>
+            <div class="ptab"><span class="picon">🏛️</span><span class="pname">Pension</span><span class="pb up"><span class="pdot up"></span>+0,4%</span></div>
+            <div class="ptab"><span class="picon">💰</span><span class="pname">Assets</span><span class="pb flat"><span class="pdot flat"></span>0,0%</span></div>
+          </div>
+          <div class="body">
+            <div class="kpis">
+              <div class="kpi"><div class="l" data-i18n="mock_total">Samlet værdi</div><div class="v">850.000 kr.</div></div>
+              <div class="kpi"><div class="l" data-i18n="mock_today">I dag</div><div class="v g">+3.400 kr.</div></div>
+              <div class="kpi"><div class="l" data-i18n="mock_div">Udbytte i år</div><div class="v">8.000 kr.</div></div>
+            </div>
+            <div class="chart">
+              <svg viewBox="0 0 600 120" preserveAspectRatio="none" style="width:100%;height:100%">
+                <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#6c7dff" stop-opacity=".4"/><stop offset="1" stop-color="#6c7dff" stop-opacity="0"/>
+                </linearGradient></defs>
+                <path d="M0,90 C60,80 100,60 160,66 C230,73 260,30 330,38 C400,46 440,20 500,28 C550,34 580,22 600,18 L600,120 L0,120 Z" fill="url(#g)"/>
+                <path d="M0,90 C60,80 100,60 160,66 C230,73 260,30 330,38 C400,46 440,20 500,28 C550,34 580,22 600,18" fill="none" stroke="#6c7dff" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <div class="rows">
+              <div class="row"><span class="tk">🏦 Nordnet</span><span class="mut">300.000 kr.</span><span class="up">+0,6 %</span></div>
+              <div class="row"><span class="tk">🏛️ Pension</span><span class="mut">400.000 kr.</span><span class="up">+0,4 %</span></div>
+              <div class="row"><span class="tk">💰 Assets</span><span class="mut">150.000 kr.</span><span class="mut">0,0 %</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="feat_eyebrow">Alt samlet ét sted</div>
+    <h2 data-i18n="feat_h2">Bygget til at holde styr på det hele</h2>
+    <p class="lead" data-i18n="feat_lead">Fra det store overblik ned til hver enkelt position — og udbytterne du får ind i løbet af året.</p>
+    <div class="grid">
+      <div class="card"><span class="em">📊</span><h3 data-i18n="feat_1_h">Live overblik</h3><p data-i18n="feat_1_p">Samlet værdi, dagens bevægelse og afkast — opdateret direkte fra Yahoo Finance, inkl. pre- og post-market.</p></div>
+      <div class="card"><span class="em">🗂️</span><h3 data-i18n="feat_2_h">Flere porteføljer</h3><p data-i18n="feat_2_p">Hold dine depoter adskilt — fx pensions-underdepoter — og se dem hver for sig eller samlet på tværs.</p></div>
+      <div class="card"><span class="em">💰</span><h3 data-i18n="feat_3_h">Udbytte-prognose</h3><p data-i18n="feat_3_p">Se forventet udbytte for året og hvad du allerede har modtaget, fordelt på selskaber og måneder.</p></div>
+      <div class="card"><span class="em">📈</span><h3 data-i18n="feat_4_h">Aktieoverblik & heatmap</h3><p data-i18n="feat_4_p">Alle positioner i én tabel med afkast, vægt og et farvet heatmap over hvad der trækker op og ned.</p></div>
+      <div class="card"><span class="em">🔒</span><h3 data-i18n="feat_5_h">Privacy Mode</h3><p data-i18n="feat_5_p">Skjul alle beløb med ét klik, når du deler skærm — tallene er der stadig, bare ikke synlige.</p></div>
+      <div class="card"><span class="em">📥</span><h3 data-i18n="feat_6_h">Nordnet-import</h3><p data-i18n="feat_6_p">Importér dine beholdninger direkte fra Nordnet-CSV, eller eksportér dine data når du vil.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="secbox">
+      <div class="lock">🔒</div>
+      <div>
+        <h3 data-i18n="sec_h3">Alle dine data er krypteret lokalt</h3>
+        <p data-i18n="sec_p">Din porteføljedata ligger <b>krypteret på din egen Mac</b> (SQLCipher, AES‑256) og låses op med <b>Touch ID</b>, når du åbner appen. Der er ingen server og ingen konto — kun offentlige aktiekurser hentes fra Yahoo Finance. Dine tal forlader aldrig din computer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="dl_eyebrow">Klar på et øjeblik</div>
+    <h2 data-i18n="dl_h2">Download til Mac</h2>
+    <p class="lead" data-i18n="dl_lead">Hent .dmg-filen, træk appen til Programmer, og du er i gang.</p>
+    <div class="dl-card">
+      <img src="appicon.png" alt="Portfolio Dashboard ikon" />
+      <div class="cta-row">
+        <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/latest/download/Portfolio-Dashboard-autoupdate.dmg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          <span data-i18n="dl_cta">Download .dmg (12 MB)</span>
+        </a>
+      </div>
+      <div class="req"><span data-i18n="req_1">macOS 12 Monterey+</span><span data-i18n="req_2">Apple Silicon (M1/M2/M3)</span><span data-i18n="req_3">Ingen Python nødvendig</span></div>
+      <div class="note" data-i18n="note">
+        <b>Første gang du åbner appen:</b> Den er ikke signeret hos Apple, så macOS spærrer den i første omgang. Sådan åbner du den alligevel:
+        <ol class="steps">
+          <li>Træk <b>Portfolio Dashboard</b> til mappen <b>Programmer</b>.</li>
+          <li><b>Højreklik</b> på appen → vælg <b>Åbn</b>.</li>
+          <li>Klik <b>Åbn</b> i dialogen. Herefter starter den normalt hver gang.</li>
+        </ol>
+        <p style="margin:16px 0 0"><b>Hjælper det ikke</b> (fx "appen er beskadiget"):</p>
+        <ol class="steps">
+          <li>Åbn <b>.dmg</b>'en og træk appen til <b>Programmer</b>.</li>
+          <li>Åbn <b>Terminal</b> og kør (fjerner macOS' karantæne-flag):
+            <code style="display:block;margin-top:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap">xattr -cr "/Applications/Portfolio Dashboard.app"</code>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" data-i18n="footer">Portfolio Dashboard · privat app · data hentes fra Yahoo Finance</div>
+</footer>
+
+<script>
+(function () {
+  var I18N = {
+    da: {
+      title: "Portfolio Dashboard — din portefølje, live på Mac",
+      meta: "Følg dine aktier, ETF'er og udbytter live fra Yahoo Finance. En hurtig, native Mac-app med flere porteføljer, udbytte-prognose og privacy mode.",
+      nav_download: "Download",
+      hero_pill: "Live kurser fra Yahoo Finance",
+      hero_h1: 'Hele din portefølje.<br /><span class="grad">Live på din Mac.</span>',
+      hero_sub: "Følg dine aktier, ETF'er og udbytter i realtid — flere porteføljer, udbytte-prognose og fuld privacy mode. En hurtig, native app der åbner på ét sekund.",
+      hero_cta: "Download til Mac",
+      hero_meta: "macOS 12+ · Apple Silicon · 12 MB · opdaterer sig selv",
+      mock_total: "Samlet værdi",
+      mock_today: "I dag",
+      mock_div: "Udbytte i år",
+      feat_eyebrow: "Alt samlet ét sted",
+      feat_h2: "Bygget til at holde styr på det hele",
+      feat_lead: "Fra det store overblik ned til hver enkelt position — og udbytterne du får ind i løbet af året.",
+      feat_1_h: "Live overblik",
+      feat_1_p: "Samlet værdi, dagens bevægelse og afkast — opdateret direkte fra Yahoo Finance, inkl. pre- og post-market.",
+      feat_2_h: "Flere porteføljer",
+      feat_2_p: "Hold dine depoter adskilt — fx pensions-underdepoter — og se dem hver for sig eller samlet på tværs.",
+      feat_3_h: "Udbytte-prognose",
+      feat_3_p: "Se forventet udbytte for året og hvad du allerede har modtaget, fordelt på selskaber og måneder.",
+      feat_4_h: "Aktieoverblik & heatmap",
+      feat_4_p: "Alle positioner i én tabel med afkast, vægt og et farvet heatmap over hvad der trækker op og ned.",
+      feat_5_h: "Privacy Mode",
+      feat_5_p: "Skjul alle beløb med ét klik, når du deler skærm — tallene er der stadig, bare ikke synlige.",
+      feat_6_h: "Nordnet-import",
+      feat_6_p: "Importér dine beholdninger direkte fra Nordnet-CSV, eller eksportér dine data når du vil.",
+      sec_h3: "Alle dine data er krypteret lokalt",
+      sec_p: 'Din porteføljedata ligger <b>krypteret på din egen Mac</b> (SQLCipher, AES‑256) og låses op med <b>Touch ID</b>, når du åbner appen. Der er ingen server og ingen konto — kun offentlige aktiekurser hentes fra Yahoo Finance. Dine tal forlader aldrig din computer.',
+      dl_eyebrow: "Klar på et øjeblik",
+      dl_h2: "Download til Mac",
+      dl_lead: "Hent .dmg-filen, træk appen til Programmer, og du er i gang.",
+      dl_cta: "Download .dmg (12 MB)",
+      req_1: "macOS 12 Monterey+",
+      req_2: "Apple Silicon (M1/M2/M3)",
+      req_3: "Ingen Python nødvendig",
+      note: '\
+        <b>Første gang du åbner appen:</b> Den er ikke signeret hos Apple, så macOS spærrer den i første omgang. Sådan åbner du den alligevel:\
+        <ol class="steps">\
+          <li>Træk <b>Portfolio Dashboard</b> til mappen <b>Programmer</b>.</li>\
+          <li><b>Højreklik</b> på appen → vælg <b>Åbn</b>.</li>\
+          <li>Klik <b>Åbn</b> i dialogen. Herefter starter den normalt hver gang.</li>\
+        </ol>\
+        <p style="margin:16px 0 0"><b>Hjælper det ikke</b> (fx "appen er beskadiget"):</p>\
+        <ol class="steps">\
+          <li>Åbn <b>.dmg</b>&#39;en og træk appen til <b>Programmer</b>.</li>\
+          <li>Åbn <b>Terminal</b> og kør (fjerner macOS&#39; karantæne-flag):\
+            <code style="display:block;margin-top:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap">xattr -cr "/Applications/Portfolio Dashboard.app"</code>\
+          </li>\
+        </ol>',
+      footer: "Portfolio Dashboard · privat app · data hentes fra Yahoo Finance"
+    },
+    en: {
+      title: "Portfolio Dashboard — your portfolio, live on Mac",
+      meta: "Track your stocks, ETFs and dividends live from Yahoo Finance. A fast, native Mac app with multiple portfolios, dividend forecasting and privacy mode.",
+      nav_download: "Download",
+      hero_pill: "Live prices from Yahoo Finance",
+      hero_h1: 'Your whole portfolio.<br /><span class="grad">Live on your Mac.</span>',
+      hero_sub: "Track your stocks, ETFs and dividends in real time — multiple portfolios, dividend forecasting and full privacy mode. A fast, native app that opens in a second.",
+      hero_cta: "Download for Mac",
+      hero_meta: "macOS 12+ · Apple Silicon · 12 MB · auto-updates",
+      mock_total: "Total value",
+      mock_today: "Today",
+      mock_div: "Dividends this year",
+      feat_eyebrow: "Everything in one place",
+      feat_h2: "Built to keep track of it all",
+      feat_lead: "From the big picture down to every single position — and the dividends that arrive through the year.",
+      feat_1_h: "Live overview",
+      feat_1_p: "Total value, today's move and returns — updated straight from Yahoo Finance, including pre- and post-market.",
+      feat_2_h: "Multiple portfolios",
+      feat_2_p: "Keep your accounts separate — e.g. pension sub-accounts — and view them individually or combined across all.",
+      feat_3_h: "Dividend forecast",
+      feat_3_p: "See expected dividends for the year and what you've already received, broken down by company and month.",
+      feat_4_h: "Holdings & heatmap",
+      feat_4_p: "Every position in one table with returns, weight and a colored heatmap of what's pulling up and down.",
+      feat_5_h: "Privacy Mode",
+      feat_5_p: "Hide every amount with one click when you share your screen — the numbers are still there, just not visible.",
+      feat_6_h: "Nordnet import",
+      feat_6_p: "Import your holdings straight from a Nordnet CSV, or export your data whenever you want.",
+      sec_h3: "All your data is encrypted locally",
+      sec_p: 'Your portfolio data is <b>encrypted on your own Mac</b> (SQLCipher, AES‑256) and unlocked with <b>Touch ID</b> when you open the app. There is no server and no account — only public stock prices are fetched from Yahoo Finance. Your numbers never leave your computer.',
+      dl_eyebrow: "Ready in a moment",
+      dl_h2: "Download for Mac",
+      dl_lead: "Grab the .dmg, drag the app to Applications, and you're set.",
+      dl_cta: "Download .dmg (12 MB)",
+      req_1: "macOS 12 Monterey+",
+      req_2: "Apple Silicon (M1/M2/M3)",
+      req_3: "No Python required",
+      note: '\
+        <b>First time you open the app:</b> It isn&#39;t signed with Apple, so macOS blocks it at first. Here&#39;s how to open it anyway:\
+        <ol class="steps">\
+          <li>Drag <b>Portfolio Dashboard</b> into the <b>Applications</b> folder.</li>\
+          <li><b>Right-click</b> the app → choose <b>Open</b>.</li>\
+          <li>Click <b>Open</b> in the dialog. After that it launches normally every time.</li>\
+        </ol>\
+        <p style="margin:16px 0 0"><b>If that doesn&#39;t help</b> (e.g. "the app is damaged"):</p>\
+        <ol class="steps">\
+          <li>Open the <b>.dmg</b> and drag the app to <b>Applications</b>.</li>\
+          <li>Open <b>Terminal</b> and run (removes macOS&#39; quarantine flag):\
+            <code style="display:block;margin-top:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap">xattr -cr "/Applications/Portfolio Dashboard.app"</code>\
+          </li>\
+        </ol>',
+      footer: "Portfolio Dashboard · private app · data from Yahoo Finance"
+    }
+  };
+
+  function apply(lang) {
+    var dict = I18N[lang] || I18N.en;
+    document.documentElement.lang = lang;
+    document.title = dict.title;
+    var md = document.querySelector('meta[name="description"]');
+    if (md) md.setAttribute("content", dict.meta);
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < nodes.length; i++) {
+      var k = nodes[i].getAttribute("data-i18n");
+      if (dict[k] != null) nodes[i].innerHTML = dict[k];
+    }
+    var btns = document.querySelectorAll("[data-lang]");
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].setAttribute("aria-pressed", btns[j].getAttribute("data-lang") === lang ? "true" : "false");
+    }
+  }
+  function saved() { try { return localStorage.getItem("pd_lang"); } catch (e) { return null; } }
+  function save(l) { try { localStorage.setItem("pd_lang", l); } catch (e) {} }
+
+  var manual = saved();
+  // Instant paint using the browser language as a first guess; the country check
+  // below is authoritative and overrides it (unless the visitor chose manually).
+  apply(manual || ((navigator.language || "").toLowerCase().indexOf("da") === 0 ? "da" : "en"));
+
+  if (!manual) {
+    // Language by COUNTRY: Danish only for Denmark, English everywhere else.
+    fetch("/api/geo")
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (!saved()) apply(d && d.country === "DK" ? "da" : "en"); })
+      .catch(function () { /* keep the browser-language guess */ });
+  }
+
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-lang]") : null;
+    if (!b) return;
+    save(b.getAttribute("data-lang"));
+    apply(b.getAttribute("data-lang"));
+  });
+})();
+</script>
+
+<!-- Vercel Web Analytics (static-site integration) -->
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>
