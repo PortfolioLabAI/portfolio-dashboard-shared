@@ -117,6 +117,19 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.2.61", date: "2026-07-16",
+      items: [
+        { ic: "🏖️", da: ["Ny: din pensionsindkomst pr. år, fordelt på type.", "Fase 2 (efter pension) har fået en søjlegraf som PensionsInfo, der viser din årlige indkomst fordelt på folkepension, livsvarige pensioner og ratepension. Hold musen over et år for at se årsløn og månedsløn efter skat."],
+                     en: ["New: your pension income per year, broken down by type.", "Phase 2 (after retirement) now has a PensionsInfo-style bar chart showing your yearly income split into state pension, lifelong pensions and ratepension. Hover over a year to see the annual and monthly amount after tax."] },
+        { ic: "💰", da: ["Livrenter, ATP og folkepension med i beregningen.", "Du kan nu tilføje flere livrenter (markedsrente eller garanteret) og ATP Livslang Pension, så hele din pensionsindkomst tælles med — også når ratepensionerne er udbetalt."],
+                     en: ["Life annuities, ATP and state pension included.", "You can now add multiple life annuities (market-rate or guaranteed) and ATP lifelong pension, so all of your pension income is counted — including after the ratepensions have paid out."] },
+        { ic: "🧮", da: ["Vælg beskatning af dine frie midler: lager eller realisation.", "Sæt et flueben alt efter om dine frie midler er ETF'er/fonde (lagerbeskatning: skat af årets afkast) eller aktier (realisation: skat ved salg) — så rammer skatten i beregningen rigtigt."],
+                     en: ["Choose how your free funds are taxed: mark-to-market or realisation.", "Tick a box depending on whether your free funds are ETFs/funds (mark-to-market: taxed on the year's return) or shares (realisation: taxed on sale) — so the tax in the projection is right."] },
+        { ic: "📊", da: ["Formuegrafen viser nu hvad den består af.", "Hold musen over formuekurven for at se hvor meget der er frie midler, ratepension og livrente på et givet tidspunkt."],
+                     en: ["The wealth chart now shows what it's made of.", "Hover over the wealth curve to see how much is free funds, ratepension and life annuity at any point."] }
+      ]
+    },
+    {
       version: "0.2.57", date: "2026-07-15",
       items: [
         { ic: "💱", da: ["Dagens afkast tager nu højde for valutakursen.", "Aktier i USD/EUR/GBP m.fl. viste kun kursbevægelsen i aktiens egen valuta — hvis valutakursen selv bevægede sig i løbet af dagen, talte det ikke med. Nu regnes begge dele med, både i det samlede overblik og på hvert enkelt depot."],
