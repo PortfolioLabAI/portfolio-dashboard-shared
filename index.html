@@ -64,10 +64,8 @@
   .btn-primary svg{width:22px;height:22px}
   .btn-meta{font-size:13px;color:var(--dim)}
 
-  /* SUPPORT / DONATE — deliberately a QUIET, secondary style. It now sits ABOVE the
-     download section, so keeping it visually subordinate matters MORE, not less: a
-     money ask standing between the visitor and the download must read as an aside,
-     never as a toll gate. Ghost button, never accent-filled. */
+  /* SUPPORT / DONATE — deliberately a QUIET, secondary style: it sits below the
+     download CTA and must never compete with it. Ghost button, not accent-filled. */
   .support-card{display:flex;align-items:center;justify-content:space-between;gap:28px;
     border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);
     padding:26px 30px;max-width:760px;margin:0 auto}
@@ -267,24 +265,6 @@
   </div>
 </section>
 
-<!-- Support: placed ABOVE the download section (Esben, 2026-07-17: "ellers ser
-     folk den ikke"). Keep it visually quiet — a ghost button, never accent-filled —
-     so it stays an aside and does not read as a toll gate in front of the download. -->
-<section id="support" style="padding-bottom:0">
-  <div class="wrap">
-    <div class="support-card">
-      <div>
-        <h3 data-i18n="support_h">Kan du lide appen?</h3>
-        <p data-i18n="support_p">Portfolio Dashboard er gratis og bliver udviklet i fritiden. Er den nyttig for dig, kan du give en kop kaffe. Det er helt frivilligt — alt i appen virker uanset.</p>
-      </div>
-      <a class="btn-ghost" href="https://ko-fi.com/portfoliodashboard" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8Z"/><path d="M6 2v2"/><path d="M10 2v2"/><path d="M14 2v2"/></svg>
-        <span data-i18n="support_cta">Støt udviklingen</span>
-      </a>
-    </div>
-  </div>
-</section>
-
 <section id="download">
   <div class="wrap">
     <div class="eyebrow" data-i18n="dl_eyebrow">Klar på et øjeblik</div>
@@ -318,6 +298,22 @@
   </div>
 </section>
 
+<!-- Support: below the download card on purpose. The download CTA is the page's
+     one job; this must read as an optional aside, never as a gate. -->
+<section id="support" style="padding-top:0">
+  <div class="wrap">
+    <div class="support-card">
+      <div>
+        <h3 data-i18n="support_h">Kan du lide appen?</h3>
+        <p data-i18n="support_p">Portfolio Dashboard er gratis og bliver udviklet i fritiden. Er den nyttig for dig, kan du give en kop kaffe. Det er helt frivilligt — alt i appen virker uanset.</p>
+      </div>
+      <a class="btn-ghost" href="https://ko-fi.com/portfoliodashboard" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8Z"/><path d="M6 2v2"/><path d="M10 2v2"/><path d="M14 2v2"/></svg>
+        <span data-i18n="support_cta">Støt udviklingen</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap" data-i18n="footer">Portfolio Dashboard · privat app · data hentes fra Yahoo Finance</div>
