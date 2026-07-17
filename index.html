@@ -302,19 +302,16 @@
       </div>
       <div class="req"><span data-i18n="req_1">macOS 12 Monterey+</span><span data-i18n="req_2">Apple Silicon (M1/M2/M3)</span><span data-i18n="req_3">Ingen Python nødvendig</span></div>
       <div class="note" data-i18n="note">
-        <b>Første gang du åbner appen:</b> Den er ikke signeret hos Apple, så macOS spærrer den i første omgang. Sådan åbner du den alligevel:
+        <b>Første gang du åbner appen</b> spærrer macOS den, fordi den ikke er signeret hos Apple. Det er helt normalt for apps uden for App Store — sådan åbner du den:
         <ol class="steps">
-          <li>Træk <b>Portfolio Dashboard</b> til mappen <b>Programmer</b>.</li>
-          <li><b>Højreklik</b> på appen → vælg <b>Åbn</b>.</li>
-          <li>Klik <b>Åbn</b> i dialogen. Herefter starter den normalt hver gang.</li>
+          <li>Åbn <b>.dmg</b>'en og træk <b>Portfolio Dashboard</b> til mappen <b>Programmer</b>.</li>
+          <li>Dobbeltklik på appen. macOS blokerer den første gang — klik <b>Færdig</b> (ikke "Flyt til papirkurv").</li>
+          <li>Gå til <b>Systemindstillinger → Anonymitet &amp; sikkerhed</b>, rul ned, og klik <b>Åbn alligevel</b> ud for beskeden om Portfolio Dashboard.</li>
+          <li>Bekræft med <b>Åbn alligevel</b> og Touch ID. Herefter starter den normalt hver gang.</li>
         </ol>
-        <p style="margin:16px 0 0"><b>Hjælper det ikke</b> (fx "appen er beskadiget"):</p>
-        <ol class="steps">
-          <li>Åbn <b>.dmg</b>'en og træk appen til <b>Programmer</b>.</li>
-          <li>Åbn <b>Terminal</b> og kør (fjerner macOS' karantæne-flag):
-            <code style="display:block;margin-top:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap">xattr -cr "/Applications/Portfolio Dashboard.app"</code>
-          </li>
-        </ol>
+        <p style="margin:14px 0 0">På ældre macOS kan du i stedet <b>højreklikke</b> på appen → <b>Åbn</b> → <b>Åbn</b>.</p>
+        <p style="margin:14px 0 0"><b>Siger macOS "appen er beskadiget"?</b> Åbn <b>Terminal</b> og kør (fjerner karantæne-flaget), så prøv igen:</p>
+        <code style="display:block;margin-top:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap">xattr -cr "/Applications/Portfolio Dashboard.app"</code>
       </div>
     </div>
   </div>
@@ -385,19 +382,16 @@
       req_2: "Apple Silicon (M1/M2/M3)",
       req_3: "Ingen Python nødvendig",
       note: '\
-        <b>Første gang du åbner appen:</b> Den er ikke signeret hos Apple, så macOS spærrer den i første omgang. Sådan åbner du den alligevel:\
+        <b>Første gang du åbner appen</b> spærrer macOS den, fordi den ikke er signeret hos Apple. Det er helt normalt for apps uden for App Store — sådan åbner du den:\
         <ol class="steps">\
-          <li>Træk <b>Portfolio Dashboard</b> til mappen <b>Programmer</b>.</li>\
-          <li><b>Højreklik</b> på appen → vælg <b>Åbn</b>.</li>\
-          <li>Klik <b>Åbn</b> i dialogen. Herefter starter den normalt hver gang.</li>\
+          <li>Åbn <b>.dmg</b>&#39;en og træk <b>Portfolio Dashboard</b> til mappen <b>Programmer</b>.</li>\
+          <li>Dobbeltklik på appen. macOS blokerer den første gang — klik <b>Færdig</b> (ikke &quot;Flyt til papirkurv&quot;).</li>\
+          <li>Gå til <b>Systemindstillinger → Anonymitet &amp; sikkerhed</b>, rul ned, og klik <b>Åbn alligevel</b> ud for beskeden om Portfolio Dashboard.</li>\
+          <li>Bekræft med <b>Åbn alligevel</b> og Touch ID. Herefter starter den normalt hver gang.</li>\
         </ol>\
-        <p style="margin:16px 0 0"><b>Hjælper det ikke</b> (fx "appen er beskadiget"):</p>\
-        <ol class="steps">\
-          <li>Åbn <b>.dmg</b>&#39;en og træk appen til <b>Programmer</b>.</li>\
-          <li>Åbn <b>Terminal</b> og kør (fjerner macOS&#39; karantæne-flag):\
-            <code style="display:block;margin-top:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap">xattr -cr "/Applications/Portfolio Dashboard.app"</code>\
-          </li>\
-        </ol>',
+        <p style="margin:14px 0 0">På ældre macOS kan du i stedet <b>højreklikke</b> på appen → <b>Åbn</b> → <b>Åbn</b>.</p>\
+        <p style="margin:14px 0 0"><b>Siger macOS &quot;appen er beskadiget&quot;?</b> Åbn <b>Terminal</b> og kør (fjerner karantæne-flaget), så prøv igen:</p>\
+        <code style="display:block;margin-top:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap">xattr -cr "/Applications/Portfolio Dashboard.app"</code>',
       support_h: "Kan du lide appen?",
       support_p: "Portfolio Dashboard er gratis og bliver udviklet i fritiden. Er den nyttig for dig, kan du give en kop kaffe. Det er helt frivilligt — alt i appen virker uanset.",
       support_cta: "Støt udviklingen",
@@ -444,19 +438,16 @@
       req_2: "Apple Silicon (M1/M2/M3)",
       req_3: "No Python required",
       note: '\
-        <b>First time you open the app:</b> It isn&#39;t signed with Apple, so macOS blocks it at first. Here&#39;s how to open it anyway:\
+        <b>The first time you open the app</b>, macOS blocks it because it isn&#39;t signed with Apple. This is completely normal for apps distributed outside the App Store — here&#39;s how to open it:\
         <ol class="steps">\
-          <li>Drag <b>Portfolio Dashboard</b> into the <b>Applications</b> folder.</li>\
-          <li><b>Right-click</b> the app → choose <b>Open</b>.</li>\
-          <li>Click <b>Open</b> in the dialog. After that it launches normally every time.</li>\
+          <li>Open the <b>.dmg</b> and drag <b>Portfolio Dashboard</b> into the <b>Applications</b> folder.</li>\
+          <li>Double-click the app. macOS blocks it the first time — click <b>Done</b> (not &quot;Move to Trash&quot;).</li>\
+          <li>Go to <b>System Settings → Privacy &amp; Security</b>, scroll down, and click <b>Open Anyway</b> next to the Portfolio Dashboard message.</li>\
+          <li>Confirm with <b>Open Anyway</b> and Touch ID. After that it launches normally every time.</li>\
         </ol>\
-        <p style="margin:16px 0 0"><b>If that doesn&#39;t help</b> (e.g. "the app is damaged"):</p>\
-        <ol class="steps">\
-          <li>Open the <b>.dmg</b> and drag the app to <b>Applications</b>.</li>\
-          <li>Open <b>Terminal</b> and run (removes macOS&#39; quarantine flag):\
-            <code style="display:block;margin-top:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap">xattr -cr "/Applications/Portfolio Dashboard.app"</code>\
-          </li>\
-        </ol>',
+        <p style="margin:14px 0 0">On older macOS you can instead <b>right-click</b> the app → <b>Open</b> → <b>Open</b>.</p>\
+        <p style="margin:14px 0 0"><b>Does macOS say &quot;the app is damaged&quot;?</b> Open <b>Terminal</b> and run (removes the quarantine flag), then try again:</p>\
+        <code style="display:block;margin-top:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap">xattr -cr "/Applications/Portfolio Dashboard.app"</code>',
       support_h: "Like the app?",
       support_p: "Portfolio Dashboard is free and built in my spare time. If you find it useful, you can buy me a coffee. It's entirely optional — everything in the app works either way.",
       support_cta: "Support development",
