@@ -1,2 +1,8 @@
 .vercel
 .env*
+
+# Usage telemetry (issue #80) — MUST stay out of this PUBLIC repo. These Vercel
+# functions run live via `vercel --prod` (CLI deploy from the working tree), and
+# are never committed/pushed here. See the CLAUDE.md / memory guardrail.
+api/ping.js
+api/stats.js
