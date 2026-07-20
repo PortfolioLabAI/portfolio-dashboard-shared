@@ -124,6 +124,19 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.2.72", date: "2026-07-20",
+      items: [
+        { ic: "🌍", da: ["Aktier i alle valutaer tælles nu med.", "Ejer du fx svenske, schweiziske eller japanske aktier, kunne de forsvinde fra oversigten og dermed mangle i din samlede værdi — de stod kun i Admin. Nu hentes valutakursen automatisk for enhver valuta, så alt tæller med."],
+                     en: ["Stocks in every currency now count.", "If you hold e.g. Swedish, Swiss or Japanese stocks, they could disappear from the overview and be missing from your total value — showing only in Admin. The exchange rate is now fetched automatically for any currency, so everything is included."] },
+        { ic: "💸", da: ["Nyt: se prognosen i nutidskroner.", "På Prognose-fanen kan du nu sætte flueben i “Vis i nutidskroner” og selv angive inflationen. Så omregnes fremskrivningen til dagens købekraft i stedet for fremtidens kroner."],
+                     en: ["New: view the projection in today's money.", "On the Projection tab you can now tick “Show in today's money” and set the inflation rate yourself. The projection is then converted to today's purchasing power instead of future kroner."] },
+        { ic: "🗂️", da: ["Prognosen viser nu hvilke depoter der regnes med.", "På det samlede overblik manglede depot-vælgeren på Prognose-fanen, så fremskrivningen kunne bygge på et udvalg du ikke kunne se. Vælgeren er nu på plads begge steder."],
+                     en: ["The projection now shows which portfolios are included.", "On the combined overview the portfolio picker was missing from the Projection tab, so the projection could be built on a selection you couldn't see. The picker is now present in both places."] },
+        { ic: "🧮", da: ["Kostbasis kan nu beregnes for udenlandske aktier.", "“= Antal×GAK” i Admin kunne ikke regne kostbasis ud for en aktie i en valuta appen ikke kendte kursen på. Det virker nu for alle valutaer."],
+                     en: ["Cost basis can now be calculated for foreign stocks.", "“= Antal×GAK” in Admin couldn't work out the cost basis for a stock in a currency the app had no rate for. It now works for every currency."] }
+      ]
+    },
+    {
       version: "0.2.70", date: "2026-07-18",
       items: [
         { ic: "📖", da: ["Direkte link til import-guiden fra Admin.", "På Admin-siden er der nu et link ved import-boksen, der åbner den trinvise guide til at hente dine tal fra Nordnet, Nordea eller Saxo og importere dem — så du hurtigt kommer i gang."],
