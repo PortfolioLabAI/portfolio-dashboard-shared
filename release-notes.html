@@ -124,6 +124,33 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.2.78", date: "2026-07-24",
+      items: [
+        { ic: "📈", da: ["Toppanelet viser nu futures før børsen åbner.", "Før den amerikanske børs åbner viser toppen S&P- og Nasdaq-futures, så du kan se hvilken vej markedet er på vej allerede om morgenen. Når børsen åbner kl. 15.30, skifter de automatisk til selve indekset (S&P 500 og Nasdaq 100) og hedder ikke længere “futures”. På amerikanske helligdage, hvor børsen er lukket, bliver den på futures hele dagen i stedet for at vise et fastlåst indeks. Guld, olie og USD/DKK er uændret."],
+                     en: ["The top bar now shows futures before the market opens.", "Before the US market opens, the top bar shows S&P and Nasdaq futures, so you can see which way the market is heading already in the morning. When the market opens at 15:30 CET they switch automatically to the index itself (S&P 500 and Nasdaq 100) and are no longer labelled “futures”. On US market holidays, when the exchange is closed, it stays on futures all day instead of showing a frozen index. Gold, oil and USD/DKK are unchanged."] }
+      ]
+    },
+    {
+      version: "0.2.77", date: "2026-07-23",
+      items: [
+        { ic: "🐛", da: ["Rettelse: Regnskab-fanen viste samme tal på alle depoter.", "Regnskabssiden opdaterede sig ikke, når du skiftede depot — den viste det første depots tal alle steder. Nu opdaterer den korrekt pr. depot og beholdninger."],
+                     en: ["Fix: the Earnings tab showed the same numbers on every portfolio.", "The Earnings page didn't update when you switched portfolio — it showed the first portfolio's numbers everywhere. It now updates correctly per portfolio and holdings."] },
+        { ic: "🏷️", da: ["Tydeligere tal på Regnskab-fanen.", "Nøgletallet hed “værdi i depotet”, men viste kun værdien af de selskaber der rapporterer i den kommende uge — ikke hele depotet. Det hedder nu “Værdi der rapporterer i denne uge”, så det er til at forstå."],
+                     en: ["Clearer figure on the Earnings tab.", "The metric was labelled “value in the portfolio” but only showed the value of the companies reporting in the coming week — not the whole portfolio. It's now “Value reporting this week”, so it reads correctly."] }
+      ]
+    },
+    {
+      version: "0.2.75", date: "2026-07-23",
+      items: [
+        { ic: "📊", da: ["Ny fane: Regnskab.", "Se hvornår dine selskaber aflægger regnskab, hvad analytikerne forventer i indtjening og omsætning, og hvor ofte selskabet historisk har ramt eller slået estimaterne. Fanen findes både på det enkelte depot, på en kategori og på det samlede overblik, og du kan sortere efter alle kolonner — fx alfabetisk efter selskab. Klik en række for at folde historikken ud kvartal for kvartal."],
+                     en: ["New tab: Earnings.", "See when your companies report, what analysts expect for earnings and revenue, and how often the company has historically met or beaten estimates. The tab is available on an individual portfolio, on a category and on the combined overview, and you can sort by any column — alphabetically by company, for instance. Click a row to unfold the quarter-by-quarter history."] },
+        { ic: "💡", da: ["Vedhæft et skærmbillede til et feature-forslag.", "Når du foreslår en feature, kan du nu vedhæfte et billede — vælg en fil, træk den ind, eller tryk ⌘V for at indsætte et skærmbillede direkte. Det gør det meget nemmere at vise hvad du mener. Bemærk at billedet sendes som det er, så slå 👁 til først hvis skærmen viser dine beløb."],
+                     en: ["Attach a screenshot to a feature suggestion.", "When you suggest a feature you can now attach an image — pick a file, drag one in, or press ⌘V to paste a screenshot directly. It makes it far easier to show what you mean. Note that the image is sent as-is, so turn on 👁 first if the screen shows your amounts."] },
+        { ic: "🔧", da: ["Interne forbedringer.", "Tal og kurser formateres nu ét sted i stedet for at være kopieret rundt i appen, så de altid ser ens ud på tværs af faner. Ingen synlige ændringer."],
+                     en: ["Internal improvements.", "Numbers and prices are now formatted in one place instead of being copied around the app, so they always look the same across tabs. No visible changes."] }
+      ]
+    },
+    {
       version: "0.2.73", date: "2026-07-20",
       items: [
         { ic: "🔧", da: ["Mindre opdateringer og forbedringer.", "Interne forbedringer under motorhjelmen. Der er ingen ændringer i hvordan appen ser ud eller bruges — alt fungerer som før."],
