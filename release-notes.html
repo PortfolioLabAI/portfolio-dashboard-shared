@@ -124,6 +124,13 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.2.90", date: "2026-07-25",
+      items: [
+        { ic: "\ud83d\udd12", da: ["Sikkerhedsforbedringer.", "Denne version indeholder en r\u00e6kke sikkerhedsforbedringer under motorhjelmen. Du skal ikke g\u00f8re noget \u2014 alt sker automatisk, og appen fungerer som f\u00f8r."],
+                     en: ["Security improvements.", "This version contains a number of security improvements under the hood. You don't need to do anything \u2014 it all happens automatically, and the app works as before."] }
+      ]
+    },
+    {
       version: "0.2.86", date: "2026-07-25",
       items: [
         { ic: "\ud83d\udcc8", da: ["Ny fane: Udvikling \u2014 se depotets v\u00e6rdi og afkast over tid.", "En ny graf pr. depot (og p\u00e5 tv\u00e6rs af alle) viser hvordan depotet har udviklet sig, med S&P 500 som sammenligning. V\u00e6lg periode forneden \u2014 1 uge, 1 m\u00e5ned, 3, 6, i \u00e5r eller 1 \u00e5r \u2014 og skift mellem afkast i procent og v\u00e6rdi i kroner. Hold musen over grafen for at se dato, afkast i b\u00e5de procent og kroner, og samlet v\u00e6rdi. Afkastet er tidsv\u00e6gtet og inkluderer udbytte, s\u00e5 dine egne indbetalinger ikke t\u00e6ller som afkast. Perioderne 3 \u00e5r, 5 \u00e5r og max viser 0 indtil videre: de kan ikke regnes p\u00e5lideligt ud fra kurser og handler alene, s\u00e5 appen gemmer nu en daglig v\u00e6rdi og t\u00e6nder dem efterh\u00e5nden som historikken bygger sig op."],

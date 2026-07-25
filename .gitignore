@@ -11,7 +11,9 @@
 #                         were exposed (GITHUB_TOKEN + REPORT_SECRET are Vercel
 #                         env vars), but the logic is now private like the rest.
 #                         NB they remain visible in this repo's git HISTORY.
-api/ping.js
-api/stats.js
-api/report.js
-api/geo.js
+# Vercel serverless functions. Esben's standing rule: these live ONLY in private,
+# never in this PUBLIC repo (it is served over HTTP). Deploy them with
+# `vercel --prod`, never via git. PATTERN, not a filename list -- api/_pow.js was
+# added 2026-07-25 and the per-file rules did not cover it, so a `git add -A`
+# would have published it.
+api/
