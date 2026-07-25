@@ -124,6 +124,21 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.2.86", date: "2026-07-25",
+      items: [
+        { ic: "\ud83d\udcc8", da: ["Ny fane: Udvikling \u2014 se depotets v\u00e6rdi og afkast over tid.", "En ny graf pr. depot (og p\u00e5 tv\u00e6rs af alle) viser hvordan depotet har udviklet sig, med S&P 500 som sammenligning. V\u00e6lg periode forneden \u2014 1 uge, 1 m\u00e5ned, 3, 6, i \u00e5r eller 1 \u00e5r \u2014 og skift mellem afkast i procent og v\u00e6rdi i kroner. Hold musen over grafen for at se dato, afkast i b\u00e5de procent og kroner, og samlet v\u00e6rdi. Afkastet er tidsv\u00e6gtet og inkluderer udbytte, s\u00e5 dine egne indbetalinger ikke t\u00e6ller som afkast. Perioderne 3 \u00e5r, 5 \u00e5r og max viser 0 indtil videre: de kan ikke regnes p\u00e5lideligt ud fra kurser og handler alene, s\u00e5 appen gemmer nu en daglig v\u00e6rdi og t\u00e6nder dem efterh\u00e5nden som historikken bygger sig op."],
+                     en: ["New tab: Performance \u2014 see your account's value and return over time.", "A new chart per account (and across all of them) shows how the account has developed, with the S&P 500 for comparison. Pick a period at the bottom \u2014 1 week, 1 month, 3, 6, YTD or 1 year \u2014 and switch between return in percent and value in kroner. Hover the chart to see the date, the return in both percent and kroner, and the total value. The return is time-weighted and includes dividends, so your own deposits don't count as return. The 3-year, 5-year and max periods show 0 for now: they can't be computed reliably from prices and trades alone, so the app now stores a daily value and turns them on as that history accumulates."] },
+        { ic: "\ud83d\udcb0", da: ["Mere retvisende sk\u00f8n over n\u00e6ste udbytte.", "F\u00f8r gentog appen bare det bel\u00f8b selskabet udbetalte sidste gang. Nu ser den fremad: hvis et selskab har \u00e6ndret sin udbetalingsrytme, hvis det skifter mellem en lille og en stor betaling, eller hvis det har sat udbyttet op, bliver n\u00e6ste betaling regnet ud derefter i stedet."],
+                     en: ["A more accurate estimate of the next dividend.", "Previously the app simply repeated whatever the company paid last time. It now looks forward: if a company has changed its payout schedule, alternates between a small and a large payment, or has raised its dividend, the next payment is estimated accordingly instead."] },
+        { ic: "\ud83d\udd22", da: ["Aktiekortet viser antal aktier du ejer.", "N\u00e5r du \u00e5bner et aktiekort, st\u00e5r der nu hvor mange stk. du har i det p\u00e5g\u00e6ldende depot."],
+                     en: ["The stock card shows how many shares you own.", "Opening a stock card now shows the number of shares you hold in that account."] },
+        { ic: "\ud83d\udc1b", da: ["Rettelse: PNG-billeder kunne ikke vedh\u00e6ftes et feature-forslag.", "Vedh\u00e6ftede du et billede fra Finder, kom der \u201cbilledet kunne ikke l\u00e6ses\u201d. Det virker nu \u2014 uanset format."],
+                     en: ["Fix: PNG images couldn't be attached to a feature suggestion.", "Attaching an image from Finder gave \u201cthe image could not be read\u201d. It now works, whatever the format."] },
+        { ic: "\u26a1", da: ["Appen er markant hurtigere.", "Graferne og alle sider indl\u00e6ser nu n\u00e6sten \u00f8jeblikkeligt \u2014 en tung beregning bag afkastet er lagt om, og resultaterne gemmes undervejs."],
+                     en: ["The app is noticeably faster.", "The charts and every page now load almost instantly \u2014 a heavy calculation behind the returns was reworked and results are now cached."] }
+      ]
+    },
+    {
       version: "0.2.78", date: "2026-07-24",
       items: [
         { ic: "📈", da: ["Toppanelet viser nu futures før børsen åbner.", "Før den amerikanske børs åbner viser toppen S&P- og Nasdaq-futures, så du kan se hvilken vej markedet er på vej allerede om morgenen. Når børsen åbner kl. 15.30, skifter de automatisk til selve indekset (S&P 500 og Nasdaq 100) og hedder ikke længere “futures”. På amerikanske helligdage, hvor børsen er lukket, bliver den på futures hele dagen i stedet for at vise et fastlåst indeks. Guld, olie og USD/DKK er uændret."],
