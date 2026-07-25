@@ -1,8 +1,17 @@
 .vercel
 .env*
 
-# Usage telemetry (issue #80) — MUST stay out of this PUBLIC repo. These Vercel
-# functions run live via `vercel --prod` (CLI deploy from the working tree), and
-# are never committed/pushed here. See the CLAUDE.md / memory guardrail.
+# Vercel serverless functions — MUST stay out of this PUBLIC repo. They run live
+# via `vercel --prod` (CLI deploy from the working tree; git deploys are disabled
+# in vercel.json), so they never need to be committed here. See the CLAUDE.md /
+# memory guardrail.
+#   ping.js / stats.js  — usage telemetry (issue #80)
+#   report.js / geo.js  — untracked 2026-07-25; they had been committed with the
+#                         original site and stayed public by oversight. No secrets
+#                         were exposed (GITHUB_TOKEN + REPORT_SECRET are Vercel
+#                         env vars), but the logic is now private like the rest.
+#                         NB they remain visible in this repo's git HISTORY.
 api/ping.js
 api/stats.js
+api/report.js
+api/geo.js
