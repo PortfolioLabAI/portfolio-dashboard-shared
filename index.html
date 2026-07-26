@@ -115,40 +115,83 @@
     .support-card{flex-direction:column;align-items:flex-start;gap:18px}
   }
 
-  /* MOCK WINDOW */
+  /* MOCK WINDOW — a scaled-down copy of the app's real "Portfolio Overview"
+     screen: indices ribbon, portfolio sidebar, section-nav, summary + returns
+     cards and the Porteføljeanalyse table. Every class below mirrors one in the
+     app's style.css so the two stay recognisably the same UI. Numbers are made
+     up; nothing here comes from a real depot. */
   .shot{margin:64px auto 0;max-width:920px;position:relative}
-  .window{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
-    background:var(--surface);box-shadow:0 40px 120px -30px rgba(0,0,0,.8);}
-  .titlebar{display:flex;align-items:center;gap:8px;padding:13px 16px;background:#0e131d;border-bottom:1px solid var(--border)}
+  .window{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;text-align:left;
+    background:var(--bg);box-shadow:0 40px 120px -30px rgba(0,0,0,.8);}
+  .titlebar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:#0e131d;border-bottom:1px solid var(--border)}
   .traffic{width:12px;height:12px;border-radius:50%}
   .tr-r{background:#ff5f57}.tr-y{background:#febc2e}.tr-g{background:#28c840}
   .titlebar .t{margin-left:10px;font-size:13px;color:var(--dim)}
-  .app{display:grid;grid-template-columns:224px 1fr;min-height:380px}
-  .sidebar{background:#0e131d;border-right:1px solid var(--border);padding:14px 12px;display:flex;flex-direction:column;gap:7px}
-  .ptab{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:10px;font-size:13px;color:var(--text)}
-  .ptab .picon{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#2a3350,#0a0d15);display:grid;place-items:center;font-size:13px;flex-shrink:0}
+  /* .top-bar + .indices-ribbon */
+  .ribbon{display:flex;align-items:center;background:var(--surface);border-bottom:1px solid var(--border);font-size:11.5px}
+  .ribbon .idx{flex:1;display:flex;justify-content:center;gap:16px;padding:7px 12px;white-space:nowrap;overflow:hidden;min-width:0}
+  .ribbon .idx i{font-style:normal;display:flex;align-items:baseline;gap:5px}
+  .ribbon .idx .n{color:var(--dim)}
+  .ribbon .idx .v{font-weight:600;font-variant-numeric:tabular-nums}
+  .ribbon .idx .c{font-variant-numeric:tabular-nums}
+  .app{display:grid;grid-template-columns:222px 1fr;min-height:380px}
+  /* .portfolio-tabs / .portfolio-tab */
+  .sidebar{background:var(--surface);border-right:1px solid var(--border);padding:12px 9px;display:flex;flex-direction:column;gap:3px}
+  .ptab{display:flex;align-items:center;gap:7px;padding:8px 10px;border-radius:8px;font-size:12.5px;color:var(--dim)}
+  .ptab .picon{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#2a3350,#0a0d15);display:grid;place-items:center;font-size:11px;flex-shrink:0}
   .ptab .pname{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .ptab-all{background:linear-gradient(135deg,var(--green),#2bbf9f);color:#052a22;font-weight:700}
-  .ptab-all .picon{background:rgba(255,255,255,.28)}
+  .ptab-all{color:var(--green);font-weight:600;border-bottom:1px solid var(--border);border-radius:8px 8px 0 0;padding-bottom:11px;margin-bottom:5px}
+  .ptab-all .picon{background:rgba(38,166,154,.22)}
+  .pcat{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);padding:8px 10px 2px}
   .ptab .pb{display:flex;align-items:center;gap:5px;font-size:11px;font-variant-numeric:tabular-nums}
   .pdot{width:7px;height:7px;border-radius:50%}
   .pdot.up{background:var(--green)}.pdot.down{background:var(--red)}.pdot.flat{background:var(--dim)}
   .ptab .pb.up{color:var(--green)}.ptab .pb.down{color:var(--red)}.ptab .pb.flat{color:var(--dim)}
-  .body{padding:22px 24px}
-  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(115px,1fr));gap:14px;margin-bottom:20px}
-  .kpi{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
-  .kpi .l{font-size:12px;color:var(--dim);margin-bottom:6px}
-  .kpi .v{font-size:19px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
-  .kpi .v.g{color:var(--green)}
-  .chart{height:120px;border:1px solid var(--border);border-radius:12px;background:
-    linear-gradient(180deg,rgba(108,125,255,.10),transparent);position:relative;overflow:hidden;margin-bottom:16px}
-  .rows{display:flex;flex-direction:column;gap:9px}
-  .row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;
-    background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px}
-  .row .tk{font-weight:600}
-  .row .mut{color:var(--dim)}
-  .up{color:var(--green)}.down{color:var(--red)}
-  .bar{height:6px;border-radius:3px;background:var(--surface-2)}
+  .body{padding:20px 22px;min-width:0}
+  .body h3.mh1{font-size:19px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px}
+  .msub{color:var(--dim);font-size:12px}
+  .mmeta{display:flex;align-items:center;gap:9px;margin-top:8px;font-size:11px;color:var(--dim)}
+  .mmeta .mbtn{border:1px solid var(--border);background:var(--surface);border-radius:7px;padding:3px 8px;color:var(--dim)}
+  /* .section-nav */
+  .pnav{display:inline-flex;flex-wrap:wrap;gap:3px;padding:3px;margin:14px 0 12px;
+    background:var(--surface);border:1px solid var(--border);border-radius:10px}
+  .pnav span{padding:6px 11px;border-radius:7px;font-size:11.5px;font-weight:600;color:var(--dim)}
+  .pnav span.active{background:var(--accent);color:#fff;box-shadow:0 0 16px rgba(108,125,255,.4)}
+  /* .portfolio-summary / .returns-row */
+  .sumcard{display:flex;flex-wrap:wrap;gap:26px;padding:13px 17px;margin-bottom:10px;
+    background:var(--surface);border:1px solid var(--border);border-radius:12px}
+  .sl{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;white-space:nowrap}
+  .sv{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .sc{font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .retrow{display:flex;align-items:center;gap:20px;padding:11px 17px;margin-bottom:14px;
+    background:var(--surface);border:1px solid var(--border);border-radius:12px}
+  .retlab{font-size:12px;color:var(--dim);white-space:nowrap}
+  .retitems{display:flex;gap:26px;flex-wrap:wrap}
+  /* .highlight-box + .analysis-table */
+  .mbox{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 17px}
+  .mbox h4{font-size:14px;font-weight:700;margin-bottom:8px}
+  .body .e{margin-right:6px}
+  .mtbl{width:100%;border-collapse:collapse;font-size:12px}
+  .mtbl th{text-align:left;color:var(--dim);text-transform:uppercase;font-size:9.5px;
+    letter-spacing:.04em;font-weight:600;padding:6px 8px;border-bottom:1px solid var(--border)}
+  .mtbl td{padding:7px 8px;border-bottom:1px solid var(--border)}
+  .mtbl th.num,.mtbl td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .mtbl tr:last-child td{border-bottom:none}
+  .up{color:var(--green)}.down{color:var(--red)}.mut{color:var(--dim)}
+  @media(max-width:640px){
+    .app{grid-template-columns:minmax(0,1fr)}
+    .sidebar{display:none}
+    .ribbon .idx i:nth-child(n+3){display:none}
+    .body{padding:14px 13px}
+    .sl{white-space:normal}
+    .sumcard{gap:14px}
+    .retitems{gap:14px}
+    .sv{font-size:17px}.sc{font-size:14px}
+    .pnav span{padding:5px 8px;font-size:11px}
+    /* "I år" and "Udbytte" are the first columns to go — the mock only has to
+       read as the app's table, not carry every column, on a phone. */
+    .mtbl th:nth-child(n+4),.mtbl td:nth-child(n+4){display:none}
+  }
 
   /* SECTIONS */
   section{padding:70px 0}
@@ -256,32 +299,73 @@
           <span class="traffic tr-r"></span><span class="traffic tr-y"></span><span class="traffic tr-g"></span>
           <span class="t">Portfolio Dashboard</span>
         </div>
+        <div class="ribbon">
+          <div class="idx">
+            <i><span class="n">S&amp;P 500</span><span class="v">6.184</span><span class="c up">+0,42%</span></i>
+            <i><span class="n">Nasdaq 100</span><span class="v">22.640</span><span class="c up">+0,58%</span></i>
+            <i><span class="n">USD/DKK</span><span class="v">6,41</span><span class="c down">−0,15%</span></i>
+            <i><span class="n">Gold</span><span class="v">3.310</span><span class="c up">+0,21%</span></i>
+          </div>
+        </div>
         <div class="app">
           <div class="sidebar">
             <div class="ptab ptab-all"><span class="picon">🌐</span><span class="pname">Portfolio Overview</span></div>
+            <div class="pcat" data-i18n="mock_cat_free">Frie midler</div>
             <div class="ptab"><span class="picon">🏦</span><span class="pname">Nordnet</span><span class="pb up"><span class="pdot up"></span>+0,6%</span></div>
-            <div class="ptab"><span class="picon">🏛️</span><span class="pname">Pension</span><span class="pb up"><span class="pdot up"></span>+0,4%</span></div>
-            <div class="ptab"><span class="picon">💰</span><span class="pname">Assets</span><span class="pb flat"><span class="pdot flat"></span>0,0%</span></div>
+            <div class="ptab"><span class="picon">💰</span><span class="pname">Aktiesparekonto</span><span class="pb up"><span class="pdot up"></span>+0,3%</span></div>
+            <div class="pcat" data-i18n="mock_cat_pension">Pension</div>
+            <div class="ptab"><span class="picon">🏛️</span><span class="pname">Ratepension</span><span class="pb up"><span class="pdot up"></span>+0,4%</span></div>
+            <div class="ptab"><span class="picon">📜</span><span class="pname">Livrente</span><span class="pb flat"><span class="pdot flat"></span>0,0%</span></div>
           </div>
           <div class="body">
-            <div class="kpis">
-              <div class="kpi"><div class="l" data-i18n="mock_total">Samlet værdi</div><div class="v">850.000 kr.</div></div>
-              <div class="kpi"><div class="l" data-i18n="mock_today">I dag</div><div class="v g">+3.400 kr.</div></div>
-              <div class="kpi"><div class="l" data-i18n="mock_div">Udbytte i år</div><div class="v">8.000 kr.</div></div>
+            <h3 class="mh1"><span class="e">🌐</span>Portfolio Overview</h3>
+            <div class="msub" data-i18n="mock_subtitle">Samlet overblik på tværs af alle dine porteføljer.</div>
+            <div class="mmeta">
+              <span data-i18n="mock_updated">Opdateret 17:32</span>
+              <span class="mbtn">🔄 Refresh</span>
+              <span class="mbtn">👁</span>
             </div>
-            <div class="chart">
-              <svg viewBox="0 0 600 120" preserveAspectRatio="none" style="width:100%;height:100%">
-                <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#6c7dff" stop-opacity=".4"/><stop offset="1" stop-color="#6c7dff" stop-opacity="0"/>
-                </linearGradient></defs>
-                <path d="M0,90 C60,80 100,60 160,66 C230,73 260,30 330,38 C400,46 440,20 500,28 C550,34 580,22 600,18 L600,120 L0,120 Z" fill="url(#g)"/>
-                <path d="M0,90 C60,80 100,60 160,66 C230,73 260,30 330,38 C400,46 440,20 500,28 C550,34 580,22 600,18" fill="none" stroke="#6c7dff" stroke-width="2.5"/>
-              </svg>
+            <div class="pnav">
+              <span class="active" data-i18n="mock_nav_1">Oversigt</span>
+              <span data-i18n="mock_nav_2">Aktieoverblik</span>
+              <span data-i18n="mock_nav_3">Udbytte</span>
+              <span data-i18n="mock_nav_4">Udvikling</span>
+              <span data-i18n="mock_nav_5">Regnskab</span>
+              <span data-i18n="mock_nav_6">Fire</span>
             </div>
-            <div class="rows">
-              <div class="row"><span class="tk">🏦 Nordnet</span><span class="mut">300.000 kr.</span><span class="up">+0,6 %</span></div>
-              <div class="row"><span class="tk">🏛️ Pension</span><span class="mut">400.000 kr.</span><span class="up">+0,4 %</span></div>
-              <div class="row"><span class="tk">💰 Assets</span><span class="mut">150.000 kr.</span><span class="mut">0,0 %</span></div>
+            <div class="sumcard">
+              <div><div class="sl" data-i18n="mock_total">Samlet værdi</div><div class="sv">850.000 kr.</div></div>
+              <div><div class="sl" data-i18n="mock_today">I dag</div><div class="sc up">+3.400 kr.</div></div>
+              <div><div class="sl" data-i18n="mock_div">Forventet udbytte i år</div><div class="sv">28.400 kr.</div></div>
+              <div><div class="sl" data-i18n="mock_div_got">Modtaget i år</div><div class="sv">19.100 kr.</div></div>
+            </div>
+            <div class="retrow">
+              <div class="retlab" data-i18n="mock_return">Afkast</div>
+              <div class="retitems">
+                <div><div class="sl" data-i18n="mock_week">Denne uge</div><div class="sc up">+9.200 kr.</div></div>
+                <div><div class="sl" data-i18n="mock_month">Denne måned</div><div class="sc up">+21.700 kr.</div></div>
+                <div><div class="sl" data-i18n="mock_year">I år</div><div class="sc up">+74.300 kr.</div></div>
+              </div>
+            </div>
+            <div class="mbox">
+              <h4 data-i18n="mock_analysis"><span class="e">📊</span>Porteføljeanalyse</h4>
+              <table class="mtbl">
+                <thead>
+                  <tr>
+                    <th data-i18n="mock_th_depot">Depot</th>
+                    <th class="num" data-i18n="mock_th_value">Værdi</th>
+                    <th class="num" data-i18n="mock_th_today">I dag</th>
+                    <th class="num" data-i18n="mock_th_year">I år</th>
+                    <th class="num" data-i18n="mock_th_div">Udbytte</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><span class="e">🏦</span>Nordnet</td><td class="num">300.000 kr.</td><td class="num up">+0,6 %</td><td class="num up">+11,2 %</td><td class="num mut">12.400 kr.</td></tr>
+                  <tr><td><span class="e">💰</span>Aktiesparekonto</td><td class="num">150.000 kr.</td><td class="num up">+0,3 %</td><td class="num up">+8,4 %</td><td class="num mut">4.200 kr.</td></tr>
+                  <tr><td><span class="e">🏛️</span>Ratepension</td><td class="num">280.000 kr.</td><td class="num up">+0,4 %</td><td class="num up">+9,7 %</td><td class="num mut">8.900 kr.</td></tr>
+                  <tr><td><span class="e">📜</span>Livrente</td><td class="num">120.000 kr.</td><td class="num mut">0,0 %</td><td class="num up">+6,1 %</td><td class="num mut">2.900 kr.</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -389,7 +473,28 @@
       hero_meta: "macOS 12+ · Intel & Apple Silicon · 25 MB · opdaterer sig selv",
       mock_total: "Samlet værdi",
       mock_today: "I dag",
-      mock_div: "Udbytte i år",
+      mock_div: "Forventet udbytte i år",
+      mock_div_got: "Modtaget i år",
+      mock_cat_free: "Frie midler",
+      mock_cat_pension: "Pension",
+      mock_subtitle: "Samlet overblik på tværs af alle dine porteføljer.",
+      mock_updated: "Opdateret 17:32",
+      mock_nav_1: "Oversigt",
+      mock_nav_2: "Aktieoverblik",
+      mock_nav_3: "Udbytte",
+      mock_nav_4: "Udvikling",
+      mock_nav_5: "Regnskab",
+      mock_nav_6: "Fire",
+      mock_return: "Afkast",
+      mock_week: "Denne uge",
+      mock_month: "Denne måned",
+      mock_year: "I år",
+      mock_analysis: '<span class="e">📊</span>Porteføljeanalyse',
+      mock_th_depot: "Depot",
+      mock_th_value: "Værdi",
+      mock_th_today: "I dag",
+      mock_th_year: "I år",
+      mock_th_div: "Udbytte",
       feat_eyebrow: "Alt samlet ét sted",
       feat_h2: "Bygget til at holde styr på det hele",
       feat_lead: "Fra det store overblik ned til hver enkelt position — og udbytterne du får ind i løbet af året.",
@@ -448,7 +553,28 @@
       hero_meta: "macOS 12+ · Intel & Apple Silicon · 25 MB · auto-updates",
       mock_total: "Total value",
       mock_today: "Today",
-      mock_div: "Dividends this year",
+      mock_div: "Expected dividends this year",
+      mock_div_got: "Received this year",
+      mock_cat_free: "Free funds",
+      mock_cat_pension: "Pension",
+      mock_subtitle: "One overview across all your portfolios.",
+      mock_updated: "Updated 17:32",
+      mock_nav_1: "Overview",
+      mock_nav_2: "Holdings",
+      mock_nav_3: "Dividends",
+      mock_nav_4: "Performance",
+      mock_nav_5: "Earnings",
+      mock_nav_6: "Fire",
+      mock_return: "Return",
+      mock_week: "This week",
+      mock_month: "This month",
+      mock_year: "This year",
+      mock_analysis: '<span class="e">📊</span>Portfolio analysis',
+      mock_th_depot: "Portfolio",
+      mock_th_value: "Value",
+      mock_th_today: "Today",
+      mock_th_year: "This year",
+      mock_th_div: "Dividends",
       feat_eyebrow: "Everything in one place",
       feat_h2: "Built to keep track of it all",
       feat_lead: "From the big picture down to every single position — and the dividends that arrive through the year.",
