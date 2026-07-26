@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
+<!--
+  ===========================================================================
+  DOWNLOAD-URL — grep this file for "DOWNLOAD-URL" to find EVERY place that
+  needs changing. There are TWO, and changing only one is the failure mode
+  this marker exists to prevent.
+
+  Today both point at /releases/latest/download/, which always serves the
+  newest shared release. That is CORRECT while every build is ad-hoc signed:
+  there is no notarisation to protect, so newest is simply best.
+
+  THE DAY A NOTARISED BUILD SHIPS (i.e. if an Apple Developer Program
+  membership is ever bought), change both to the pinned tag:
+
+      /releases/latest/download/Portfolio-Dashboard-autoupdate.dmg
+   -> /releases/download/vX.Y.Z/Portfolio-Dashboard-autoupdate.dmg
+
+  ...and then never touch it again. WHY: a browser download carries
+  com.apple.quarantine, so Gatekeeper evaluates it and blocks an
+  un-notarised app. An updater-delivered build carries no quarantine and is
+  never evaluated -- so new users need ONE notarised installer, and every
+  later version reaches them through the minisign auto-updater regardless of
+  notarisation. Leave this on "latest" after that point and the site starts
+  serving the newest UN-notarised build to new users all by itself, which
+  undoes the whole arrangement.
+
+  Measured 2026-07-26; full detail and the caveats are in the Tauri repo's
+  CLAUDE.md under "Gatekeeper, notarisation, and what an expiring Apple
+  membership would cost".
+  ===========================================================================
+-->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Portfolio Dashboard — din portefølje, live på Mac</title>
@@ -212,6 +242,7 @@
     <h1 data-i18n="hero_h1">Hele din portefølje.<br /><span class="grad">Live på din Mac.</span></h1>
     <p class="sub" data-i18n="hero_sub">Følg dine aktier, ETF'er og udbytter i realtid — flere porteføljer, udbytte-prognose og fuld privacy mode. En hurtig, native app der åbner på ét sekund.</p>
     <div class="cta-row">
+      <!-- DOWNLOAD-URL: see the note at the top of this file before changing -->
       <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/latest/download/Portfolio-Dashboard-autoupdate.dmg">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
         <span data-i18n="hero_cta">Download til Mac</span>
@@ -296,7 +327,8 @@
     <div class="dl-card">
       <img src="appicon.png" alt="Portfolio Dashboard ikon" />
       <div class="cta-row">
-        <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/latest/download/Portfolio-Dashboard-autoupdate.dmg">
+        <!-- DOWNLOAD-URL: see the note at the top of this file before changing -->
+      <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/latest/download/Portfolio-Dashboard-autoupdate.dmg">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
           <span data-i18n="dl_cta">Download .dmg (25 MB)</span>
         </a>
