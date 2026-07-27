@@ -10,20 +10,21 @@ Look for the `.dmg` file under "Assets" on that page.
 
 ## Installing on macOS
 
-This app isn't signed with an Apple Developer certificate, so macOS will block it on first launch. Downloaded via a browser, this usually shows up as **"[App name] is damaged and can't be opened. You should move it to the Trash."** — despite the wording, the file isn't actually corrupted; it's Gatekeeper reacting to the download's quarantine flag on an unsigned app.
-
-To open it:
+Since **v0.3.0** the app is signed with an Apple Developer ID and notarised by Apple, so it opens without being blocked. No Terminal commands, no trip through System Settings.
 
 1. Open the `.dmg` and drag the app to Applications.
-2. Open **Terminal** and run:
-   ```
-   xattr -cr "/Applications/Portfolio Dashboard.app"
-   ```
-3. Open the app normally from Applications.
+2. Open the app. That's it.
 
-(Right-click → Open sometimes works for a milder "unidentified developer" warning, but doesn't reliably clear the "is damaged" wording a browser download typically triggers — the `xattr` command above handles both.)
+The first time, macOS may ask whether you're sure you want to open an app downloaded from the internet — click **Open**. That's the ordinary prompt every downloaded app gets, not a block.
 
-You only need to do this once — after that it opens normally.
+<details>
+<summary>Using a build older than v0.3.0?</summary>
+
+Releases before v0.3.0 were ad-hoc signed, so macOS blocked them on first launch — usually as *"[App name] is damaged and can't be opened."* Despite the wording the file wasn't corrupted; it was Gatekeeper reacting to the quarantine flag on an unsigned app.
+
+You don't need to work around that any more — **download v0.3.0 or later instead**, or let an existing install auto-update. Updates are delivered by the app itself and were never affected by this.
+
+</details>
 
 ## Updates
 
