@@ -17,3 +17,6 @@
 # added 2026-07-25 and the per-file rules did not cover it, so a `git add -A`
 # would have published it.
 api/
+
+# macOS-metadata. Ikke hemmeligt, men hører ikke til i et offentligt repo.
+.DS_Store
