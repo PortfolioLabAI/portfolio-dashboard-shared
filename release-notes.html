@@ -124,6 +124,13 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.5.6", date: "2026-08-07",
+      items: [
+        { ic: "🔧", da: ["Retter en fejl der gjorde at 0.5.5 ikke kunne åbnes.", "0.5.5 blev signeret med en rettighed appen ikke måtte bede om i denne udgave, og macOS afviste derfor at starte den — også efter en ny download. 0.5.5 er trukket tilbage. Har du fået fejlen, så slet appen og hent den igen her; alt indhold i den er det samme som i 0.5.5."],
+                     en: ["Fixes a fault that stopped 0.5.5 from opening.", "0.5.5 was signed with an entitlement this edition of the app is not allowed to request, so macOS refused to launch it — even after a fresh download. 0.5.5 has been withdrawn. If you hit the error, delete the app and download it again here; everything else is the same as in 0.5.5."] }
+      ]
+    },
+    {
       version: "0.5.5", date: "2026-08-07",
       items: [
         { ic: "🔗", da: ["Hent dine beholdninger direkte fra Nordnet.", "Du logger ind hos Nordnet selv — med MitID eller ved at scanne QR-koden med Nordnet-appen — og appen henter derefter hele historikken: købsdatoer, køb og salg, udbytte og pensionsafkastskat. Du får først en oversigt over hvad der er ændret siden sidst, og intet gemmes før du godkender det. Dine loginoplysninger ses kun af Nordnet og MitID; sessionen slettes bagefter, så der kræves login hver gang. CSV-importen virker stadig som før."],
