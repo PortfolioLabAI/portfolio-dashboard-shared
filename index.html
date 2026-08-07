@@ -230,11 +230,19 @@
     font-size:13px;font-weight:700;margin-bottom:10px}
   .connect .step h4{font-size:16px;margin-bottom:6px;letter-spacing:-.01em}
   .connect .step p{color:var(--dim);font-size:14.5px;line-height:1.55}
-  .connect .foot{margin-top:24px;padding-top:18px;border-top:1px solid var(--border);
-    color:var(--dim);font-size:14px}
-  .connect .foot a{color:var(--accent);font-weight:600}
-  .connect .foot a:hover{text-decoration:underline}
-  @media(max-width:560px){.connect{padding:24px 22px}}
+  /* The file-import box stays a box of its own, not a footnote: Nordea and Saxo
+     users must still be able to see at a glance that the app covers them. */
+  .filebox{display:flex;gap:18px;align-items:flex-start;max-width:880px;margin:22px auto 0;
+    background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px 26px}
+  .filebox .ic{font-size:26px;line-height:1.2;flex-shrink:0}
+  .filebox h3{font-size:17px;margin-bottom:6px;letter-spacing:-.01em}
+  .filebox p{color:var(--dim);font-size:14.5px;line-height:1.6}
+  .filebox a{color:var(--accent);font-weight:600}
+  .filebox a:hover{text-decoration:underline}
+  @media(max-width:560px){
+    .connect{padding:24px 22px}
+    .filebox{flex-direction:column;gap:12px;padding:22px}
+  }
 
   /* SECURITY BOX */
   .secbox{display:flex;gap:22px;align-items:center;max-width:780px;margin:0 auto;
@@ -427,7 +435,13 @@
           <p data-i18n="con_3_p">Du får først en oversigt over hvad der er ændret siden sidst. Intet skrives til din portefølje, før du siger ja.</p>
         </div>
       </div>
-      <div class="foot" data-i18n="con_foot"><b>Nordea og Saxo Bank</b> importeres fortsat fra bankens egen eksportfil — trin for trin i <a href="faq.html#import">import-guiden</a>. CSV-importen fra Nordnet virker også stadig som før.</div>
+    </div>
+    <div class="filebox">
+      <div class="ic">📄</div>
+      <div>
+        <h3 data-i18n="file_h">Nordea og Saxo Bank: importér fra fil</h3>
+        <p data-i18n="file_p">Bruger du en anden bank, importerer du bankens egen eksportfil — CSV fra Nordea, Excel fra Saxo Bank. Både beholdninger og udbytter kommer med. Fremgangsmåden står trin for trin i <a href="faq.html#import">import-guiden</a>. CSV-importen fra Nordnet virker også stadig som før, hvis du hellere vil den vej.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -561,7 +575,8 @@
       con_2_p: "Ikke bare dagens beholdning: købsdatoer, køb og salg, udbytter og pensionsafkastskat — på tværs af alle dine depoter, også pensionsdepoterne.",
       con_3_h: "Du godkender, før noget gemmes",
       con_3_p: "Du får først en oversigt over hvad der er ændret siden sidst. Intet skrives til din portefølje, før du siger ja.",
-      con_foot: '<b>Nordea og Saxo Bank</b> importeres fortsat fra bankens egen eksportfil — trin for trin i <a href="faq.html#import">import-guiden</a>. CSV-importen fra Nordnet virker også stadig som før.',
+      file_h: "Nordea og Saxo Bank: importér fra fil",
+      file_p: 'Bruger du en anden bank, importerer du bankens egen eksportfil — CSV fra Nordea, Excel fra Saxo Bank. Både beholdninger og udbytter kommer med. Fremgangsmåden står trin for trin i <a href="faq.html#import">import-guiden</a>. CSV-importen fra Nordnet virker også stadig som før, hvis du hellere vil den vej.',
       feat_eyebrow: "Alt samlet ét sted",
       feat_h2: "Bygget til at holde styr på det hele",
       feat_lead: "Fra det store overblik ned til hver enkelt position — og udbytterne du får ind i løbet af året.",
@@ -652,7 +667,8 @@
       con_2_p: "Not just today's holdings: purchase dates, buys and sells, dividends and pension tax — across all your accounts, pension accounts included.",
       con_3_h: "You approve before anything is saved",
       con_3_p: "You get an overview of what has changed since last time first. Nothing is written to your portfolio until you say yes.",
-      con_foot: '<b>Nordea and Saxo Bank</b> are still imported from the bank\'s own export file — step by step in the <a href="faq.html#import">import guide</a>. The Nordnet CSV import also still works as before.',
+      file_h: "Nordea and Saxo Bank: import from a file",
+      file_p: 'With another bank you import the bank\'s own export file — CSV from Nordea, Excel from Saxo Bank. Both holdings and dividends come along. The steps are laid out in the <a href="faq.html#import">import guide</a>. The Nordnet CSV import also still works as before, if you prefer that route.',
       feat_eyebrow: "Everything in one place",
       feat_h2: "Built to keep track of it all",
       feat_lead: "From the big picture down to every single position — and the dividends that arrive through the year.",
