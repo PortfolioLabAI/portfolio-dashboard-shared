@@ -46,7 +46,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Portfolio Dashboard — din portefølje, live på Mac</title>
-<meta name="description" content="Følg dine aktier, ETF'er og udbytter live fra Yahoo Finance. En hurtig, native Mac-app med flere porteføljer, udbytte-prognose og privacy mode." />
+<meta name="description" content="Hent dine beholdninger direkte fra Nordnet og følg aktier, ETF'er og udbytter live fra Yahoo Finance. En hurtig, native Mac-app med flere porteføljer, udbytte-prognose, kursalarmer og privacy mode." />
 <link rel="icon" href="favicon.ico" />
 <style>
   :root{
@@ -218,6 +218,24 @@
   .card h3{font-size:18px;margin-bottom:8px;letter-spacing:-.01em}
   .card p{color:var(--dim);font-size:15px}
 
+  /* BROKER CONNECT — the Nordnet direct-fetch band. Deliberately its own section
+     above the feature grid: it is the headline capability of 0.5.5+, and the
+     "your login is never seen by the app" point needs more room than a card. */
+  .connect{max-width:880px;margin:0 auto;
+    background:linear-gradient(135deg,rgba(108,125,255,.13),rgba(155,125,255,.05));
+    border:1px solid rgba(108,125,255,.35);border-radius:18px;padding:30px 32px}
+  .connect .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:6px}
+  .connect .step .n{display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:8px;background:var(--accent);color:#fff;
+    font-size:13px;font-weight:700;margin-bottom:10px}
+  .connect .step h4{font-size:16px;margin-bottom:6px;letter-spacing:-.01em}
+  .connect .step p{color:var(--dim);font-size:14.5px;line-height:1.55}
+  .connect .foot{margin-top:24px;padding-top:18px;border-top:1px solid var(--border);
+    color:var(--dim);font-size:14px}
+  .connect .foot a{color:var(--accent);font-weight:600}
+  .connect .foot a:hover{text-decoration:underline}
+  @media(max-width:560px){.connect{padding:24px 22px}}
+
   /* SECURITY BOX */
   .secbox{display:flex;gap:22px;align-items:center;max-width:780px;margin:0 auto;
     background:linear-gradient(135deg,rgba(38,166,154,.12),rgba(108,125,255,.06));
@@ -295,7 +313,7 @@
   <div class="wrap">
     <span class="pill"><span class="dot"></span> <span data-i18n="hero_pill">Live kurser fra Yahoo Finance</span></span>
     <h1 data-i18n="hero_h1">Hele din portefølje.<br /><span class="grad">Live på din Mac.</span></h1>
-    <p class="sub" data-i18n="hero_sub">Følg dine aktier, ETF'er og udbytter i realtid — flere porteføljer, udbytte-prognose og fuld privacy mode. En hurtig, native app der åbner på ét sekund.</p>
+    <p class="sub" data-i18n="hero_sub">Hent dine beholdninger direkte fra Nordnet og følg dine aktier, ETF'er og udbytter i realtid — flere porteføljer, udbytte-prognose, kursalarmer og fuld privacy mode. En hurtig, native app der åbner på ét sekund.</p>
     <div class="cta-row">
       <!-- DOWNLOAD-URL: see the note at the top of this file before changing -->
       <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/download/v0.5.6/Portfolio-Dashboard-autoupdate.dmg">
@@ -386,7 +404,35 @@
   </div>
 </header>
 
-<section id="features">
+<section id="nordnet">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="con_eyebrow">Nyt</div>
+    <h2 data-i18n="con_h2">Hent dine beholdninger direkte fra Nordnet</h2>
+    <p class="lead" data-i18n="con_lead">Ingen CSV-filer og ingen manuel indtastning. Du logger ind hos Nordnet med MitID eller ved at scanne QR-koden i Nordnet-appen — så henter appen resten.</p>
+    <div class="connect">
+      <div class="steps-grid">
+        <div class="step">
+          <span class="n">1</span>
+          <h4 data-i18n="con_1_h">Du logger ind hos Nordnet selv</h4>
+          <p data-i18n="con_1_p">Login-vinduet er Nordnets eget. Kun Nordnet og MitID ser dine loginoplysninger — appen gemmer dem aldrig, og sessionen slettes bagefter, så der logges ind på ny hver gang.</p>
+        </div>
+        <div class="step">
+          <span class="n">2</span>
+          <h4 data-i18n="con_2_h">Hele historikken følger med</h4>
+          <p data-i18n="con_2_p">Ikke bare dagens beholdning: købsdatoer, køb og salg, udbytter og pensionsafkastskat — på tværs af alle dine depoter, også pensionsdepoterne.</p>
+        </div>
+        <div class="step">
+          <span class="n">3</span>
+          <h4 data-i18n="con_3_h">Du godkender, før noget gemmes</h4>
+          <p data-i18n="con_3_p">Du får først en oversigt over hvad der er ændret siden sidst. Intet skrives til din portefølje, før du siger ja.</p>
+        </div>
+      </div>
+      <div class="foot" data-i18n="con_foot"><b>Nordea og Saxo Bank</b> importeres fortsat fra bankens egen eksportfil — trin for trin i <a href="faq.html#import">import-guiden</a>. CSV-importen fra Nordnet virker også stadig som før.</div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="padding-top:0">
   <div class="wrap">
     <div class="eyebrow" data-i18n="feat_eyebrow">Alt samlet ét sted</div>
     <h2 data-i18n="feat_h2">Bygget til at holde styr på det hele</h2>
@@ -397,9 +443,11 @@
       <div class="card"><span class="em">💰</span><h3 data-i18n="feat_3_h">Udbytte-prognose</h3><p data-i18n="feat_3_p">Se forventet udbytte for året og hvad du allerede har modtaget, fordelt på selskaber og måneder.</p></div>
       <div class="card"><span class="em">📈</span><h3 data-i18n="feat_4_h">Aktieoverblik & heatmap</h3><p data-i18n="feat_4_p">Alle positioner i én tabel med afkast, vægt og et farvet heatmap over hvad der trækker op og ned.</p></div>
       <div class="card"><span class="em">🔒</span><h3 data-i18n="feat_5_h">Privacy Mode</h3><p data-i18n="feat_5_p">Skjul alle beløb med ét klik, når du deler skærm — tallene er der stadig, bare ikke synlige.</p></div>
-      <div class="card"><span class="em">📥</span><h3 data-i18n="feat_6_h">Nordnet, Nordea & Saxo Bank-import</h3><p data-i18n="feat_6_p">Importér dine beholdninger direkte fra Nordnet, Nordea eller Saxo Bank — eller eksportér dine data når du vil.</p></div>
+      <div class="card"><span class="em">📥</span><h3 data-i18n="feat_6_h">Direkte fra Nordnet — eller fra fil</h3><p data-i18n="feat_6_p">Hent beholdninger og historik direkte fra Nordnet med ét login, eller importér eksportfilen fra Nordea og Saxo Bank. Dine egne data kan eksporteres igen når du vil.</p></div>
       <div class="card"><span class="em">🔥</span><h3 data-i18n="feat_7_h">FIRE-beregner (inkl. pension)</h3><p data-i18n="feat_7_p">Beregn hvornår du kan gå på pension — frie midler, ratepension, livrente og folkepension, med skat, lager/realisation og inflation.</p></div>
       <div class="card"><span class="em">🗓️</span><h3 data-i18n="feat_8_h">Regnskab</h3><p data-i18n="feat_8_p">Se hvornår dine selskaber aflægger regnskab, hvad analytikerne forventer i indtjening og omsætning, og hvor ofte selskabet historisk har ramt eller slået estimaterne.</p></div>
+      <div class="card"><span class="em">📉</span><h3 data-i18n="feat_9_h">Udvikling over tid</h3><p data-i18n="feat_9_p">Følg depotets værdi og afkast måned for måned og år for år. Afkastet regnes fra den dag du faktisk købte — udbytte efter kildeskat, og pensionsafkastskat trukket fra.</p></div>
+      <div class="card"><span class="em">🔔</span><h3 data-i18n="feat_10_h">Kursalarmer & watchlister</h3><p data-i18n="feat_10_p">Sæt en målkurs og få besked når den rammes — over eller under. Følg de aktier du overvejer på en watchliste, søg ethvert papir fra top-baren, og skriv dine egne noter.</p></div>
     </div>
   </div>
 </section>
@@ -470,14 +518,14 @@
   var I18N = {
     da: {
       title: "Portfolio Dashboard — din portefølje, live på Mac",
-      meta: "Følg dine aktier, ETF'er og udbytter live fra Yahoo Finance. En hurtig, native Mac-app med flere porteføljer, udbytte-prognose og privacy mode.",
+      meta: "Hent dine beholdninger direkte fra Nordnet og følg aktier, ETF'er og udbytter live fra Yahoo Finance. En hurtig, native Mac-app med flere porteføljer, udbytte-prognose, kursalarmer og privacy mode.",
       nav_download: "Download",
       nav_faq: "FAQ",
       nav_notes: "Nyheder",
       nav_support: "Støt",
       hero_pill: "Live kurser fra Yahoo Finance",
       hero_h1: 'Hele din portefølje.<br /><span class="grad">Live på din Mac.</span>',
-      hero_sub: "Følg dine aktier, ETF'er og udbytter i realtid — flere porteføljer, udbytte-prognose og fuld privacy mode. En hurtig, native app der åbner på ét sekund.",
+      hero_sub: "Hent dine beholdninger direkte fra Nordnet og følg dine aktier, ETF'er og udbytter i realtid — flere porteføljer, udbytte-prognose, kursalarmer og fuld privacy mode. En hurtig, native app der åbner på ét sekund.",
       hero_cta: "Download til Mac",
       hero_meta: "macOS 12+ · Intel & Apple Silicon · 25 MB · opdaterer sig selv",
       mock_total: "Samlet værdi",
@@ -504,6 +552,16 @@
       mock_th_today: "I dag",
       mock_th_year: "I år",
       mock_th_div: "Udbytte",
+      con_eyebrow: "Nyt",
+      con_h2: "Hent dine beholdninger direkte fra Nordnet",
+      con_lead: "Ingen CSV-filer og ingen manuel indtastning. Du logger ind hos Nordnet med MitID eller ved at scanne QR-koden i Nordnet-appen — så henter appen resten.",
+      con_1_h: "Du logger ind hos Nordnet selv",
+      con_1_p: "Login-vinduet er Nordnets eget. Kun Nordnet og MitID ser dine loginoplysninger — appen gemmer dem aldrig, og sessionen slettes bagefter, så der logges ind på ny hver gang.",
+      con_2_h: "Hele historikken følger med",
+      con_2_p: "Ikke bare dagens beholdning: købsdatoer, køb og salg, udbytter og pensionsafkastskat — på tværs af alle dine depoter, også pensionsdepoterne.",
+      con_3_h: "Du godkender, før noget gemmes",
+      con_3_p: "Du får først en oversigt over hvad der er ændret siden sidst. Intet skrives til din portefølje, før du siger ja.",
+      con_foot: '<b>Nordea og Saxo Bank</b> importeres fortsat fra bankens egen eksportfil — trin for trin i <a href="faq.html#import">import-guiden</a>. CSV-importen fra Nordnet virker også stadig som før.',
       feat_eyebrow: "Alt samlet ét sted",
       feat_h2: "Bygget til at holde styr på det hele",
       feat_lead: "Fra det store overblik ned til hver enkelt position — og udbytterne du får ind i løbet af året.",
@@ -517,12 +575,16 @@
       feat_4_p: "Alle positioner i én tabel med afkast, vægt og et farvet heatmap over hvad der trækker op og ned.",
       feat_5_h: "Privacy Mode",
       feat_5_p: "Skjul alle beløb med ét klik, når du deler skærm — tallene er der stadig, bare ikke synlige.",
-      feat_6_h: "Nordnet, Nordea & Saxo Bank-import",
-      feat_6_p: "Importér dine beholdninger direkte fra Nordnet, Nordea eller Saxo Bank — eller eksportér dine data når du vil.",
+      feat_6_h: "Direkte fra Nordnet — eller fra fil",
+      feat_6_p: "Hent beholdninger og historik direkte fra Nordnet med ét login, eller importér eksportfilen fra Nordea og Saxo Bank. Dine egne data kan eksporteres igen når du vil.",
       feat_7_h: "FIRE-beregner (inkl. pension)",
       feat_7_p: "Beregn hvornår du kan gå på pension — frie midler, ratepension, livrente og folkepension, med skat, lager/realisation og inflation.",
       feat_8_h: "Regnskab",
       feat_8_p: "Se hvornår dine selskaber aflægger regnskab, hvad analytikerne forventer i indtjening og omsætning, og hvor ofte selskabet historisk har ramt eller slået estimaterne.",
+      feat_9_h: "Udvikling over tid",
+      feat_9_p: "Følg depotets værdi og afkast måned for måned og år for år. Afkastet regnes fra den dag du faktisk købte — udbytte efter kildeskat, og pensionsafkastskat trukket fra.",
+      feat_10_h: "Kursalarmer & watchlister",
+      feat_10_p: "Sæt en målkurs og få besked når den rammes — over eller under. Følg de aktier du overvejer på en watchliste, søg ethvert papir fra top-baren, og skriv dine egne noter.",
       sec_h3: "Alle dine data er krypteret lokalt",
       sec_p: 'Din porteføljedata ligger <b>krypteret på din egen Mac</b> (SQLCipher, AES‑256) og låses op med <b>Touch ID</b>, når du åbner appen. Der er ingen server og ingen konto — kun offentlige aktiekurser hentes fra Yahoo Finance. Dine tal forlader aldrig din computer.',
       dl_eyebrow: "Klar på et øjeblik",
@@ -547,14 +609,14 @@
     },
     en: {
       title: "Portfolio Dashboard — your portfolio, live on Mac",
-      meta: "Track your stocks, ETFs and dividends live from Yahoo Finance. A fast, native Mac app with multiple portfolios, dividend forecasting and privacy mode.",
+      meta: "Pull your holdings straight from Nordnet and track stocks, ETFs and dividends live from Yahoo Finance. A fast, native Mac app with multiple portfolios, dividend forecasting, price alerts and privacy mode.",
       nav_download: "Download",
       nav_faq: "FAQ",
       nav_notes: "What's new",
       nav_support: "Support",
       hero_pill: "Live prices from Yahoo Finance",
       hero_h1: 'Your whole portfolio.<br /><span class="grad">Live on your Mac.</span>',
-      hero_sub: "Track your stocks, ETFs and dividends in real time — multiple portfolios, dividend forecasting and full privacy mode. A fast, native app that opens in a second.",
+      hero_sub: "Pull your holdings straight from Nordnet and track your stocks, ETFs and dividends in real time — multiple portfolios, dividend forecasting, price alerts and full privacy mode. A fast, native app that opens in a second.",
       hero_cta: "Download for Mac",
       hero_meta: "macOS 12+ · Intel & Apple Silicon · 25 MB · auto-updates",
       mock_total: "Total value",
@@ -581,6 +643,16 @@
       mock_th_today: "Today",
       mock_th_year: "This year",
       mock_th_div: "Dividends",
+      con_eyebrow: "New",
+      con_h2: "Pull your holdings straight from Nordnet",
+      con_lead: "No CSV files, no typing things in by hand. You sign in at Nordnet with MitID or by scanning the QR code in the Nordnet app — the app fetches the rest.",
+      con_1_h: "You sign in at Nordnet yourself",
+      con_1_p: "The sign-in window is Nordnet's own. Only Nordnet and MitID ever see your credentials — the app never stores them, and the session is deleted afterwards, so you sign in again each time.",
+      con_2_h: "The full history comes with it",
+      con_2_p: "Not just today's holdings: purchase dates, buys and sells, dividends and pension tax — across all your accounts, pension accounts included.",
+      con_3_h: "You approve before anything is saved",
+      con_3_p: "You get an overview of what has changed since last time first. Nothing is written to your portfolio until you say yes.",
+      con_foot: '<b>Nordea and Saxo Bank</b> are still imported from the bank\'s own export file — step by step in the <a href="faq.html#import">import guide</a>. The Nordnet CSV import also still works as before.',
       feat_eyebrow: "Everything in one place",
       feat_h2: "Built to keep track of it all",
       feat_lead: "From the big picture down to every single position — and the dividends that arrive through the year.",
@@ -594,12 +666,16 @@
       feat_4_p: "Every position in one table with returns, weight and a colored heatmap of what's pulling up and down.",
       feat_5_h: "Privacy Mode",
       feat_5_p: "Hide every amount with one click when you share your screen — the numbers are still there, just not visible.",
-      feat_6_h: "Nordnet, Nordea & Saxo Bank import",
-      feat_6_p: "Import your holdings straight from Nordnet, Nordea or Saxo Bank — or export your data whenever you want.",
+      feat_6_h: "Straight from Nordnet — or from a file",
+      feat_6_p: "Fetch holdings and history straight from Nordnet with one sign-in, or import the export file from Nordea and Saxo Bank. Your own data can be exported again whenever you want.",
       feat_7_h: "FIRE & pension planner",
       feat_7_p: "Work out when you can retire — free funds, annuities, life pensions and state pension, with tax, mark-to-market/realisation and inflation.",
       feat_8_h: "Earnings",
       feat_8_p: "See when your companies report, what analysts expect on earnings and revenue, and how often the company has historically met or beaten estimates.",
+      feat_9_h: "Performance over time",
+      feat_9_p: "Follow each account's value and return month by month and year by year. Returns count from the day you actually bought — dividends net of withholding tax, and pension tax deducted.",
+      feat_10_h: "Price alerts & watchlists",
+      feat_10_p: "Set a target price and get notified when it is hit — above or below. Keep the stocks you are considering on a watchlist, search any security from the top bar, and write your own notes.",
       sec_h3: "All your data is encrypted locally",
       sec_p: 'Your portfolio data is <b>encrypted on your own Mac</b> (SQLCipher, AES‑256) and unlocked with <b>Touch ID</b> when you open the app. There is no server and no account — only public stock prices are fetched from Yahoo Finance. Your numbers never leave your computer.',
       dl_eyebrow: "Ready in a moment",
