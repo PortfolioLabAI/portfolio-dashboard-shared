@@ -224,24 +224,35 @@
   .connect{max-width:880px;margin:0 auto;
     background:linear-gradient(135deg,rgba(108,125,255,.13),rgba(155,125,255,.05));
     border:1px solid rgba(108,125,255,.35);border-radius:18px;padding:30px 32px}
-  .connect .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:6px}
+  .connect h3{font-size:19px;margin-bottom:6px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .connect h3 .ic{font-size:22px;line-height:1}
+  .connect h3 .badge{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    color:#fff;background:var(--accent);border-radius:999px;padding:3px 9px}
+  .connect .con-lead{color:var(--dim);font-size:15px;line-height:1.6}
+  .connect .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:22px}
   .connect .step .n{display:inline-flex;align-items:center;justify-content:center;
     width:26px;height:26px;border-radius:8px;background:var(--accent);color:#fff;
     font-size:13px;font-weight:700;margin-bottom:10px}
   .connect .step h4{font-size:16px;margin-bottom:6px;letter-spacing:-.01em}
   .connect .step p{color:var(--dim);font-size:14.5px;line-height:1.55}
-  /* The file-import box stays a box of its own, not a footnote: Nordea and Saxo
-     users must still be able to see at a glance that the app covers them. */
-  .filebox{display:flex;gap:18px;align-items:flex-start;max-width:880px;margin:22px auto 0;
-    background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px 26px}
-  .filebox .ic{font-size:26px;line-height:1.2;flex-shrink:0}
-  .filebox h3{font-size:17px;margin-bottom:6px;letter-spacing:-.01em}
-  .filebox p{color:var(--dim);font-size:14.5px;line-height:1.6}
+  /* File import is a box of its own, a peer of the Nordnet band above it — same
+     width and padding. Neutral surface, not the accent gradient: Nordnet is the
+     headline, this one must read as an equal option, not as a footnote to it. */
+  .filebox{max-width:880px;margin:22px auto 0;
+    background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:30px 32px}
+  .filebox h3{font-size:19px;margin-bottom:6px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  .filebox h3 .ic{font-size:22px;line-height:1}
+  .filebox .file-lead{color:var(--dim);font-size:15px;line-height:1.6}
+  .file-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:22px}
+  .file-grid .fb h4{font-size:16px;margin-bottom:6px;letter-spacing:-.01em}
+  .file-grid .fb p{color:var(--dim);font-size:14.5px;line-height:1.55}
+  .filebox .file-foot{margin-top:22px;padding-top:18px;border-top:1px solid var(--border);
+    color:var(--dim);font-size:14px}
   .filebox a{color:var(--accent);font-weight:600}
   .filebox a:hover{text-decoration:underline}
   @media(max-width:560px){
     .connect{padding:24px 22px}
-    .filebox{flex-direction:column;gap:12px;padding:22px}
+    .filebox{padding:24px 22px}
   }
 
   /* SECURITY BOX */
@@ -414,10 +425,12 @@
 
 <section id="nordnet">
   <div class="wrap">
-    <div class="eyebrow" data-i18n="con_eyebrow">Nyt</div>
-    <h2 data-i18n="con_h2">Hent dine beholdninger direkte fra Nordnet</h2>
-    <p class="lead" data-i18n="con_lead">Ingen CSV-filer og ingen manuel indtastning. Du logger ind hos Nordnet med MitID eller ved at scanne QR-koden i Nordnet-appen — så henter appen resten.</p>
+    <div class="eyebrow" data-i18n="con_eyebrow">Kom i gang</div>
+    <h2 data-i18n="con_h2">Få dine beholdninger ind</h2>
+    <p class="lead" data-i18n="con_lead">Hent dem direkte fra Nordnet med ét login — eller importér bankens egen eksportfil, hvis du er hos Nordea eller Saxo Bank.</p>
     <div class="connect">
+      <h3><span class="ic">🔗</span><span data-i18n="con_box_h">Direkte fra Nordnet</span><span class="badge" data-i18n="con_badge">Nyt</span></h3>
+      <p class="con-lead" data-i18n="con_box_lead">Ingen filer og ingen manuel indtastning. Du logger ind hos Nordnet med MitID eller ved at scanne QR-koden i Nordnet-appen — så henter appen resten.</p>
       <div class="steps-grid">
         <div class="step">
           <span class="n">1</span>
@@ -437,11 +450,23 @@
       </div>
     </div>
     <div class="filebox">
-      <div class="ic">📄</div>
-      <div>
-        <h3 data-i18n="file_h">Nordea og Saxo Bank: importér fra fil</h3>
-        <p data-i18n="file_p">Bruger du en anden bank, importerer du bankens egen eksportfil — CSV fra Nordea, Excel fra Saxo Bank. Både beholdninger og udbytter kommer med. Fremgangsmåden står trin for trin i <a href="faq.html#import">import-guiden</a>. CSV-importen fra Nordnet virker også stadig som før, hvis du hellere vil den vej.</p>
+      <h3 data-i18n="file_h"><span class="ic">📄</span>Importér fra fil: Nordea og Saxo Bank</h3>
+      <p class="file-lead" data-i18n="file_lead">Bruger du en anden bank, henter du bankens egen eksportfil og trækker den ind i appen. Både beholdninger og udbytter kommer med.</p>
+      <div class="file-grid">
+        <div class="fb">
+          <h4 data-i18n="file_1_h">Nordea</h4>
+          <p data-i18n="file_1_p">CSV-eksport af dine transaktioner og beholdninger fra Nordea Investor.</p>
+        </div>
+        <div class="fb">
+          <h4 data-i18n="file_2_h">Saxo Bank</h4>
+          <p data-i18n="file_2_p">Excel-eksport fra SaxoInvestor — beholdninger og udbytter i samme fil.</p>
+        </div>
+        <div class="fb">
+          <h4 data-i18n="file_3_h">Nordnet som fil</h4>
+          <p data-i18n="file_3_p">Vil du hellere undgå login i appen, virker Nordnets CSV-eksport stadig som før.</p>
+        </div>
       </div>
+      <p class="file-foot" data-i18n="file_foot">Fremgangsmåden for hver bank står trin for trin i <a href="faq.html#import">import-guiden</a>.</p>
     </div>
   </div>
 </section>
@@ -566,17 +591,27 @@
       mock_th_today: "I dag",
       mock_th_year: "I år",
       mock_th_div: "Udbytte",
-      con_eyebrow: "Nyt",
-      con_h2: "Hent dine beholdninger direkte fra Nordnet",
-      con_lead: "Ingen CSV-filer og ingen manuel indtastning. Du logger ind hos Nordnet med MitID eller ved at scanne QR-koden i Nordnet-appen — så henter appen resten.",
+      con_eyebrow: "Kom i gang",
+      con_h2: "Få dine beholdninger ind",
+      con_lead: "Hent dem direkte fra Nordnet med ét login — eller importér bankens egen eksportfil, hvis du er hos Nordea eller Saxo Bank.",
+      con_box_h: "Direkte fra Nordnet",
+      con_badge: "Nyt",
+      con_box_lead: "Ingen filer og ingen manuel indtastning. Du logger ind hos Nordnet med MitID eller ved at scanne QR-koden i Nordnet-appen — så henter appen resten.",
       con_1_h: "Du logger ind hos Nordnet selv",
       con_1_p: "Login-vinduet er Nordnets eget. Kun Nordnet og MitID ser dine loginoplysninger — appen gemmer dem aldrig, og sessionen slettes bagefter, så der logges ind på ny hver gang.",
       con_2_h: "Hele historikken følger med",
       con_2_p: "Ikke bare dagens beholdning: købsdatoer, køb og salg, udbytter og pensionsafkastskat — på tværs af alle dine depoter, også pensionsdepoterne.",
       con_3_h: "Du godkender, før noget gemmes",
       con_3_p: "Du får først en oversigt over hvad der er ændret siden sidst. Intet skrives til din portefølje, før du siger ja.",
-      file_h: "Nordea og Saxo Bank: importér fra fil",
-      file_p: 'Bruger du en anden bank, importerer du bankens egen eksportfil — CSV fra Nordea, Excel fra Saxo Bank. Både beholdninger og udbytter kommer med. Fremgangsmåden står trin for trin i <a href="faq.html#import">import-guiden</a>. CSV-importen fra Nordnet virker også stadig som før, hvis du hellere vil den vej.',
+      file_h: '<span class="ic">📄</span>Importér fra fil: Nordea og Saxo Bank',
+      file_lead: "Bruger du en anden bank, henter du bankens egen eksportfil og trækker den ind i appen. Både beholdninger og udbytter kommer med.",
+      file_1_h: "Nordea",
+      file_1_p: "CSV-eksport af dine transaktioner og beholdninger fra Nordea Investor.",
+      file_2_h: "Saxo Bank",
+      file_2_p: "Excel-eksport fra SaxoInvestor — beholdninger og udbytter i samme fil.",
+      file_3_h: "Nordnet som fil",
+      file_3_p: "Vil du hellere undgå login i appen, virker Nordnets CSV-eksport stadig som før.",
+      file_foot: 'Fremgangsmåden for hver bank står trin for trin i <a href="faq.html#import">import-guiden</a>.',
       feat_eyebrow: "Alt samlet ét sted",
       feat_h2: "Bygget til at holde styr på det hele",
       feat_lead: "Fra det store overblik ned til hver enkelt position — og udbytterne du får ind i løbet af året.",
@@ -658,17 +693,27 @@
       mock_th_today: "Today",
       mock_th_year: "This year",
       mock_th_div: "Dividends",
-      con_eyebrow: "New",
-      con_h2: "Pull your holdings straight from Nordnet",
-      con_lead: "No CSV files, no typing things in by hand. You sign in at Nordnet with MitID or by scanning the QR code in the Nordnet app — the app fetches the rest.",
+      con_eyebrow: "Getting started",
+      con_h2: "Get your holdings in",
+      con_lead: "Pull them straight from Nordnet with one sign-in — or import the bank's own export file if you are with Nordea or Saxo Bank.",
+      con_box_h: "Straight from Nordnet",
+      con_badge: "New",
+      con_box_lead: "No files, no typing things in by hand. You sign in at Nordnet with MitID or by scanning the QR code in the Nordnet app — the app fetches the rest.",
       con_1_h: "You sign in at Nordnet yourself",
       con_1_p: "The sign-in window is Nordnet's own. Only Nordnet and MitID ever see your credentials — the app never stores them, and the session is deleted afterwards, so you sign in again each time.",
       con_2_h: "The full history comes with it",
       con_2_p: "Not just today's holdings: purchase dates, buys and sells, dividends and pension tax — across all your accounts, pension accounts included.",
       con_3_h: "You approve before anything is saved",
       con_3_p: "You get an overview of what has changed since last time first. Nothing is written to your portfolio until you say yes.",
-      file_h: "Nordea and Saxo Bank: import from a file",
-      file_p: 'With another bank you import the bank\'s own export file — CSV from Nordea, Excel from Saxo Bank. Both holdings and dividends come along. The steps are laid out in the <a href="faq.html#import">import guide</a>. The Nordnet CSV import also still works as before, if you prefer that route.',
+      file_h: '<span class="ic">📄</span>Import from a file: Nordea and Saxo Bank',
+      file_lead: "With another bank you download the bank's own export file and drop it into the app. Both holdings and dividends come along.",
+      file_1_h: "Nordea",
+      file_1_p: "A CSV export of your transactions and holdings from Nordea Investor.",
+      file_2_h: "Saxo Bank",
+      file_2_p: "An Excel export from SaxoInvestor — holdings and dividends in the same file.",
+      file_3_h: "Nordnet as a file",
+      file_3_p: "If you would rather not sign in from the app, the Nordnet CSV export still works as before.",
+      file_foot: 'The steps for each bank are laid out in the <a href="faq.html#import">import guide</a>.',
       feat_eyebrow: "Everything in one place",
       feat_h2: "Built to keep track of it all",
       feat_lead: "From the big picture down to every single position — and the dividends that arrive through the year.",
