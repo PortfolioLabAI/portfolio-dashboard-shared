@@ -124,6 +124,19 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.5.5", date: "2026-08-07",
+      items: [
+        { ic: "🔗", da: ["Hent dine beholdninger direkte fra Nordnet.", "Du logger ind hos Nordnet selv — med MitID eller ved at scanne QR-koden med Nordnet-appen — og appen henter derefter hele historikken: købsdatoer, køb og salg, udbytte og pensionsafkastskat. Du får først en oversigt over hvad der er ændret siden sidst, og intet gemmes før du godkender det. Dine loginoplysninger ses kun af Nordnet og MitID; sessionen slettes bagefter, så der kræves login hver gang. CSV-importen virker stadig som før."],
+                     en: ["Fetch your holdings straight from Nordnet.", "You sign in at Nordnet yourself — with MitID or by scanning the QR code in the Nordnet app — and the app then pulls the full history: purchase dates, buys and sells, dividends and pension tax. You get an overview of what has changed since last time first, and nothing is saved until you approve it. Only Nordnet and MitID ever see your credentials; the session is deleted afterwards, so signing in is required every time. The CSV import still works as before."] },
+        { ic: "📈", da: ["Årets afkast regnes nu fra den dag du købte.", "Før antog beregningen at dit nuværende antal papirer havde ligget der siden 1. januar, så alt hvad du købte i løbet af året fik hele årets kursbevægelse regnet med. Nu tæller hver post fra sin egen købsdato, udbytte regnes efter kildeskat, og pensionsafkastskat trækkes fra. Tallene flytter sig først når du henter dine data ind på ny."],
+                     en: ["This year's return is now calculated from the day you bought.", "The calculation used to assume your current number of shares had been held since 1 January, so anything bought during the year picked up the whole year's price move. Each lot now counts from its own purchase date, dividends are net of withholding tax, and pension tax is deducted. The figures only change once you re-import your data."] },
+        { ic: "🔔", da: ["Kursalarmer.", "Sæt en målkurs på et papir og få besked når den nås — over eller under, du vælger selv. Alarmerne tjekkes uanset hvilken side du står på."],
+                     en: ["Price alerts.", "Set a target price on a holding and get notified when it is reached — above or below, your choice. Alerts are checked whichever page you are on."] },
+        { ic: "⬆️", da: ["Træk dine depoter i den rækkefølge du vil have dem.", "Træk i håndtaget ud for et depot for at flytte det — eller ud for en kategori for at flytte hele gruppen. Det virker nu både med mus og med fingeren."],
+                     en: ["Drag your accounts into the order you want.", "Drag the handle next to an account to move it — or next to a category to move the whole group. It now works with both a mouse and a finger."] }
+      ]
+    },
+    {
       version: "0.3.3", date: "2026-07-29",
       items: [
         { ic: "\ud83d\udd13", da: ["Appen beder ikke l\u00e6ngere om fingeraftryk, f\u00f8r du har noget at beskytte.", "F\u00f8rste gang du \u00e5bner appen er der ingen portef\u00f8lje endnu, s\u00e5 nu m\u00f8der du appen f\u00f8rst \u2014 og l\u00e5sen sl\u00e5r til af sig selv, s\u00e5 snart du har importeret dine f\u00f8rste papirer. Beskyttelsen kan ikke sl\u00e5s fra."],
