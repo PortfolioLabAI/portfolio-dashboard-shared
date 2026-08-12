@@ -124,6 +124,24 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.8.4", date: "2026-08-12",
+      items: [
+        { ic: "🔄", da: ["Vedligeholdelsesudgivelse.", "0.8.3 er trukket tilbage og erstattet af denne. Der er ingen ændringer i hvad appen kan, og ingen brugerdata var berørt — kører du allerede 0.8.3, opdaterer appen selv."],
+                     en: ["Maintenance release.", "0.8.3 has been withdrawn and replaced by this one. Nothing the app does has changed, and no user data was involved — if you are already on 0.8.3 the app updates itself."] }
+      ]
+    },
+    {
+      version: "0.8.3", date: "2026-08-11",
+      items: [
+        { ic: "🔗", da: ["Hent depoter direkte fra Nordea med MitID — privat eller erhverv.", "Du logger ind som du plejer i et vindue appen åbner; appen ser aldrig dine loginoplysninger, og sessionen slettes bagefter. Depoter, handelshistorik, købsdatoer og udbytte hentes uden at du skal eksportere en fil. Fuldmagtsdepoter markeres, så andres depoter ikke blandes med dine egne. Når du er logget ind, skal du selv klikke ind på Investeringer i Nordeas menu — appen kan først hente derfra."],
+                     en: ["Fetch accounts straight from Nordea with MitID — personal or business.", "You sign in as usual in a window the app opens; the app never sees your credentials, and the session is deleted afterwards. Accounts, trade history, purchase dates and dividends are fetched without exporting a file. Power-of-attorney accounts are labelled so other people's accounts are not mixed with yours. Once signed in, open Investments from Nordea's own menu — the app cannot fetch anything until you do."] },
+        { ic: "⚖️", da: ["Importen siger til når den ikke kan gøre rede for et depots værdi.", "Nordea udleverer kun en begrænset transaktionshistorik. Rækker et depots historik længere tilbage, mangler de første køb, og antallet bliver for LAVT — aldrig for højt — og ser fuldstændig rigtigt ud. Derfor holdes den rekonstruerede beholdning op mod bankens eget depotbeløb, og afviger de fra hinanden, står det med advarselsfarve. Stol ikke på antallet fra et depot der ikke stemmer. Kontantbeholdningen hentes ikke — Nordea oplyser den ikke pr. depot i det API appen kan nå, og boksen siger det ligeud."],
+                     en: ["The import tells you when it cannot account for an account's value.", "Nordea only provides a limited transaction history. If an account's history reaches further back, the earliest purchases are missing and the quantity comes out too LOW — never too high — and looks entirely correct. The reconstructed holding is therefore compared against the bank's own account value, and any divergence is shown as a warning. Do not trust quantities from an account that does not reconcile. The cash balance is not fetched — Nordea does not report it per account in the API the app can reach, and the box says so plainly."] },
+        { ic: "🧾", da: ["Geninvesteret udbytte tælles nu med.", "Nordea bogfører andele købt for udbytte som en udbyttebevis-postering, ikke som et køb. De andele blev sprunget over uden et ord, så fonde med geninvestering kom ind med for få andele mens importen meldte succes."],
+                     en: ["Reinvested dividends are now counted.", "Nordea books shares bought with dividends as a dividend-note entry rather than a purchase. Those shares were skipped without a word, so funds with reinvestment came in short while the import reported success."] }
+      ]
+    },
+    {
       version: "0.7.2", date: "2026-08-11",
       items: [
         { ic: "🔔", da: ["Kursalarmer giver nu faktisk besked.", "Alarmen udløste korrekt, men Mac-appen kunne ikke vise notifikationen, så intet skete og intet blev sagt. Beskeden leveres nu gennem macOS selv. Under 🔔 finder du en Test notifikation-knap — første gang spørger macOS om lov, og siger du nej, kan du slå det til igen under Systemindstillinger → Notifikationer."],
