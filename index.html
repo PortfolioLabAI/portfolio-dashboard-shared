@@ -1,48 +1,6 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-<!--
-  ===========================================================================
-  DOWNLOAD-URL — grep this file for "DOWNLOAD-URL" to find EVERY place that
-  needs changing. There are TWO, and changing only one is the failure mode
-  this marker exists to prevent.
-
-  DONE 2026-07-26 (v0.3.0): the Apple Developer Program membership was bought,
-  v0.3.0 is signed with a Developer ID certificate AND notarised, and both
-  links below are now PINNED to that tag:
-
-      /releases/download/v0.8.4/Portfolio-Dashboard-autoupdate.dmg
-
-  WHY PINNED, not "latest": a browser download carries com.apple.quarantine,
-  so Gatekeeper evaluates it and blocks an un-notarised app. An updater-
-  delivered build carries no quarantine and is never evaluated -- so new users
-  need ONE notarised installer, and every later version reaches them through
-  the minisign auto-updater regardless of notarisation.
-
-  ⚠️ DO NOT move this back to "latest" just because releases are notarised
-  now. release-shared.sh does NOT enforce notarisation: the APPLE_API_KEY /
-  APPLE_API_ISSUER / APPLE_API_KEY_PATH variables are passed by hand, and
-  without them Tauri only prints "skipping app notarization" and builds an
-  un-notarised bundle anyway. On "latest" the site would then serve exactly
-  that build to new users, silently. Pinning is what makes the failure
-  harmless.
-
-  To bump the pin to a newer release, verify FIRST that the new DMG really is
-  notarised -- not that the build log said so:
-
-      spctl -a -vvv -t open --context context:primary-signature <the .dmg>
-      # must print: accepted / source=Notarized Developer ID
-
-  That check is not theatre. On v0.3.0 Tauri notarised the .app but NOT the
-  .dmg, so the app inside was perfect while the thing users actually download
-  was rejected by Gatekeeper. The .dmg had to be notarised and stapled as a
-  separate step after the build.
-
-  Measured 2026-07-26; full detail and the caveats are in the Tauri repo's
-  CLAUDE.md under "Gatekeeper, notarisation, and what an expiring Apple
-  membership would cost".
-  ===========================================================================
--->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Portfolio Dashboard — din portefølje, live på Mac</title>
@@ -335,7 +293,7 @@
     <p class="sub" data-i18n="hero_sub">Hent dine beholdninger direkte fra Nordnet og følg dine aktier, ETF'er og udbytter i realtid — flere porteføljer, udbytte-prognose, kursalarmer og fuld privacy mode. En hurtig, native app der åbner på ét sekund.</p>
     <div class="cta-row">
       <!-- DOWNLOAD-URL: see the note at the top of this file before changing -->
-      <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/download/v0.8.4/Portfolio-Dashboard-autoupdate.dmg">
+      <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/download/v0.8.15/Portfolio-Dashboard-autoupdate.dmg">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
         <span data-i18n="hero_cta">Download til Mac</span>
       </a>
@@ -512,7 +470,7 @@
       <img src="appicon.png" alt="Portfolio Dashboard ikon" />
       <div class="cta-row">
         <!-- DOWNLOAD-URL: see the note at the top of this file before changing -->
-      <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/download/v0.8.4/Portfolio-Dashboard-autoupdate.dmg">
+      <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/download/v0.8.15/Portfolio-Dashboard-autoupdate.dmg">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
           <span data-i18n="dl_cta">Download .dmg (25 MB)</span>
         </a>

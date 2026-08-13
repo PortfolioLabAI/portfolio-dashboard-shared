@@ -124,6 +124,25 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.8.15", date: "2026-08-13",
+      items: [
+        { ic: "🖼️", da: ["Alle ikoner er tilbage.", "Ikonerne blev pakket forkert og fulgte simpelthen ikke med i appen: faneikonet, banklogoerne i importguiden og depotikonerne i sidepanelet har været brækkede lige siden. Der manglede ikke noget i selve appen — filerne nåede bare aldrig ind i den. Alle 19 er med igen."],
+                     en: ["Every icon is back.", "The icons were packaged incorrectly and simply never made it into the app: the tab icon, the bank logos in the import guide and the account icons in the sidebar have been broken ever since. Nothing was missing from the app itself — the files just never got in. All 19 are back."] },
+        { ic: "🔁", da: ["Importér den samme fil to gange uden at få handlerne dobbelt.", "Hver handel får nu et fingeraftryk regnet ud af sit eget indhold, så en gentaget import genkender den og springer den over. Det betød mest for kilder der ikke udsteder et handelsnummer — dér fandtes der ingen beskyttelse før, og en ny import ville have lagt hele historikken oveni. To ægte ens handler på samme dag tælles stadig som to."],
+                     en: ["Import the same file twice without getting duplicate trades.", "Each trade now carries a fingerprint computed from its own content, so a repeated import recognises and skips it. This mattered most for sources that issue no trade number — there was no protection there at all, and a fresh import would have stacked the whole history on top. Two genuinely identical trades on the same day still count as two."] },
+        { ic: "🧩", da: ["Nordnet: brøkdele af andele blev tabt, så antallet blev for lavt.", "Ved ombytninger og splits bogfører Nordnet restandele i deres egen posteringstype. Den blev ikke genkendt, så andelene forsvandt stille og beholdningen så mindre ud end den var — uden at importen sagde noget."],
+                     en: ["Nordnet: fractional shares were dropped, so quantities came out too low.", "In exchanges and splits, Nordnet books residual shares under their own entry type. It was not recognised, so those shares vanished quietly and the holding looked smaller than it was — with the import saying nothing."] },
+        { ic: "🧮", da: ["Oprydningen af tomme positioner slettede rigtige, udsolgte papirer.", "Grænsen for hvornår en position regnes som tom var for grov, så papirer du havde solgt helt kunne ryge ud af historikken. De bliver stående nu."],
+                     en: ["The empty-position cleanup deleted real, sold-out securities.", "The threshold for treating a position as empty was too coarse, so securities you had sold in full could disappear from your history. They now stay."] },
+        { ic: "🔀", da: ["Skift af depot viste kortvarigt det forrige depots tal.", "Overblikket tegnede de gemte tal fra det depot du kom fra, indtil de nye var hentet. De gemte tal hører nu til hvert sit depot, så du enten ser det rigtige depot eller ingenting — aldrig et andet."],
+                     en: ["Switching accounts briefly showed the previous account's figures.", "The overview painted the stored figures from the account you came from until the new ones arrived. Those stored figures now belong to one account each, so you see either the right account or nothing — never a different one."] },
+        { ic: "🔍", da: ["Søgefelt over beholdningstabellen.", "Filtrerer på navn, symbol og sektion mens du skriver."],
+                     en: ["Search field above the holdings table.", "Filters by name, symbol and section as you type."] },
+        { ic: "🌐", da: ["Rettelser i den engelske visning.", "Enkelte overskrifter stod stadig på dansk, når sproget var sat til engelsk. Tilbage-linket i bankguiden virkede heller ikke, og tabellen over depoter i Indstillinger havde ingen kolonneoverskrifter, så det ikke fremgik hvad man rettede i."],
+                     en: ["Fixes in the English interface.", "A few headings were still in Danish when the language was set to English. The back link in the bank guide did not work either, and the account table in Settings had no column headings, so it was not clear what you were editing."] }
+      ]
+    },
+    {
       version: "0.8.4", date: "2026-08-12",
       items: [
         { ic: "🔄", da: ["Vedligeholdelsesudgivelse.", "0.8.3 er trukket tilbage og erstattet af denne. Der er ingen ændringer i hvad appen kan, og ingen brugerdata var berørt — kører du allerede 0.8.3, opdaterer appen selv."],
