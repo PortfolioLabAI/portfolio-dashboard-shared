@@ -1,22 +1,13 @@
 .vercel
 .env*
 
-# Vercel serverless functions — MUST stay out of this PUBLIC repo. They run live
-# via `vercel --prod` (CLI deploy from the working tree; git deploys are disabled
-# in vercel.json), so they never need to be committed here. See the CLAUDE.md /
-# memory guardrail.
-#   ping.js / stats.js  — usage telemetry (issue #80)
-#   report.js / geo.js  — untracked 2026-07-25; they had been committed with the
-#                         original site and stayed public by oversight. No secrets
-#                         were exposed (GITHUB_TOKEN + REPORT_SECRET are Vercel
-#                         env vars), but the logic is now private like the rest.
-#                         NB they remain visible in this repo's git HISTORY.
-# Vercel serverless functions. Esben's standing rule: these live ONLY in private,
-# never in this PUBLIC repo (it is served over HTTP). Deploy them with
-# `vercel --prod`, never via git. PATTERN, not a filename list -- api/_pow.js was
-# added 2026-07-25 and the per-file rules did not cover it, so a `git add -A`
-# would have published it.
+# Serverless functions are deployed straight from the working tree with
+# `vercel --prod` (git deploys are disabled in vercel.json), so they never need
+# to be committed here.
+#
+# A PATTERN, not a list of filenames: a per-file rule once failed to cover a
+# newly added file, and a `git add -A` would have published it.
 api/
 
-# macOS-metadata. Ikke hemmeligt, men hører ikke til i et offentligt repo.
+# macOS metadata.
 .DS_Store
