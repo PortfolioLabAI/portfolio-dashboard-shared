@@ -124,6 +124,15 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.8.18", date: "2026-08-14",
+      items: [
+        { ic: "📱", da: ["Aktielisten på telefonen er læsbar nu.", "I sidste version kunne værdien og afkastet støde ind i hinanden, og listen udnyttede ikke skærmens bredde. Kolonnerne får nu plads efter hvad de faktisk indeholder, kursen står helt ude til højre, og overskrifterne står én gang øverst i stedet for over hver eneste aktie. Der er plads til halvanden gang så mange aktier på en skærm."],
+                     en: ["The holdings list is readable on the phone now.", "In the previous version the value and the return could run into each other, and the list did not use the width of the screen. The columns are now sized to what they actually hold, the price sits flush right, and the headings appear once at the top instead of above every single stock. Half again as many stocks fit on a screen."] },
+        { ic: "↕️", da: ["Tryk på en overskrift for at sortere — også på telefonen.", "Værdi, Afkast, I dag og Kurs kan sorteres med et tryk, og en lille pil viser hvilken vej listen er sorteret."],
+                     en: ["Tap a heading to sort — on the phone too.", "Value, Return, Today and Price can each be sorted with a tap, and a small arrow shows which way the list is ordered."] }
+      ]
+    },
+    {
       version: "0.8.17", date: "2026-08-14",
       items: [
         { ic: "💱", da: ["Værdien kunne vise en brøkdel af det rigtige — det var valutakurserne, ikke aktiekurserne.", "Manglede en enkelt valutakurs, bidrog hver eneste position i den valuta med nul til totalen. Beskeden pegede på kurserne, så det var svært at gennemskue. Appen husker nu de sidst kendte valutakurser og har dem klar allerede inden den henter noget, så en langsom eller manglende forbindelse ikke længere kan tage dine udenlandske beholdninger ud af regnestykket. Mangler der stadig noget, prøver den igen af sig selv i stedet for at blive stående i et minut."],
