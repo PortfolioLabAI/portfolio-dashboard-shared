@@ -124,6 +124,17 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.8.17", date: "2026-08-14",
+      items: [
+        { ic: "💱", da: ["Værdien kunne vise en brøkdel af det rigtige — det var valutakurserne, ikke aktiekurserne.", "Manglede en enkelt valutakurs, bidrog hver eneste position i den valuta med nul til totalen. Beskeden pegede på kurserne, så det var svært at gennemskue. Appen husker nu de sidst kendte valutakurser og har dem klar allerede inden den henter noget, så en langsom eller manglende forbindelse ikke længere kan tage dine udenlandske beholdninger ud af regnestykket. Mangler der stadig noget, prøver den igen af sig selv i stedet for at blive stående i et minut."],
+                     en: ["The total could show a fraction of the real figure — it was the exchange rates, not the share prices.", "If a single exchange rate was missing, every position in that currency contributed nothing to the total. The message pointed at the prices, which made it hard to see. The app now remembers the last known exchange rates and has them ready before it fetches anything, so a slow or missing connection can no longer take your foreign holdings out of the sum. If something is still missing it retries on its own instead of sitting still for a minute."] },
+        { ic: "📱", da: ["Aktielisten er læsbar på telefonen.", "Navnet får nu en linje for sig, og under det står de fire tal i lige spalter med hver sin lille overskrift: Værdi, Afkast, I dag og Kurs. Plus og minus har fået farve igen. Resten er ét tryk væk — rækken åbner aktiekortet."],
+                     en: ["The holdings list is readable on the phone.", "The name now gets a line of its own, and below it the four figures sit in equal columns, each under its own small heading: Value, Return, Today and Price. Gains and losses are coloured again. The rest is one tap away — the row opens the stock card."] },
+        { ic: "📜", da: ["Depotlisten bliver hvor den er, når du vælger et depot.", "Har du mange depoter og scroller ned for at vælge et i bunden, sprang listen tilbage til toppen, så det depot du lige havde valgt lå uden for skærmen. Positionen huskes nu — både i sidepanelet på Mac og på telefonen, hvor det er hele siden der scroller."],
+                     en: ["The account list stays where it is when you pick an account.", "With many accounts, scrolling down to choose one near the bottom sent the list back to the top, leaving the account you had just picked off-screen. The position is now remembered — both in the sidebar on Mac and on the phone, where the whole page scrolls."] }
+      ]
+    },
+    {
       version: "0.8.16", date: "2026-08-14",
       items: [
         { ic: "🧾", da: ["Nordea og Saxo: handlerne blev ikke gemt, så afkastet blev regnet forkert.", "Import fra de to banker gemte kun hvad du ejer i dag — ikke hvornår du købte det. Uden datoerne regnede afkastet som om hele beholdningen havde ligget der siden 1. januar. Hver handel bliver nu gemt med sin egen dato og sit eget beløb. Bemærk: tallene for de depoter ændrer sig ved næste import, og det er rettelsen der slår igennem. For Saxo dækkes de positioner du har åbne; en position du har solgt helt ligger ikke i det svar banken giver."],
