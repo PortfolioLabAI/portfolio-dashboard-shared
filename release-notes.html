@@ -124,6 +124,25 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.8.16", date: "2026-08-14",
+      items: [
+        { ic: "🧾", da: ["Nordea og Saxo: handlerne blev ikke gemt, så afkastet blev regnet forkert.", "Import fra de to banker gemte kun hvad du ejer i dag — ikke hvornår du købte det. Uden datoerne regnede afkastet som om hele beholdningen havde ligget der siden 1. januar. Hver handel bliver nu gemt med sin egen dato og sit eget beløb. Bemærk: tallene for de depoter ændrer sig ved næste import, og det er rettelsen der slår igennem. For Saxo dækkes de positioner du har åbne; en position du har solgt helt ligger ikke i det svar banken giver."],
+                     en: ["Nordea and Saxo: trades were not stored, so returns came out wrong.", "Importing from these two banks only stored what you hold today — not when you bought it. Without those dates the return was computed as if the whole holding had been there since 1 January. Each trade is now stored with its own date and amount. Note: the figures for those accounts will change on your next import, and that is the fix taking effect. For Saxo this covers your open positions; a position you have sold in full is not in the response the bank gives."] },
+        { ic: "💸", da: ["Den samlede værdi kunne vise for lidt uden at sige det.", "Kunne kurserne ikke hentes for alle papirer, blev de udeladt af summen — og totalen så bare ud som en mindre portefølje. Værdien blev endda gemt, så det forkerte tal kom igen efter en genstart. Nu står der hvor mange kurser der mangler, og en ufuldstændig værdi bliver ikke gemt."],
+                     en: ["The total value could show too little without saying so.", "If prices could not be fetched for every security, those were left out of the sum — and the total simply looked like a smaller portfolio. The value was even stored, so the wrong figure came back after a restart. It now says how many prices are missing, and an incomplete value is no longer stored."] },
+        { ic: "🩺", da: ["Appen kunne starte op uden at nå sin egen baggrundstjeneste.", "Var porten optaget et øjeblik — typisk lige efter en genstart — gav appen op med det samme og viste en tom side, indtil man tvangslukkede den. Den prøver nu igen, og henter sig selv ind når tjenesten er klar."],
+                     en: ["The app could start without reaching its own background service.", "If the port was briefly occupied — typically right after a restart — the app gave up immediately and showed a blank page until it was force-quit. It now retries, and reconnects itself once the service is ready."] },
+        { ic: "🔍", da: ["Søgningen kunne blive hængende på \u201cHenter…\u201d.", "Valgte man et resultat hurtigt efter at have skrevet, kunne kortet aldrig blive færdigt. Det sker ikke længere, og et opslag der trækker ud giver op i stedet for at stå og hente."],
+                     en: ["Search could get stuck on \u201cLoading…\u201d.", "Choosing a result quickly after typing could leave the card unfinished. That no longer happens, and a lookup that drags on now gives up instead of spinning."] },
+        { ic: "🥇", da: ["Top vindere og tabere stod skævt ved lange navne.", "Et langt fondsnavn skubbede kurs og beløb ud af række. Nu er det kun navnet der forkortes, og tallene står lige."],
+                     en: ["Top winners and losers were misaligned for long names.", "A long fund name pushed the price and the amount out of line. Now only the name is shortened, and the figures line up."] },
+        { ic: "🖼️", da: ["Aktie-ikoner på Aktieoverblik.", "Hver position har fået sit eget lille mærke, så listen er hurtigere at skimme. Mærkerne tegnes i appen — der bliver ikke slået noget op udenfor, og ingen får at vide hvad du ejer."],
+                     en: ["Stock marks on the Holdings pages.", "Each position now carries a small mark of its own, so the list is quicker to scan. The marks are drawn inside the app — nothing is looked up elsewhere, and nobody is told what you hold."] },
+        { ic: "📋", da: ["Importguiden er kortere på telefonen, og står rigtigt på Mac efter en import.", "Kvitteringen blev klemt sammen ved siden af knapperne i stedet for at stå i fuld bredde."],
+                     en: ["The import guide is shorter on the phone, and lays out correctly on Mac after an import.", "The confirmation was squeezed in beside the buttons instead of spanning the full width."] }
+      ]
+    },
+    {
       version: "0.8.15", date: "2026-08-13",
       items: [
         { ic: "🖼️", da: ["Alle ikoner er tilbage.", "Ikonerne blev pakket forkert og fulgte simpelthen ikke med i appen: faneikonet, banklogoerne i importguiden og depotikonerne i sidepanelet har været brækkede lige siden. Der manglede ikke noget i selve appen — filerne nåede bare aldrig ind i den. Alle 19 er med igen."],
