@@ -124,6 +124,25 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.8.45", date: "2026-08-17",
+      items: [
+        { ic: "🎨", da: ["Appen har fået et nyt udseende — og du kan vælge selv.", "Det nye design er nu standard: roligere farver, tydeligere tal og en sidebar der samler dine konti under de kategorier du selv har givet dem. Kan du bedre lide det gamle, ligger det stadig i Indstillinger under Design."],
+                     en: ["The app has a new look — and you can choose.", "The new design is now the default: calmer colours, clearer figures, and a sidebar that groups your accounts under the categories you gave them. If you prefer the old one it is still there, under Design in Settings."] },
+        { ic: "💰", da: ["Kontanter tæller med overalt.", "Kontantbeholdningen vises nu på alle oversigter — på det enkelte depot, på en kategori og på tværs af alle depoter. Importen henter den altid, så du ikke skal huske et flueben, og totalen svarer til det du faktisk har."],
+                     en: ["Cash counts everywhere.", "Your cash balance now appears on every overview — on a single account, on a category, and across all accounts. The import always fetches it, so there is no checkbox to remember, and the total matches what you actually hold."] },
+        { ic: "📊", da: ["Afkastet regnes ét sted nu.", "Grafen og tallet ved siden af kunne vise hver sit afkast, fordi de regnede det på forskellige måder. Nu kommer begge fra den samme udregning, uanset hvilken periode du vælger."],
+                     en: ["Return is calculated in one place now.", "The chart and the figure beside it could disagree, because each worked it out its own way. Both now come from the same calculation, whichever period you pick."] },
+        { ic: "🏦", da: ["Modtagne udbytter var talt forkert.", "„Modtaget i år\" byggede på et skøn i stedet for de udbetalinger din bank faktisk har registreret, og et papir der lå i flere depoter kunne blive talt med én gang for hvert depot. Begge dele er rettet, så tallet er det du har fået ind."],
+                     en: ["Dividends received were counted wrongly.", "\"Received this year\" was built on an estimate rather than the payments your bank actually recorded, and a holding kept in several accounts could be counted once per account. Both are fixed, so the figure is what you actually received."] },
+        { ic: "📈", da: ["Dagens afkast står nu også i procent.", "Kortet med den samlede formue viser både kroner og procent for dagen, så du kan se hvor meget bevægelsen fylder."],
+                     en: ["Today's return is shown as a percentage too.", "The total wealth card shows both kroner and percent for the day, so you can see how much the movement actually amounts to."] },
+        { ic: "🔔", da: ["Kursalarmer har fået deres egen fane.", "Alarmerne lå tidligere gemt sammen med andet. De har nu deres eget sted med en tydelig „Ny alarm\"-knap."],
+                     en: ["Price alerts have their own tab.", "The alerts used to sit tucked in with other things. They now have their own place, with a clear \"New alert\" button."] },
+        { ic: "⚡", da: ["Mindre venten.", "Udvikling-fanen tegner den kurve du så sidst med det samme i stedet for at stå tom, mens den henter nye tal. Sidebaren hopper heller ikke længere op i toppen, når du vælger en kategori."],
+                     en: ["Less waiting.", "The Development tab draws the curve you last saw straight away instead of sitting empty while it fetches. The sidebar no longer jumps back to the top when you pick a category either."] }
+      ]
+    },
+    {
       version: "0.8.18", date: "2026-08-14",
       items: [
         { ic: "📱", da: ["Aktielisten på telefonen er læsbar nu.", "I sidste version kunne værdien og afkastet støde ind i hinanden, og listen udnyttede ikke skærmens bredde. Kolonnerne får nu plads efter hvad de faktisk indeholder, kursen står helt ude til højre, og overskrifterne står én gang øverst i stedet for over hver eneste aktie. Der er plads til halvanden gang så mange aktier på en skærm."],
