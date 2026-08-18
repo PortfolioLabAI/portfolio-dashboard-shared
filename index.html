@@ -6,6 +6,26 @@
 <title>Portfolio Dashboard — din portefølje, live på Mac</title>
 <meta name="description" content="Hent dine beholdninger direkte fra Nordnet og følg aktier, ETF'er og udbytter live fra Yahoo Finance. En hurtig, native Mac-app med flere porteføljer, udbytte-prognose, kursalarmer og privacy mode." />
 <link rel="icon" href="favicon.ico" />
+<!--
+  ⚠️ DOWNLOAD-URL: brug ALTID /releases/latest/download/, aldrig et versionsnummer.
+
+  Begge Download-knapper pegede haardkodet paa v0.8.18 mens v0.8.54 var ude
+  (opdaget 18-08-2026). Enhver ny bruger hentede altsaa en app 36 versioner
+  bagud. Det er den slags fejl ingen opdager, fordi siden ser rigtig ud og
+  linket virker -- det henter bare det forkerte.
+
+  GitHub redirecter /releases/latest/download/<asset> til den nyeste
+  IKKE-prerelease udgivelse (maalt: 302 -> v0.8.54). Filnavnet
+  Portfolio-Dashboard-autoupdate.dmg er stabilt paa tvaers af udgivelser, saa
+  linket holder af sig selv.
+
+  Bivirkning der er en FORDEL: traekkes en daarlig udgivelse tilbage ved at
+  markere den som pre-release (som 0.5.5 blev), falder linket automatisk tilbage
+  til den forrige gode i stedet for at pege paa noget der er trukket tilbage.
+
+  Den tidligere kommentar her henviste til "the note at the top of this file" --
+  en note der ikke fandtes. Dette er den.
+-->
 <style>
   :root{
     --bg:#0b0e14; --surface:#131722; --surface-2:#1a1f2e; --border:#232838;
@@ -292,8 +312,8 @@
     <h1 data-i18n="hero_h1">Hele din portefølje.<br /><span class="grad">Live på din Mac.</span></h1>
     <p class="sub" data-i18n="hero_sub">Hent dine beholdninger direkte fra Nordnet og følg dine aktier, ETF'er og udbytter i realtid — flere porteføljer, udbytte-prognose, kursalarmer og fuld privacy mode. En hurtig, native app der åbner på ét sekund.</p>
     <div class="cta-row">
-      <!-- DOWNLOAD-URL: see the note at the top of this file before changing -->
-      <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/download/v0.8.18/Portfolio-Dashboard-autoupdate.dmg">
+      <!-- DOWNLOAD-URL: /releases/latest/download/ -- see the note in <head> -->
+      <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/latest/download/Portfolio-Dashboard-autoupdate.dmg">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
         <span data-i18n="hero_cta">Download til Mac</span>
       </a>
@@ -469,8 +489,8 @@
     <div class="dl-card">
       <img src="appicon.png" alt="Portfolio Dashboard ikon" />
       <div class="cta-row">
-        <!-- DOWNLOAD-URL: see the note at the top of this file before changing -->
-      <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/download/v0.8.18/Portfolio-Dashboard-autoupdate.dmg">
+        <!-- DOWNLOAD-URL: /releases/latest/download/ -- see the note in <head> -->
+      <a class="btn-primary" href="https://github.com/PortfolioLabAI/portfolio-dashboard-shared/releases/latest/download/Portfolio-Dashboard-autoupdate.dmg">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
           <span data-i18n="dl_cta">Download .dmg (25 MB)</span>
         </a>
