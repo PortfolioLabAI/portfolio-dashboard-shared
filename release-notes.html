@@ -124,6 +124,17 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.8.54", date: "2026-08-18",
+      items: [
+        { ic: "\u26a1", da: ["Den samlede formue bliver st\u00e5ende, n\u00e5r du skifter konto.", "Bel\u00f8bet \u00f8verst i sidebaren forsvandt et \u00f8jeblik hver gang du klikkede over p\u00e5 en anden konto, og kom f\u00f8rst tilbage efter et par sekunder. Nu bliver det sidst kendte tal st\u00e5ende, indtil de nye tal er hentet \u2014 og de bliver hentet oftere end f\u00f8r."],
+                     en: ["Your total wealth stays on screen when you switch accounts.", "The figure at the top of the sidebar used to blank out for a moment every time you clicked to another account, and only came back after a few seconds. It now keeps the last known number until fresh ones arrive \u2014 and they are fetched more often than before."] },
+        { ic: "\ud83c\udfe6", da: ["Udbytte pr. konto stemmer nu med totalen.", "P\u00e5 oversigten over flere konti kunne kolonnen \u201eUdbytte modtaget i \u00e5r\u201c vise mindre pr. konto, end kortet ovenover viste i alt. De to tal blev regnet hver sin vej; nu kommer begge fra din udbyttehistorik, s\u00e5 r\u00e6kkerne l\u00e6gger sammen til totalen."],
+                     en: ["Dividends per account now add up to the total.", "On the multi-account overview the \u201cDividends received this year\u201d column could show less per account than the card above it showed in total. The two were worked out separately; both now come from your dividend history, so the rows add up to the total."] },
+        { ic: "\ud83d\udcc8", da: ["\u201e+0,00 %\u201c betyder ikke l\u00e6ngere \u201evi ved det ikke\u201c.", "For perioder der r\u00e6kker l\u00e6ngere tilbage end kontoen selv, stod afkastet som +0,00 % \u2014 hvilket l\u00e6ses som \u201eingen \u00e6ndring\u201c. Der st\u00e5r nu en streg de steder, hvor der ikke er tal at regne p\u00e5."],
+                     en: ["\u201c+0.00%\u201d no longer means \u201cwe don\u2019t know\u201d.", "For periods reaching further back than the account itself, the return read +0.00% \u2014 which looks like \u201cno change\u201d. Those places now show a dash instead, where there is nothing to calculate from."] }
+      ]
+    },
+    {
       version: "0.8.45", date: "2026-08-17",
       items: [
         { ic: "🎨", da: ["Appen har fået et nyt udseende — og du kan vælge selv.", "Det nye design er nu standard: roligere farver, tydeligere tal og en sidebar der samler dine konti under de kategorier du selv har givet dem. Kan du bedre lide det gamle, ligger det stadig i Indstillinger under Design."],
