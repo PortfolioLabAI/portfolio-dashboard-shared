@@ -124,6 +124,19 @@
   // are ["<bold lead>", "<rest>"]. Newest first; the first entry is marked Latest.
   var RELEASES = [
     {
+      version: "0.8.57", date: "2026-08-19",
+      items: [
+        { ic: "\ud83d\udcca", da: ["Hver kategori i sidebaren viser nu sin samlede v\u00e6rdi.", "Under kategoriens navn st\u00e5r summen af de konti den indeholder, og en lille bj\u00e6lke viser hvor stor en del af din formue den udg\u00f8r. Mangler der kurs p\u00e5 en enkelt konto, vises andelen ikke \u2014 en procent af noget ufuldst\u00e6ndigt ville v\u00e6re for h\u00f8j for alle kategorier p\u00e5 \u00e9n gang."],
+                     en: ["Each category in the sidebar now shows its combined value.", "Under the category name you get the sum of the accounts it holds, and a small bar showing how much of your wealth it makes up. If a single account is missing prices, the share is left out \u2014 a percentage of something incomplete would be too high for every category at once."] },
+        { ic: "\ud83d\udcb1", da: ["Papirer handlet i euro prissattes fra den forkerte b\u00f8rs.", "Et v\u00e6rdipapir kan v\u00e6re noteret p\u00e5 mange b\u00f8rser i hver sin valuta. Vi sl\u00f8g det op p\u00e5 fondens ISIN og fik den notering opslagstjenesten rangerede h\u00f8jest \u2014 ikke n\u00f8dvendigvis den, du faktisk ejer. Nu bruges den b\u00f8rs, din bank selv oplyser. K\u00f8bskursen blev omregnet med den forkerte valutakurs, s\u00e5 kostprisen kunne v\u00e6re forkert."],
+                     en: ["Securities traded in euro were priced from the wrong exchange.", "A security can be listed on many exchanges, each in its own currency. We looked it up by the fund\u2019s ISIN and got whichever listing the lookup service ranked highest \u2014 not necessarily the one you own. It now uses the exchange your bank itself reports. Your purchase price was being converted at the wrong exchange rate, so the cost basis could be wrong."] },
+        { ic: "\ud83d\udcf1", da: ["Tr\u00e6k ned for at opdatere p\u00e5 telefonen.", "Tr\u00e6k ned fra toppen af en side, s\u00e5 glider indholdet ned og viser en lille spinner, pr\u00e6cis som i andre iPhone-apps. Slip, og siden henter friske kurser."],
+                     en: ["Pull down to refresh on your phone.", "Pull down from the top of a page and the content slides down to reveal a small spinner, just like other iPhone apps. Let go and the page fetches fresh prices."] },
+        { ic: "\ud83c\udfa8", da: ["Det klassiske design har f\u00e5et samme sidehoved og formuekort som standarddesignet.", "Kontoens navn st\u00e5r nu som en stor overskrift med handlingerne ved siden af, og formuekortet \u00f8verst i sidebaren er med i begge designs. Farverne er ur\u00f8rte \u2014 det er kun opbygningen der f\u00f8lges ad."],
+                     en: ["The classic design now has the same header and wealth card as the default one.", "Your account name is now a large heading with the actions beside it, and the wealth card at the top of the sidebar appears in both designs. The colours are untouched \u2014 only the structure is shared."] }
+      ]
+    },
+    {
       version: "0.8.54", date: "2026-08-18",
       items: [
         { ic: "\u26a1", da: ["Den samlede formue bliver st\u00e5ende, n\u00e5r du skifter konto.", "Bel\u00f8bet \u00f8verst i sidebaren forsvandt et \u00f8jeblik hver gang du klikkede over p\u00e5 en anden konto, og kom f\u00f8rst tilbage efter et par sekunder. Nu bliver det sidst kendte tal st\u00e5ende, indtil de nye tal er hentet \u2014 og de bliver hentet oftere end f\u00f8r."],
