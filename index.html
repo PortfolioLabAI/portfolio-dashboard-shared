@@ -115,6 +115,18 @@
      en demoportefoelje -- se scripts/demoserver i det private repo. */
   .shot img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);
     box-shadow:0 30px 80px rgba(0,0,0,.55)}
+  /* Mac og iPhone side om side. Telefonen er den SAMME app -- iOS-udgaven,
+     skudt i simulatoren -- saa den er smallere og hoejere, og faar sin egen
+     ramme frem for at blive strakt. */
+  .shot-duo{display:flex;align-items:flex-end;justify-content:center;gap:26px}
+  .shot-duo .shot-mac{flex:0 1 auto;max-width:78%}
+  .shot-duo .shot-phone{flex:0 0 auto;width:20%;max-width:210px;border-radius:26px;
+    box-shadow:0 24px 60px rgba(0,0,0,.6)}
+  @media (max-width:760px){
+    .shot-duo{flex-direction:column;align-items:center;gap:22px}
+    .shot-duo .shot-mac{max-width:100%}
+    .shot-duo .shot-phone{width:56%;max-width:260px}
+  }
   .shots-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;margin-top:28px}
   .shots-2 figure{margin:0}
   .shots-2 img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--border);
@@ -353,8 +365,9 @@
       <span class="btn-meta" data-i18n="hero_meta">macOS 12+ · Intel & Apple Silicon · 25 MB · opdaterer sig selv</span>
     </div>
 
-    <div class="shot">
-      <img src="img/tab-index.png" alt="Portfolio Dashboard — Overview" width="1800" height="1200" loading="eager" />
+    <div class="shot shot-duo">
+      <img class="shot-mac" src="img/tab-index.png" alt="Portfolio Dashboard on Mac" width="1800" height="1200" loading="eager" />
+      <img class="shot-phone" src="img/app-iphone.png" alt="Portfolio Dashboard on iPhone" width="620" height="1348" loading="eager" />
     </div>
   </div>
 </header>
@@ -372,6 +385,7 @@
         <button class="tabshot-tab" type="button" data-shot="udvikling" aria-selected="false" data-i18n="tab_udvikling">Udvikling</button>
         <button class="tabshot-tab" type="button" data-shot="earnings" aria-selected="false" data-i18n="tab_earnings">Regnskab</button>
         <button class="tabshot-tab" type="button" data-shot="fremskrivning" aria-selected="false" data-i18n="tab_fremskrivning">Prognose</button>
+        <button class="tabshot-tab" type="button" data-shot="fire" aria-selected="false" data-i18n="tab_fire">FIRE</button>
       </div>
       <figure class="tabshot-fig" data-shot="index">
         <img src="img/tab-index.png" alt="Portfolio Dashboard — Overview" width="1800" height="1320" loading="eager" />
@@ -400,6 +414,10 @@
       <figure class="tabshot-fig" data-shot="fremskrivning" hidden>
         <img src="img/tab-fremskrivning.png" alt="Portfolio Dashboard — Projection" width="1800" height="1320" loading="lazy" />
         <figcaption data-i18n="cap_fremskrivning"></figcaption>
+      </figure>
+      <figure class="tabshot-fig" data-shot="fire" hidden>
+        <img src="img/tab-fire.png" alt="Portfolio Dashboard — FIRE" width="1800" height="1320" loading="lazy" />
+        <figcaption data-i18n="cap_fire"></figcaption>
       </figure>
     </div>
   </div>
@@ -659,6 +677,7 @@
       tab_udvikling: "Udvikling",
       tab_earnings: "Regnskab",
       tab_fremskrivning: "Prognose",
+      tab_fire: "FIRE",
       cap_index: "Samlet værdi, dagens bevægelse, udbytte og fordeling — for ét depot eller for alle på tværs.",
       cap_holdings: "Alle positioner i én tabel: kurs, værdi, kostbasis, afkast og udbytte.",
       cap_dividends: "Modtaget udbytte år for år, hvad der er på vej, og hvilke selskaber der betaler det.",
@@ -666,6 +685,7 @@
       cap_udvikling: "Depotets værdi og afkast måned for måned og år for år.",
       cap_earnings: "Hvornår dine selskaber aflægger regnskab, og hvad analytikerne forventer.",
       cap_fremskrivning: "Fremskriv depotet med dine egne forudsætninger om afkast og indskud.",
+      cap_fire: "Hvornår kan du gå på pension — med skat, pensionstyper og inflation regnet med.",
     },
     en: {
       title: "Portfolio Dashboard — your portfolio, live on Mac",
@@ -762,6 +782,7 @@
       tab_udvikling: "Performance",
       tab_earnings: "Earnings",
       tab_fremskrivning: "Projection",
+      tab_fire: "FIRE",
       cap_index: "Total value, today's move, dividends and allocation — for one account or across all of them.",
       cap_holdings: "Every position in one table: price, value, cost basis, return and yield.",
       cap_dividends: "Dividends received year by year, what is coming, and which companies pay it.",
@@ -769,6 +790,7 @@
       cap_udvikling: "The account's value and return, month by month and year by year.",
       cap_earnings: "When your companies report, and what analysts expect them to deliver.",
       cap_fremskrivning: "Project the account forward on your own assumptions about return and contributions.",
+      cap_fire: "When can you retire — with tax, pension types and inflation taken into account.",
     }
   };
 
