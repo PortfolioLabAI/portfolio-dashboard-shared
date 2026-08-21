@@ -111,6 +111,15 @@
      app's style.css so the two stay recognisably the same UI. Numbers are made
      up; nothing here comes from a real depot. */
   .shot{margin:64px auto 0;max-width:920px;position:relative}
+  /* Rigtige skaermbilleder, ikke en HTML-mockup (21-08-2026). Tallene i dem er
+     en demoportefoelje -- se scripts/demoserver i det private repo. */
+  .shot img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);
+    box-shadow:0 30px 80px rgba(0,0,0,.55)}
+  .shots-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;margin-top:28px}
+  .shots-2 figure{margin:0}
+  .shots-2 img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--border);
+    box-shadow:0 18px 44px rgba(0,0,0,.45)}
+  .shots-2 figcaption{color:var(--dim);font-size:14.5px;line-height:1.55;margin-top:12px}
   .window{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;text-align:left;
     background:var(--bg);box-shadow:0 40px 120px -30px rgba(0,0,0,.8);}
   .titlebar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:#0e131d;border-bottom:1px solid var(--border)}
@@ -321,127 +330,84 @@
     </div>
 
     <div class="shot">
-      <div class="window">
-        <div class="titlebar">
-          <span class="traffic tr-r"></span><span class="traffic tr-y"></span><span class="traffic tr-g"></span>
-          <span class="t">Portfolio Dashboard</span>
-        </div>
-        <div class="ribbon">
-          <div class="idx">
-            <i><span class="n">S&amp;P 500</span><span class="v">6.184</span><span class="c up">+0,42%</span></i>
-            <i><span class="n">Nasdaq 100</span><span class="v">22.640</span><span class="c up">+0,58%</span></i>
-            <i><span class="n">USD/DKK</span><span class="v">6,41</span><span class="c down">−0,15%</span></i>
-            <i><span class="n">Gold</span><span class="v">3.310</span><span class="c up">+0,21%</span></i>
-          </div>
-        </div>
-        <div class="app">
-          <div class="sidebar">
-            <div class="ptab ptab-all"><span class="picon">🌐</span><span class="pname">Portfolio Overview</span></div>
-            <div class="pcat" data-i18n="mock_cat_free">Frie midler</div>
-            <div class="ptab"><span class="picon">🏦</span><span class="pname">Nordnet</span><span class="pb up"><span class="pdot up"></span>+0,6%</span></div>
-            <div class="ptab"><span class="picon">💰</span><span class="pname">Aktiesparekonto</span><span class="pb up"><span class="pdot up"></span>+0,3%</span></div>
-            <div class="pcat" data-i18n="mock_cat_pension">Pension</div>
-            <div class="ptab"><span class="picon">🏛️</span><span class="pname">Ratepension</span><span class="pb up"><span class="pdot up"></span>+0,4%</span></div>
-            <div class="ptab"><span class="picon">📜</span><span class="pname">Livrente</span><span class="pb flat"><span class="pdot flat"></span>0,0%</span></div>
-          </div>
-          <div class="body">
-            <h3 class="mh1"><span class="e">🌐</span>Portfolio Overview</h3>
-            <div class="msub" data-i18n="mock_subtitle">Samlet overblik på tværs af alle dine porteføljer.</div>
-            <div class="mmeta">
-              <span data-i18n="mock_updated">Opdateret 17:32</span>
-              <span class="mbtn">🔄 Refresh</span>
-              <span class="mbtn">👁</span>
-            </div>
-            <div class="pnav">
-              <span class="active" data-i18n="mock_nav_1">Oversigt</span>
-              <span data-i18n="mock_nav_2">Aktieoverblik</span>
-              <span data-i18n="mock_nav_3">Udbytte</span>
-              <span data-i18n="mock_nav_4">Udvikling</span>
-              <span data-i18n="mock_nav_5">Regnskab</span>
-              <span data-i18n="mock_nav_6">Fire</span>
-            </div>
-            <div class="sumcard">
-              <div><div class="sl" data-i18n="mock_total">Samlet værdi</div><div class="sv">850.000 kr.</div></div>
-              <div><div class="sl" data-i18n="mock_today">I dag</div><div class="sc up">+3.400 kr.</div></div>
-              <div><div class="sl" data-i18n="mock_div">Forventet udbytte i år</div><div class="sv">28.400 kr.</div></div>
-              <div><div class="sl" data-i18n="mock_div_got">Modtaget i år</div><div class="sv">19.100 kr.</div></div>
-            </div>
-            <div class="retrow">
-              <div class="retlab" data-i18n="mock_return">Afkast</div>
-              <div class="retitems">
-                <div><div class="sl" data-i18n="mock_week">Denne uge</div><div class="sc up">+9.200 kr.</div></div>
-                <div><div class="sl" data-i18n="mock_month">Denne måned</div><div class="sc up">+21.700 kr.</div></div>
-                <div><div class="sl" data-i18n="mock_year">I år</div><div class="sc up">+74.300 kr.</div></div>
-              </div>
-            </div>
-            <div class="mbox">
-              <h4 data-i18n="mock_analysis"><span class="e">📊</span>Porteføljeanalyse</h4>
-              <table class="mtbl">
-                <thead>
-                  <tr>
-                    <th data-i18n="mock_th_depot">Depot</th>
-                    <th class="num" data-i18n="mock_th_value">Værdi</th>
-                    <th class="num" data-i18n="mock_th_today">I dag</th>
-                    <th class="num" data-i18n="mock_th_year">I år</th>
-                    <th class="num" data-i18n="mock_th_div">Udbytte</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td><span class="e">🏦</span>Nordnet</td><td class="num">300.000 kr.</td><td class="num up">+0,6 %</td><td class="num up">+11,2 %</td><td class="num mut">12.400 kr.</td></tr>
-                  <tr><td><span class="e">💰</span>Aktiesparekonto</td><td class="num">150.000 kr.</td><td class="num up">+0,3 %</td><td class="num up">+8,4 %</td><td class="num mut">4.200 kr.</td></tr>
-                  <tr><td><span class="e">🏛️</span>Ratepension</td><td class="num">280.000 kr.</td><td class="num up">+0,4 %</td><td class="num up">+9,7 %</td><td class="num mut">8.900 kr.</td></tr>
-                  <tr><td><span class="e">📜</span>Livrente</td><td class="num">120.000 kr.</td><td class="num mut">0,0 %</td><td class="num up">+6,1 %</td><td class="num mut">2.900 kr.</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+      <img src="img/app-overview.png" alt="Portfolio Dashboard — Overview" width="1800" height="1200" loading="eager" />
     </div>
   </div>
 </header>
 
-<section id="nordnet">
+<section id="import">
   <div class="wrap">
-    <div class="eyebrow" data-i18n="con_eyebrow">Kom i gang</div>
-    <h2 data-i18n="con_h2">Få dine beholdninger ind</h2>
-    <p class="lead" data-i18n="con_lead">Hent dem direkte fra Nordnet med ét login — eller importér bankens egen eksportfil, hvis du er hos Nordea eller Saxo Bank.</p>
-    <div class="connect">
-      <h3><span class="ic">🔗</span><span data-i18n="con_box_h">Direkte fra Nordnet</span><span class="badge" data-i18n="con_badge">Nyt</span></h3>
-      <p class="con-lead" data-i18n="con_box_lead">Ingen filer og ingen manuel indtastning. Du logger ind hos Nordnet med MitID eller ved at scanne QR-koden i Nordnet-appen — så henter appen resten.</p>
-      <div class="steps-grid">
-        <div class="step">
-          <span class="n">1</span>
-          <h4 data-i18n="con_1_h">Du logger ind hos Nordnet selv</h4>
-          <p data-i18n="con_1_p">Login-vinduet er Nordnets eget. Kun Nordnet og MitID ser dine loginoplysninger — appen gemmer dem aldrig, og sessionen slettes bagefter, så der logges ind på ny hver gang.</p>
+    <div class="eyebrow" data-i18n="imp_eyebrow">Kom i gang</div>
+    <h2 data-i18n="imp_h2">Hent dine beholdninger automatisk</h2>
+    <p class="lead" data-i18n="imp_lead">Nordnet, Saxo Bank og Nordea hentes direkte i appen — beholdninger, købsdatoer og historik. Du logger ind på bankens egen side, og du godkender, før noget gemmes.</p>
+
+    <div class="filebox">
+      <h3><span class="ic">🔗</span><span data-i18n="imp_banks_h">Automatisk import fra tre banker</span><span class="badge" data-i18n="imp_badge">Nyt</span></h3>
+      <p class="file-lead" data-i18n="imp_banks_lead">Vælg din bank i importguiden. Resten sker i appen — ingen filer, ingen manuel indtastning.</p>
+      <div class="file-grid">
+        <div class="fb">
+          <h4 data-i18n="imp_b1_h">Nordnet</h4>
+          <p data-i18n="imp_b1_p">Beholdninger, købsdatoer, handler og udbytte — hele historikken, så afkastet regnes fra dine faktiske køb. Du logger ind med MitID eller ved at scanne QR-koden i Nordnet-appen.</p>
         </div>
-        <div class="step">
-          <span class="n">2</span>
-          <h4 data-i18n="con_2_h">Hele historikken følger med</h4>
-          <p data-i18n="con_2_p">Ikke bare dagens beholdning: købsdatoer, køb og salg, udbytter og pensionsafkastskat — på tværs af alle dine depoter, også pensionsdepoterne.</p>
+        <div class="fb">
+          <h4 data-i18n="imp_b2_h">Saxo Bank</h4>
+          <p data-i18n="imp_b2_p">Beholdninger og købsdatoer hentes direkte med dit sædvanlige Saxo-login. Handels- og udbyttehistorik ligger i .xlsx-eksporten og kan importeres bagefter.</p>
         </div>
-        <div class="step">
-          <span class="n">3</span>
-          <h4 data-i18n="con_3_h">Du godkender, før noget gemmes</h4>
-          <p data-i18n="con_3_p">Du får først en oversigt over hvad der er ændret siden sidst. Intet skrives til din portefølje, før du siger ja.</p>
+        <div class="fb">
+          <h4 data-i18n="imp_b3_h">Nordea</h4>
+          <p data-i18n="imp_b3_p">Beholdninger, købsdatoer, handler og udbytte — hele transaktionshistorikken fra netbanken. Du vælger privat eller erhverv og logger ind med MitID, som du plejer.</p>
         </div>
       </div>
     </div>
+
+    <div class="connect">
+      <h3><span class="ic">🔒</span><span data-i18n="imp_how_h">Sådan foregår den automatiske import</span></h3>
+      <p class="con-lead" data-i18n="imp_how_lead">Importen kører kun, når du trykker. Der er ingen baggrundsopgave, og appen gemmer intet login.</p>
+      <div class="steps-grid">
+        <div class="step">
+          <span class="n">1</span>
+          <h4 data-i18n="imp_1_h">Du logger ind hos banken selv</h4>
+          <p data-i18n="imp_1_p">Login-vinduet er bankens eget. Kun banken og MitID ser dine loginoplysninger — appen gemmer dem aldrig, og sessionen ryddes både før og efter.</p>
+        </div>
+        <div class="step">
+          <span class="n">2</span>
+          <h4 data-i18n="imp_2_h">Du vælger selv dine depoter</h4>
+          <p data-i18n="imp_2_p">Du bestemmer, hvilke depoter der hentes, og hvor de lander — også pensionsdepoterne, hvis du har dem i banken.</p>
+        </div>
+        <div class="step">
+          <span class="n">3</span>
+          <h4 data-i18n="imp_3_h">Du godkender, før noget gemmes</h4>
+          <p data-i18n="imp_3_p">Du får først en oversigt over køb, salg og ændringer siden sidst. Intet skrives til din portefølje, før du siger ja.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="shots-2">
+      <figure>
+        <img src="img/import-banks.png" alt="Import guide — choose your bank" width="1800" height="900" loading="lazy" />
+        <figcaption data-i18n="imp_fig1">Importguiden: vælg din bank.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/import-nordnet.png" alt="Import guide — import from Nordnet" width="1800" height="977" loading="lazy" />
+        <figcaption data-i18n="imp_fig2">Fire trin, og du godkender til sidst.</figcaption>
+      </figure>
+    </div>
+
     <div class="filebox">
-      <h3 data-i18n="file_h"><span class="ic">📄</span>Importér fra fil: Nordea og Saxo Bank</h3>
-      <p class="file-lead" data-i18n="file_lead">Bruger du en anden bank, henter du bankens egen eksportfil og trækker den ind i appen. Både beholdninger og udbytter kommer med.</p>
+      <h3 data-i18n="file_h"><span class="ic">📄</span>Eller importér en fil</h3>
+      <p class="file-lead" data-i18n="file_lead">Har du allerede en eksport fra din bank, kan du bruge den i stedet. Filtypen genkendes automatisk.</p>
       <div class="file-grid">
         <div class="fb">
-          <h4 data-i18n="file_1_h">Nordea</h4>
-          <p data-i18n="file_1_p">CSV-eksport af dine transaktioner og beholdninger fra Nordea Investor.</p>
+          <h4 data-i18n="file_1_h">Nordnet</h4>
+          <p data-i18n="file_1_p">CSV-eksport af transaktioner og noteringer — hele historikken, ikke kun beholdningen.</p>
         </div>
         <div class="fb">
-          <h4 data-i18n="file_2_h">Saxo Bank</h4>
-          <p data-i18n="file_2_p">Excel-eksport fra SaxoInvestor — beholdninger og udbytter i samme fil.</p>
+          <h4 data-i18n="file_2_h">Nordea</h4>
+          <p data-i18n="file_2_p">CSV-eksport af dine transaktioner og beholdninger fra netbanken.</p>
         </div>
         <div class="fb">
-          <h4 data-i18n="file_3_h">Nordnet som fil</h4>
-          <p data-i18n="file_3_p">Vil du hellere undgå login i appen, virker Nordnets CSV-eksport stadig som før.</p>
+          <h4 data-i18n="file_3_h">Saxo Bank</h4>
+          <p data-i18n="file_3_p">Excel-eksport fra SaxoInvestor — beholdninger, handler og udbytter i samme fil.</p>
         </div>
       </div>
       <p class="file-foot" data-i18n="file_foot">Fremgangsmåden for hver bank står trin for trin i <a href="faq.html#import">import-guiden</a>.</p>
@@ -460,7 +426,7 @@
       <div class="card"><span class="em">💰</span><h3 data-i18n="feat_3_h">Udbytte-prognose</h3><p data-i18n="feat_3_p">Se forventet udbytte for året og hvad du allerede har modtaget, fordelt på selskaber og måneder.</p></div>
       <div class="card"><span class="em">📈</span><h3 data-i18n="feat_4_h">Aktieoverblik & heatmap</h3><p data-i18n="feat_4_p">Alle positioner i én tabel med afkast, vægt og et farvet heatmap over hvad der trækker op og ned.</p></div>
       <div class="card"><span class="em">🔒</span><h3 data-i18n="feat_5_h">Privacy Mode</h3><p data-i18n="feat_5_p">Skjul alle beløb med ét klik, når du deler skærm — tallene er der stadig, bare ikke synlige.</p></div>
-      <div class="card"><span class="em">📥</span><h3 data-i18n="feat_6_h">Direkte fra Nordnet — eller fra fil</h3><p data-i18n="feat_6_p">Hent beholdninger og historik direkte fra Nordnet med ét login, eller importér eksportfilen fra Nordea og Saxo Bank. Dine egne data kan eksporteres igen når du vil.</p></div>
+      <div class="card"><span class="em">📥</span><h3 data-i18n="feat_6_h">Automatisk import fra din bank</h3><p data-i18n="feat_6_p">Hent beholdninger og historik direkte fra Nordnet, Saxo Bank og Nordea med ét login — eller importér bankens eksportfil. Dine egne data kan eksporteres igen når du vil.</p></div>
       <div class="card"><span class="em">🔥</span><h3 data-i18n="feat_7_h">FIRE-beregner (inkl. pension)</h3><p data-i18n="feat_7_p">Beregn hvornår du kan gå på pension — frie midler, ratepension, livrente og folkepension, med skat, lager/realisation og inflation.</p></div>
       <div class="card"><span class="em">🗓️</span><h3 data-i18n="feat_8_h">Regnskab</h3><p data-i18n="feat_8_p">Se hvornår dine selskaber aflægger regnskab, hvad analytikerne forventer i indtjening og omsætning, og hvor ofte selskabet historisk har ramt eller slået estimaterne.</p></div>
       <div class="card"><span class="em">📉</span><h3 data-i18n="feat_9_h">Udvikling over tid</h3><p data-i18n="feat_9_p">Følg depotets værdi og afkast måned for måned og år for år. Afkastet regnes fra den dag du faktisk købte — udbytte efter kildeskat, og pensionsafkastskat trukket fra.</p></div>
@@ -477,6 +443,23 @@
         <h3 data-i18n="sec_h3">Alle dine data er krypteret lokalt</h3>
         <p data-i18n="sec_p">Din porteføljedata ligger <b>krypteret på din egen Mac</b> (SQLCipher, AES‑256) og låses op med <b>Touch ID</b>, når du åbner appen. Der er ingen server og ingen konto — kun offentlige aktiekurser hentes fra Yahoo Finance. Dine tal forlader aldrig din computer.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="shots" style="padding-top:0">
+  <div class="wrap">
+    <h2 data-i18n="shots_h2">Se den i brug</h2>
+    <p class="lead" data-i18n="shots_lead">Skærmbillederne viser en demoportefølje — ikke rigtige beholdninger.</p>
+    <div class="shots-2">
+      <figure>
+        <img src="img/app-holdings.png" alt="Portfolio Dashboard — Holdings" width="1800" height="1200" loading="lazy" />
+        <figcaption data-i18n="shot_1_cap">Beholdninger: alle positioner med kurs, værdi, kostbasis og afkast.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/app-analysis.png" alt="Portfolio Dashboard — Analysis" width="1800" height="1200" loading="lazy" />
+        <figcaption data-i18n="shot_2_cap">Analyse: koncentration, analytikernes syn og udbyttets fordeling.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -545,44 +528,6 @@
       hero_sub: "Hent dine beholdninger direkte fra Nordnet og følg dine aktier, ETF'er og udbytter i realtid — flere porteføljer, udbytte-prognose, kursalarmer og fuld privacy mode. En hurtig, native app der åbner på ét sekund.",
       hero_cta: "Download til Mac",
       hero_meta: "macOS 12+ · Intel & Apple Silicon · 25 MB · opdaterer sig selv",
-      mock_total: "Samlet værdi",
-      mock_today: "I dag",
-      mock_div: "Forventet udbytte i år",
-      mock_div_got: "Modtaget i år",
-      mock_cat_free: "Frie midler",
-      mock_cat_pension: "Pension",
-      mock_subtitle: "Samlet overblik på tværs af alle dine porteføljer.",
-      mock_updated: "Opdateret 17:32",
-      mock_nav_1: "Oversigt",
-      mock_nav_2: "Aktieoverblik",
-      mock_nav_3: "Udbytte",
-      mock_nav_4: "Udvikling",
-      mock_nav_5: "Regnskab",
-      mock_nav_6: "Fire",
-      mock_return: "Afkast",
-      mock_week: "Denne uge",
-      mock_month: "Denne måned",
-      mock_year: "I år",
-      mock_analysis: '<span class="e">📊</span>Porteføljeanalyse',
-      mock_th_depot: "Depot",
-      mock_th_value: "Værdi",
-      mock_th_today: "I dag",
-      mock_th_year: "I år",
-      mock_th_div: "Udbytte",
-      con_eyebrow: "Kom i gang",
-      con_h2: "Få dine beholdninger ind",
-      con_lead: "Hent dem direkte fra Nordnet med ét login — eller importér bankens egen eksportfil, hvis du er hos Nordea eller Saxo Bank.",
-      con_box_h: "Direkte fra Nordnet",
-      con_badge: "Nyt",
-      con_box_lead: "Ingen filer og ingen manuel indtastning. Du logger ind hos Nordnet med MitID eller ved at scanne QR-koden i Nordnet-appen — så henter appen resten.",
-      con_1_h: "Du logger ind hos Nordnet selv",
-      con_1_p: "Login-vinduet er Nordnets eget. Kun Nordnet og MitID ser dine loginoplysninger — appen gemmer dem aldrig, og sessionen slettes bagefter, så der logges ind på ny hver gang.",
-      con_2_h: "Hele historikken følger med",
-      con_2_p: "Ikke bare dagens beholdning: købsdatoer, køb og salg, udbytter og pensionsafkastskat — på tværs af alle dine depoter, også pensionsdepoterne.",
-      con_3_h: "Du godkender, før noget gemmes",
-      con_3_p: "Du får først en oversigt over hvad der er ændret siden sidst. Intet skrives til din portefølje, før du siger ja.",
-      file_h: '<span class="ic">📄</span>Importér fra fil: Nordea og Saxo Bank',
-      file_lead: "Bruger du en anden bank, henter du bankens egen eksportfil og trækker den ind i appen. Både beholdninger og udbytter kommer med.",
       file_1_h: "Nordea",
       file_1_p: "CSV-eksport af dine transaktioner og beholdninger fra Nordea Investor.",
       file_2_h: "Saxo Bank",
@@ -603,8 +548,8 @@
       feat_4_p: "Alle positioner i én tabel med afkast, vægt og et farvet heatmap over hvad der trækker op og ned.",
       feat_5_h: "Privacy Mode",
       feat_5_p: "Skjul alle beløb med ét klik, når du deler skærm — tallene er der stadig, bare ikke synlige.",
-      feat_6_h: "Direkte fra Nordnet — eller fra fil",
-      feat_6_p: "Hent beholdninger og historik direkte fra Nordnet med ét login, eller importér eksportfilen fra Nordea og Saxo Bank. Dine egne data kan eksporteres igen når du vil.",
+      feat_6_h: "Automatisk import fra din bank",
+      feat_6_p: "Hent beholdninger og historik direkte fra Nordnet, Saxo Bank og Nordea med ét login — eller importér bankens eksportfil. Dine egne data kan eksporteres igen når du vil.",
       feat_7_h: "FIRE-beregner (inkl. pension)",
       feat_7_p: "Beregn hvornår du kan gå på pension — frie midler, ratepension, livrente og folkepension, med skat, lager/realisation og inflation.",
       feat_8_h: "Regnskab",
@@ -633,7 +578,35 @@
       support_h: "Kan du lide appen?",
       support_p: "Portfolio Dashboard er gratis og bliver udviklet i fritiden. Er den nyttig for dig, kan du give en kop kaffe. Det er helt frivilligt — alt i appen virker uanset.",
       support_cta: "Støt udviklingen",
-      footer: "Portfolio Dashboard · privat app · data hentes fra Yahoo Finance"
+      footer: "Portfolio Dashboard · privat app · data hentes fra Yahoo Finance",
+      imp_eyebrow: "Kom i gang",
+      imp_h2: "Hent dine beholdninger automatisk",
+      imp_lead: "Nordnet, Saxo Bank og Nordea hentes direkte i appen — beholdninger, købsdatoer og historik. Du logger ind på bankens egen side, og du godkender, før noget gemmes.",
+      imp_banks_h: "Automatisk import fra tre banker",
+      imp_badge: "Nyt",
+      imp_banks_lead: "Vælg din bank i importguiden. Resten sker i appen — ingen filer, ingen manuel indtastning.",
+      imp_b1_h: "Nordnet",
+      imp_b1_p: "Beholdninger, købsdatoer, handler og udbytte — hele historikken, så afkastet regnes fra dine faktiske køb. Du logger ind med MitID eller ved at scanne QR-koden i Nordnet-appen.",
+      imp_b2_h: "Saxo Bank",
+      imp_b2_p: "Beholdninger og købsdatoer hentes direkte med dit sædvanlige Saxo-login. Handels- og udbyttehistorik ligger i .xlsx-eksporten og kan importeres bagefter.",
+      imp_b3_h: "Nordea",
+      imp_b3_p: "Beholdninger, købsdatoer, handler og udbytte — hele transaktionshistorikken fra netbanken. Du vælger privat eller erhverv og logger ind med MitID, som du plejer.",
+      imp_how_h: "Sådan foregår den automatiske import",
+      imp_how_lead: "Importen kører kun, når du trykker. Der er ingen baggrundsopgave, og appen gemmer intet login.",
+      imp_1_h: "Du logger ind hos banken selv",
+      imp_1_p: "Login-vinduet er bankens eget. Kun banken og MitID ser dine loginoplysninger — appen gemmer dem aldrig, og sessionen ryddes både før og efter.",
+      imp_2_h: "Du vælger selv dine depoter",
+      imp_2_p: "Du bestemmer, hvilke depoter der hentes, og hvor de lander — også pensionsdepoterne, hvis du har dem i banken.",
+      imp_3_h: "Du godkender, før noget gemmes",
+      imp_3_p: "Du får først en oversigt over køb, salg og ændringer siden sidst. Intet skrives til din portefølje, før du siger ja.",
+      imp_fig1: "Importguiden: vælg din bank.",
+      imp_fig2: "Fire trin — og du godkender til sidst.",
+      file_h: '<span class="ic">📄</span>Eller importér en fil',
+      file_lead: "Har du allerede en eksport fra din bank, kan du bruge den i stedet. Filtypen genkendes automatisk.",
+      shots_h2: "Se den i brug",
+      shots_lead: "Skærmbillederne viser en demoportefølje — ikke rigtige beholdninger.",
+      shot_1_cap: "Beholdninger: alle positioner med kurs, værdi, kostbasis og afkast.",
+      shot_2_cap: "Analyse: koncentration, analytikernes syn og udbyttets fordeling."
     },
     en: {
       title: "Portfolio Dashboard — your portfolio, live on Mac",
@@ -647,44 +620,6 @@
       hero_sub: "Pull your holdings straight from Nordnet and track your stocks, ETFs and dividends in real time — multiple portfolios, dividend forecasting, price alerts and full privacy mode. A fast, native app that opens in a second.",
       hero_cta: "Download for Mac",
       hero_meta: "macOS 12+ · Intel & Apple Silicon · 25 MB · auto-updates",
-      mock_total: "Total value",
-      mock_today: "Today",
-      mock_div: "Expected dividends this year",
-      mock_div_got: "Received this year",
-      mock_cat_free: "Free funds",
-      mock_cat_pension: "Pension",
-      mock_subtitle: "One overview across all your portfolios.",
-      mock_updated: "Updated 17:32",
-      mock_nav_1: "Overview",
-      mock_nav_2: "Holdings",
-      mock_nav_3: "Dividends",
-      mock_nav_4: "Performance",
-      mock_nav_5: "Earnings",
-      mock_nav_6: "Fire",
-      mock_return: "Return",
-      mock_week: "This week",
-      mock_month: "This month",
-      mock_year: "This year",
-      mock_analysis: '<span class="e">📊</span>Portfolio analysis',
-      mock_th_depot: "Portfolio",
-      mock_th_value: "Value",
-      mock_th_today: "Today",
-      mock_th_year: "This year",
-      mock_th_div: "Dividends",
-      con_eyebrow: "Getting started",
-      con_h2: "Get your holdings in",
-      con_lead: "Pull them straight from Nordnet with one sign-in — or import the bank's own export file if you are with Nordea or Saxo Bank.",
-      con_box_h: "Straight from Nordnet",
-      con_badge: "New",
-      con_box_lead: "No files, no typing things in by hand. You sign in at Nordnet with MitID or by scanning the QR code in the Nordnet app — the app fetches the rest.",
-      con_1_h: "You sign in at Nordnet yourself",
-      con_1_p: "The sign-in window is Nordnet's own. Only Nordnet and MitID ever see your credentials — the app never stores them, and the session is deleted afterwards, so you sign in again each time.",
-      con_2_h: "The full history comes with it",
-      con_2_p: "Not just today's holdings: purchase dates, buys and sells, dividends and pension tax — across all your accounts, pension accounts included.",
-      con_3_h: "You approve before anything is saved",
-      con_3_p: "You get an overview of what has changed since last time first. Nothing is written to your portfolio until you say yes.",
-      file_h: '<span class="ic">📄</span>Import from a file: Nordea and Saxo Bank',
-      file_lead: "With another bank you download the bank's own export file and drop it into the app. Both holdings and dividends come along.",
       file_1_h: "Nordea",
       file_1_p: "A CSV export of your transactions and holdings from Nordea Investor.",
       file_2_h: "Saxo Bank",
@@ -705,7 +640,7 @@
       feat_4_p: "Every position in one table with returns, weight and a colored heatmap of what's pulling up and down.",
       feat_5_h: "Privacy Mode",
       feat_5_p: "Hide every amount with one click when you share your screen — the numbers are still there, just not visible.",
-      feat_6_h: "Straight from Nordnet — or from a file",
+      feat_6_h: "Automatic import from your bank",
       feat_6_p: "Fetch holdings and history straight from Nordnet with one sign-in, or import the export file from Nordea and Saxo Bank. Your own data can be exported again whenever you want.",
       feat_7_h: "FIRE & pension planner",
       feat_7_p: "Work out when you can retire — free funds, annuities, life pensions and state pension, with tax, mark-to-market/realisation and inflation.",
@@ -735,7 +670,35 @@
       support_h: "Like the app?",
       support_p: "Portfolio Dashboard is free and built in my spare time. If you find it useful, you can buy me a coffee. It's entirely optional — everything in the app works either way.",
       support_cta: "Support development",
-      footer: "Portfolio Dashboard · private app · data from Yahoo Finance"
+      footer: "Portfolio Dashboard · private app · data from Yahoo Finance",
+      imp_eyebrow: "Getting started",
+      imp_h2: "Import your holdings automatically",
+      imp_lead: "Nordnet, Saxo Bank and Nordea are fetched straight into the app — holdings, purchase dates and history. You sign in on the bank's own page, and nothing is saved until you approve it.",
+      imp_banks_h: "Automatic import from three banks",
+      imp_badge: "New",
+      imp_banks_lead: "Pick your bank in the import guide. The rest happens inside the app — no files, no typing.",
+      imp_b1_h: "Nordnet",
+      imp_b1_p: "Holdings, purchase dates, trades and dividends — the full history, so returns are calculated from your actual purchases. Sign in with MitID, or scan the QR code with the Nordnet app.",
+      imp_b2_h: "Saxo Bank",
+      imp_b2_p: "Holdings and purchase dates are fetched with your usual Saxo login. Trade and dividend history lives in the .xlsx export and can be imported afterwards.",
+      imp_b3_h: "Nordea",
+      imp_b3_p: "Holdings, purchase dates, trades and dividends — the full transaction history from online banking. Choose personal or business and sign in with MitID as usual.",
+      imp_how_h: "How the automatic import works",
+      imp_how_lead: "The import runs only when you press it. There is no background job, and the app stores no login.",
+      imp_1_h: "You sign in with the bank yourself",
+      imp_1_p: "The login window is the bank's own. Only the bank and MitID see your credentials — the app never stores them, and the session is cleared both before and after.",
+      imp_2_h: "You choose which accounts",
+      imp_2_p: "You decide which accounts are fetched and where they end up — including pension accounts, if you hold them at the bank.",
+      imp_3_h: "You approve before anything is saved",
+      imp_3_p: "You get an overview of buys, sells and changes since last time first. Nothing is written to your portfolio until you say yes.",
+      imp_fig1: "The import guide: choose your bank.",
+      imp_fig2: "Four steps — and you approve at the end.",
+      file_h: '<span class="ic">📄</span>Or import a file',
+      file_lead: "Already have an export from your bank? Use it instead — the file type is detected automatically.",
+      shots_h2: "See it in use",
+      shots_lead: "The screenshots show a demo portfolio — not real holdings.",
+      shot_1_cap: "Holdings: every position with price, value, cost basis and return.",
+      shot_2_cap: "Analysis: concentration, what analysts think, and where the dividends come from."
     }
   };
 
