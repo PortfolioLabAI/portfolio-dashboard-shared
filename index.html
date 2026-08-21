@@ -120,6 +120,10 @@
   .shots-2 img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--border);
     box-shadow:0 18px 44px rgba(0,0,0,.45)}
   .shots-2 figcaption{color:var(--dim);font-size:14.5px;line-height:1.55;margin-top:12px}
+  .shot-wide{margin:28px 0 0}
+  .shot-wide img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);
+    box-shadow:0 24px 60px rgba(0,0,0,.5);cursor:zoom-in}
+  .shot-wide figcaption{color:var(--dim);font-size:15px;line-height:1.6;margin-top:14px}
   /* Fanevaelgeren: ét stort billede ad gangen, som i appen selv. */
   .tabshot{margin-top:26px}
   .tabshot-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
@@ -368,7 +372,6 @@
         <button class="tabshot-tab" type="button" data-shot="udvikling" aria-selected="false" data-i18n="tab_udvikling">Udvikling</button>
         <button class="tabshot-tab" type="button" data-shot="earnings" aria-selected="false" data-i18n="tab_earnings">Regnskab</button>
         <button class="tabshot-tab" type="button" data-shot="fremskrivning" aria-selected="false" data-i18n="tab_fremskrivning">Prognose</button>
-        <button class="tabshot-tab" type="button" data-shot="fire" aria-selected="false" data-i18n="tab_fire">FIRE</button>
       </div>
       <figure class="tabshot-fig" data-shot="index">
         <img src="img/tab-index.png" alt="Portfolio Dashboard — Overview" width="1800" height="1320" loading="eager" />
@@ -398,10 +401,6 @@
         <img src="img/tab-fremskrivning.png" alt="Portfolio Dashboard — Projection" width="1800" height="1320" loading="lazy" />
         <figcaption data-i18n="cap_fremskrivning"></figcaption>
       </figure>
-      <figure class="tabshot-fig" data-shot="fire" hidden>
-        <img src="img/tab-fire.png" alt="Portfolio Dashboard — FIRE" width="1800" height="1320" loading="lazy" />
-        <figcaption data-i18n="cap_fire"></figcaption>
-      </figure>
     </div>
   </div>
 </section>
@@ -413,16 +412,10 @@
     <h2 data-i18n="imp_h2">Hent dine beholdninger automatisk</h2>
     <p class="lead" data-i18n="imp_lead">Nordnet, Saxo Bank og Nordea hentes direkte i appen — beholdninger, købsdatoer og historik. Du logger ind på bankens egen side, og du godkender, før noget gemmes.</p>
 
-    <div class="shots-2">
-      <figure>
-        <img src="img/import-banks.png" alt="Import guide — choose your bank" width="1800" height="900" loading="lazy" />
-        <figcaption data-i18n="imp_fig1">Importguiden: vælg din bank.</figcaption>
-      </figure>
-      <figure>
-        <img src="img/import-nordnet.png" alt="Import guide — import from Nordnet" width="1800" height="977" loading="lazy" />
-        <figcaption data-i18n="imp_fig2">Fire trin, og du godkender til sidst.</figcaption>
-      </figure>
-    </div>
+    <figure class="shot-wide">
+      <img src="img/import-banks.png" alt="Import guide — choose your bank" width="1800" height="900" loading="lazy" />
+      <figcaption data-i18n="imp_fig1">Importguiden: vælg din bank.</figcaption>
+    </figure>
 
     <div class="filebox">
       <h3><span class="ic">🔗</span><span data-i18n="imp_banks_h">Automatisk import fra tre banker</span><span class="badge" data-i18n="imp_badge">Nyt</span></h3>
@@ -655,7 +648,6 @@
       imp_3_h: "Du godkender, før noget gemmes",
       imp_3_p: "Du får først en oversigt over køb, salg og ændringer siden sidst. Intet skrives til din portefølje, før du siger ja.",
       imp_fig1: "Importguiden: vælg din bank.",
-      imp_fig2: "Fire trin — og du godkender til sidst.",
       file_h: '<span class="ic">📄</span>Eller importér en fil',
       file_lead: "Har du allerede en eksport fra din bank, kan du bruge den i stedet. Filtypen genkendes automatisk.",
       shots_h2: "Se den i brug",
@@ -667,7 +659,6 @@
       tab_udvikling: "Udvikling",
       tab_earnings: "Regnskab",
       tab_fremskrivning: "Prognose",
-      tab_fire: "FIRE",
       cap_index: "Samlet værdi, dagens bevægelse, udbytte og fordeling — for ét depot eller for alle på tværs.",
       cap_holdings: "Alle positioner i én tabel: kurs, værdi, kostbasis, afkast og udbytte.",
       cap_dividends: "Modtaget udbytte år for år, hvad der er på vej, og hvilke selskaber der betaler det.",
@@ -675,7 +666,6 @@
       cap_udvikling: "Depotets værdi og afkast måned for måned og år for år.",
       cap_earnings: "Hvornår dine selskaber aflægger regnskab, og hvad analytikerne forventer.",
       cap_fremskrivning: "Fremskriv depotet med dine egne forudsætninger om afkast og indskud.",
-      cap_fire: "Hvornår kan du gå på pension — med skat, pensionstyper og inflation regnet med."
     },
     en: {
       title: "Portfolio Dashboard — your portfolio, live on Mac",
@@ -761,7 +751,6 @@
       imp_3_h: "You approve before anything is saved",
       imp_3_p: "You get an overview of buys, sells and changes since last time first. Nothing is written to your portfolio until you say yes.",
       imp_fig1: "The import guide: choose your bank.",
-      imp_fig2: "Four steps — and you approve at the end.",
       file_h: '<span class="ic">📄</span>Or import a file',
       file_lead: "Already have an export from your bank? Use it instead — the file type is detected automatically.",
       shots_h2: "See it in use",
@@ -773,7 +762,6 @@
       tab_udvikling: "Performance",
       tab_earnings: "Earnings",
       tab_fremskrivning: "Projection",
-      tab_fire: "FIRE",
       cap_index: "Total value, today's move, dividends and allocation — for one account or across all of them.",
       cap_holdings: "Every position in one table: price, value, cost basis, return and yield.",
       cap_dividends: "Dividends received year by year, what is coming, and which companies pay it.",
@@ -781,7 +769,6 @@
       cap_udvikling: "The account's value and return, month by month and year by year.",
       cap_earnings: "When your companies report, and what analysts expect them to deliver.",
       cap_fremskrivning: "Project the account forward on your own assumptions about return and contributions.",
-      cap_fire: "When can you retire — with tax, pension types and inflation taken into account."
     }
   };
 
@@ -854,7 +841,7 @@
     // Klik paa et skaermbillede viser det i fuld stoerrelse.
     var box = document.getElementById("lightbox");
     var boxImg = document.getElementById("lightbox-img");
-    document.querySelectorAll(".tabshot-fig img, .shot img, .shots-2 img").forEach(function (img) {
+    document.querySelectorAll(".tabshot-fig img, .shot img, .shot-wide img").forEach(function (img) {
       img.addEventListener("click", function () {
         boxImg.src = img.currentSrc || img.src;
         boxImg.alt = img.alt;
