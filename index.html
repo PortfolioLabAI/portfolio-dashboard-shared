@@ -121,14 +121,34 @@
      regnet ud af billedernes egne formater, saa telefonen bliver ~0,72 gange
      saa hoej som Mac-billedet. Skifter et af billederne format, skal de
      regnes om -- samme procent gav tre forskellige hoejder 21-08-2026. */
-  .shot-duo{display:flex;align-items:flex-end;justify-content:center;gap:26px}
-  .shot-duo .shot-mac{flex:0 1 auto;max-width:76%}
-  .shot-duo .shot-phone{flex:0 0 auto;width:21%;max-width:230px;border-radius:22px;
-    box-shadow:0 24px 60px rgba(0,0,0,.6)}
+  .shot-duo{display:flex;align-items:flex-end;justify-content:center;gap:1.6%}
+  .shot-duo .shot-mac{flex:0 1 auto;max-width:78%}
+  /* Telefonen er en RAMME om skaermbilledet, ikke bare et billede med runde
+     hjoerner: bezel og Dynamic Island hoerer til APPARATET, appen fylder
+     skaermen. Uden rammen stod den som et loest rektangel og saa
+     sammenpresset ud. Alle maal er i % af rammens bredde, saa den skalerer
+     med heltebilledet. Skaermbilledet er 402x874 pt -- iPhone 16 Pro -- med
+     appens eget statusbaand (`.top-bar` faar telefonens 59 pt inset), saa oeen
+     lander i baandet og ikke hen over ikonerne. */
+  .phone-frame{flex:0 0 auto;width:20.4%;position:relative;z-index:2;
+    background:#0a0b0e;border-radius:13.5%/6.2%;
+    /* ⚠️ En padding i % regnes af den INDEHOLDENDE BLOKS bredde, ikke
+       elementets egen: `padding:1.9%` blev 1,9 % af heltebilledets 1504 px =
+       29 px bezel i hver side, og skaermen skrumpede fra 300 til 250 px.
+       clamp() holder kanten tynd som paa en rigtig telefon. */
+    padding:clamp(4px,1.6%,9px);
+    /* Skyggen er sort paa sort og ses ikke. Den lyse 1 px-kant er dét, der
+       skiller apparatet fra baggrunden. */
+    box-shadow:0 34px 80px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.11)}
+  .phone-frame img{display:block;width:100%;height:auto;
+    border-radius:11.5%/5.3%;border:0;box-shadow:none;cursor:zoom-in}
+  .phone-frame::after{content:"";position:absolute;top:2.6%;left:50%;
+    transform:translateX(-50%);width:29%;aspect-ratio:125/37;
+    border-radius:999px;background:#000}
   @media (max-width:760px){
-    .shot-duo{flex-direction:column;align-items:center;gap:22px}
+    .shot-duo{flex-direction:column;align-items:center}
     .shot-duo .shot-mac{max-width:100%}
-    .shot-duo .shot-phone{width:46%;max-width:240px}
+    .phone-frame{width:52%;max-width:280px;margin:22px 0 0}
   }
   .shots-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;margin-top:28px}
   .shots-2 figure{margin:0}
@@ -151,6 +171,16 @@
   .tabshot-fig img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);
     box-shadow:0 24px 60px rgba(0,0,0,.5);cursor:zoom-in}
   .tabshot-fig figcaption{color:var(--dim);font-size:15px;line-height:1.6;margin-top:14px}
+  /* Skaermbillederne BRYDER UD af .wrap (1080 px) -- men foerst naar der er
+     plads. Appens tal er hele pointen, og ved 760 px stod Mac-skaermens
+     1400 pt paa 54 %: for smaat til at laese. `left:50%` + `translateX(-50%)`
+     centrerer paa SIDEN, ikke i wrappen.
+     ⚠️ Kun over 1100 px. Under den bredde giver udbruddet vandret overloeb --
+     maalt ved 390 px: scrollWidth 420 mod et vindue paa 390. */
+  @media (min-width:1100px){
+    .shot,.tabshot{position:relative;left:50%;transform:translateX(-50%);
+      width:min(1560px,94vw);max-width:none}
+  }
   .shot img,.shots-2 img{cursor:zoom-in}
   /* Forstoerrelsen. Ingen bibliotek -- ét overlay, Esc eller klik lukker. */
   .lightbox{position:fixed;inset:0;background:rgba(3,5,10,.94);z-index:99;display:flex;
@@ -369,8 +399,10 @@
     </div>
 
     <div class="shot shot-duo">
-      <img class="shot-mac" src="img/tab-index.png" alt="Portfolio Dashboard on Mac" width="1800" height="1320" loading="eager" />
-      <img class="shot-phone" src="img/app-iphone.png" alt="Portfolio Dashboard on iPhone" width="804" height="1536" loading="eager" />
+      <img class="shot-mac" src="img/tab-index.png" alt="Portfolio Dashboard on Mac" width="3000" height="2200" loading="eager" />
+      <div class="phone-frame">
+        <img src="img/app-iphone.png" alt="Portfolio Dashboard on iPhone" width="804" height="1748" loading="eager" />
+      </div>
     </div>
   </div>
 </header>
@@ -391,35 +423,35 @@
         <button class="tabshot-tab" type="button" data-shot="fire" aria-selected="false" data-i18n="tab_fire">FIRE</button>
       </div>
       <figure class="tabshot-fig" data-shot="index">
-        <img src="img/tab-index.png" alt="Portfolio Dashboard — Overview" width="1800" height="1320" loading="eager" />
+        <img src="img/tab-index.png" alt="Portfolio Dashboard — Overview" width="3000" height="2200" loading="eager" />
         <figcaption data-i18n="cap_index"></figcaption>
       </figure>
       <figure class="tabshot-fig" data-shot="holdings" hidden>
-        <img src="img/tab-holdings.png" alt="Portfolio Dashboard — Holdings" width="1800" height="1320" loading="lazy" />
+        <img src="img/tab-holdings.png" alt="Portfolio Dashboard — Holdings" width="3000" height="2200" loading="lazy" />
         <figcaption data-i18n="cap_holdings"></figcaption>
       </figure>
       <figure class="tabshot-fig" data-shot="dividends" hidden>
-        <img src="img/tab-dividends.png" alt="Portfolio Dashboard — Dividends" width="1800" height="1320" loading="lazy" />
+        <img src="img/tab-dividends.png" alt="Portfolio Dashboard — Dividends" width="3000" height="2200" loading="lazy" />
         <figcaption data-i18n="cap_dividends"></figcaption>
       </figure>
       <figure class="tabshot-fig" data-shot="analysis" hidden>
-        <img src="img/tab-analysis.png" alt="Portfolio Dashboard — Analysis" width="1800" height="1320" loading="lazy" />
+        <img src="img/tab-analysis.png" alt="Portfolio Dashboard — Analysis" width="3000" height="2200" loading="lazy" />
         <figcaption data-i18n="cap_analysis"></figcaption>
       </figure>
       <figure class="tabshot-fig" data-shot="udvikling" hidden>
-        <img src="img/tab-udvikling.png" alt="Portfolio Dashboard — Performance" width="1800" height="1320" loading="lazy" />
+        <img src="img/tab-udvikling.png" alt="Portfolio Dashboard — Performance" width="3000" height="2200" loading="lazy" />
         <figcaption data-i18n="cap_udvikling"></figcaption>
       </figure>
       <figure class="tabshot-fig" data-shot="earnings" hidden>
-        <img src="img/tab-earnings.png" alt="Portfolio Dashboard — Earnings" width="1800" height="1320" loading="lazy" />
+        <img src="img/tab-earnings.png" alt="Portfolio Dashboard — Earnings" width="3000" height="2200" loading="lazy" />
         <figcaption data-i18n="cap_earnings"></figcaption>
       </figure>
       <figure class="tabshot-fig" data-shot="fremskrivning" hidden>
-        <img src="img/tab-fremskrivning.png" alt="Portfolio Dashboard — Projection" width="1800" height="1320" loading="lazy" />
+        <img src="img/tab-fremskrivning.png" alt="Portfolio Dashboard — Projection" width="3000" height="2200" loading="lazy" />
         <figcaption data-i18n="cap_fremskrivning"></figcaption>
       </figure>
       <figure class="tabshot-fig" data-shot="fire" hidden>
-        <img src="img/tab-fire.png" alt="Portfolio Dashboard — FIRE" width="1800" height="1320" loading="lazy" />
+        <img src="img/tab-fire.png" alt="Portfolio Dashboard — FIRE" width="3000" height="2200" loading="lazy" />
         <figcaption data-i18n="cap_fire"></figcaption>
       </figure>
     </div>
