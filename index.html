@@ -120,6 +120,26 @@
   .shots-2 img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--border);
     box-shadow:0 18px 44px rgba(0,0,0,.45)}
   .shots-2 figcaption{color:var(--dim);font-size:14.5px;line-height:1.55;margin-top:12px}
+  /* Fanevaelgeren: ét stort billede ad gangen, som i appen selv. */
+  .tabshot{margin-top:26px}
+  .tabshot-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .tabshot-tab{background:var(--card);color:var(--dim);border:1px solid var(--border);
+    border-radius:999px;padding:8px 16px;font:inherit;font-size:14.5px;cursor:pointer;transition:.15s}
+  .tabshot-tab:hover{color:var(--fg);border-color:var(--dim)}
+  .tabshot-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .tabshot-fig{margin:0}
+  .tabshot-fig[hidden]{display:none}
+  .tabshot-fig img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);
+    box-shadow:0 24px 60px rgba(0,0,0,.5);cursor:zoom-in}
+  .tabshot-fig figcaption{color:var(--dim);font-size:15px;line-height:1.6;margin-top:14px}
+  .shot img,.shots-2 img{cursor:zoom-in}
+  /* Forstoerrelsen. Ingen bibliotek -- ét overlay, Esc eller klik lukker. */
+  .lightbox{position:fixed;inset:0;background:rgba(3,5,10,.94);z-index:99;display:flex;
+    align-items:center;justify-content:center;padding:24px;overflow:auto;cursor:zoom-out}
+  .lightbox[hidden]{display:none}
+  .lightbox img{max-width:100%;max-height:100%;width:auto;height:auto;border-radius:10px;
+    border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  @media (max-width:620px){.tabshot-tab{font-size:13.5px;padding:7px 13px}}
   .window{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;text-align:left;
     background:var(--bg);box-shadow:0 40px 120px -30px rgba(0,0,0,.8);}
   .titlebar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:#0e131d;border-bottom:1px solid var(--border)}
@@ -330,16 +350,79 @@
     </div>
 
     <div class="shot">
-      <img src="img/app-overview.png" alt="Portfolio Dashboard — Overview" width="1800" height="1200" loading="eager" />
+      <img src="img/tab-index.png" alt="Portfolio Dashboard — Overview" width="1800" height="1200" loading="eager" />
     </div>
   </div>
 </header>
+
+<section id="shots">
+  <div class="wrap">
+    <h2 data-i18n="shots_h2">Se den i brug</h2>
+    <p class="lead" data-i18n="shots_lead">Skift mellem fanerne. Skærmbillederne viser en demoportefølje — ikke rigtige beholdninger. Klik for at se dem i fuld størrelse.</p>
+    <div class="tabshot">
+      <div class="tabshot-tabs" role="tablist">
+        <button class="tabshot-tab active" type="button" data-shot="index" aria-selected="true" data-i18n="tab_index">Oversigt</button>
+        <button class="tabshot-tab" type="button" data-shot="holdings" aria-selected="false" data-i18n="tab_holdings">Aktieoverblik</button>
+        <button class="tabshot-tab" type="button" data-shot="dividends" aria-selected="false" data-i18n="tab_dividends">Udbytte</button>
+        <button class="tabshot-tab" type="button" data-shot="analysis" aria-selected="false" data-i18n="tab_analysis">Analyse</button>
+        <button class="tabshot-tab" type="button" data-shot="udvikling" aria-selected="false" data-i18n="tab_udvikling">Udvikling</button>
+        <button class="tabshot-tab" type="button" data-shot="earnings" aria-selected="false" data-i18n="tab_earnings">Regnskab</button>
+        <button class="tabshot-tab" type="button" data-shot="fremskrivning" aria-selected="false" data-i18n="tab_fremskrivning">Prognose</button>
+        <button class="tabshot-tab" type="button" data-shot="fire" aria-selected="false" data-i18n="tab_fire">FIRE</button>
+      </div>
+      <figure class="tabshot-fig" data-shot="index">
+        <img src="img/tab-index.png" alt="Portfolio Dashboard — Overview" width="1800" height="1320" loading="eager" />
+        <figcaption data-i18n="cap_index"></figcaption>
+      </figure>
+      <figure class="tabshot-fig" data-shot="holdings" hidden>
+        <img src="img/tab-holdings.png" alt="Portfolio Dashboard — Holdings" width="1800" height="1320" loading="lazy" />
+        <figcaption data-i18n="cap_holdings"></figcaption>
+      </figure>
+      <figure class="tabshot-fig" data-shot="dividends" hidden>
+        <img src="img/tab-dividends.png" alt="Portfolio Dashboard — Dividends" width="1800" height="1320" loading="lazy" />
+        <figcaption data-i18n="cap_dividends"></figcaption>
+      </figure>
+      <figure class="tabshot-fig" data-shot="analysis" hidden>
+        <img src="img/tab-analysis.png" alt="Portfolio Dashboard — Analysis" width="1800" height="1320" loading="lazy" />
+        <figcaption data-i18n="cap_analysis"></figcaption>
+      </figure>
+      <figure class="tabshot-fig" data-shot="udvikling" hidden>
+        <img src="img/tab-udvikling.png" alt="Portfolio Dashboard — Performance" width="1800" height="1320" loading="lazy" />
+        <figcaption data-i18n="cap_udvikling"></figcaption>
+      </figure>
+      <figure class="tabshot-fig" data-shot="earnings" hidden>
+        <img src="img/tab-earnings.png" alt="Portfolio Dashboard — Earnings" width="1800" height="1320" loading="lazy" />
+        <figcaption data-i18n="cap_earnings"></figcaption>
+      </figure>
+      <figure class="tabshot-fig" data-shot="fremskrivning" hidden>
+        <img src="img/tab-fremskrivning.png" alt="Portfolio Dashboard — Projection" width="1800" height="1320" loading="lazy" />
+        <figcaption data-i18n="cap_fremskrivning"></figcaption>
+      </figure>
+      <figure class="tabshot-fig" data-shot="fire" hidden>
+        <img src="img/tab-fire.png" alt="Portfolio Dashboard — FIRE" width="1800" height="1320" loading="lazy" />
+        <figcaption data-i18n="cap_fire"></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 
 <section id="import">
   <div class="wrap">
     <div class="eyebrow" data-i18n="imp_eyebrow">Kom i gang</div>
     <h2 data-i18n="imp_h2">Hent dine beholdninger automatisk</h2>
     <p class="lead" data-i18n="imp_lead">Nordnet, Saxo Bank og Nordea hentes direkte i appen — beholdninger, købsdatoer og historik. Du logger ind på bankens egen side, og du godkender, før noget gemmes.</p>
+
+    <div class="shots-2">
+      <figure>
+        <img src="img/import-banks.png" alt="Import guide — choose your bank" width="1800" height="900" loading="lazy" />
+        <figcaption data-i18n="imp_fig1">Importguiden: vælg din bank.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/import-nordnet.png" alt="Import guide — import from Nordnet" width="1800" height="977" loading="lazy" />
+        <figcaption data-i18n="imp_fig2">Fire trin, og du godkender til sidst.</figcaption>
+      </figure>
+    </div>
 
     <div class="filebox">
       <h3><span class="ic">🔗</span><span data-i18n="imp_banks_h">Automatisk import fra tre banker</span><span class="badge" data-i18n="imp_badge">Nyt</span></h3>
@@ -380,17 +463,6 @@
           <p data-i18n="imp_3_p">Du får først en oversigt over køb, salg og ændringer siden sidst. Intet skrives til din portefølje, før du siger ja.</p>
         </div>
       </div>
-    </div>
-
-    <div class="shots-2">
-      <figure>
-        <img src="img/import-banks.png" alt="Import guide — choose your bank" width="1800" height="900" loading="lazy" />
-        <figcaption data-i18n="imp_fig1">Importguiden: vælg din bank.</figcaption>
-      </figure>
-      <figure>
-        <img src="img/import-nordnet.png" alt="Import guide — import from Nordnet" width="1800" height="977" loading="lazy" />
-        <figcaption data-i18n="imp_fig2">Fire trin, og du godkender til sidst.</figcaption>
-      </figure>
     </div>
 
     <div class="filebox">
@@ -443,23 +515,6 @@
         <h3 data-i18n="sec_h3">Alle dine data er krypteret lokalt</h3>
         <p data-i18n="sec_p">Din porteføljedata ligger <b>krypteret på din egen Mac</b> (SQLCipher, AES‑256) og låses op med <b>Touch ID</b>, når du åbner appen. Der er ingen server og ingen konto — kun offentlige aktiekurser hentes fra Yahoo Finance. Dine tal forlader aldrig din computer.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="shots" style="padding-top:0">
-  <div class="wrap">
-    <h2 data-i18n="shots_h2">Se den i brug</h2>
-    <p class="lead" data-i18n="shots_lead">Skærmbillederne viser en demoportefølje — ikke rigtige beholdninger.</p>
-    <div class="shots-2">
-      <figure>
-        <img src="img/app-holdings.png" alt="Portfolio Dashboard — Holdings" width="1800" height="1200" loading="lazy" />
-        <figcaption data-i18n="shot_1_cap">Beholdninger: alle positioner med kurs, værdi, kostbasis og afkast.</figcaption>
-      </figure>
-      <figure>
-        <img src="img/app-analysis.png" alt="Portfolio Dashboard — Analysis" width="1800" height="1200" loading="lazy" />
-        <figcaption data-i18n="shot_2_cap">Analyse: koncentration, analytikernes syn og udbyttets fordeling.</figcaption>
-      </figure>
     </div>
   </div>
 </section>
@@ -605,8 +660,22 @@
       file_lead: "Har du allerede en eksport fra din bank, kan du bruge den i stedet. Filtypen genkendes automatisk.",
       shots_h2: "Se den i brug",
       shots_lead: "Skærmbillederne viser en demoportefølje — ikke rigtige beholdninger.",
-      shot_1_cap: "Beholdninger: alle positioner med kurs, værdi, kostbasis og afkast.",
-      shot_2_cap: "Analyse: koncentration, analytikernes syn og udbyttets fordeling."
+      tab_index: "Oversigt",
+      tab_holdings: "Aktieoverblik",
+      tab_dividends: "Udbytte",
+      tab_analysis: "Analyse",
+      tab_udvikling: "Udvikling",
+      tab_earnings: "Regnskab",
+      tab_fremskrivning: "Prognose",
+      tab_fire: "FIRE",
+      cap_index: "Samlet værdi, dagens bevægelse, udbytte og fordeling — for ét depot eller for alle på tværs.",
+      cap_holdings: "Alle positioner i én tabel: kurs, værdi, kostbasis, afkast og udbytte.",
+      cap_dividends: "Modtaget udbytte år for år, hvad der er på vej, og hvilke selskaber der betaler det.",
+      cap_analysis: "Koncentration, analytikernes syn og udbyttets fordeling.",
+      cap_udvikling: "Depotets værdi og afkast måned for måned og år for år.",
+      cap_earnings: "Hvornår dine selskaber aflægger regnskab, og hvad analytikerne forventer.",
+      cap_fremskrivning: "Fremskriv depotet med dine egne forudsætninger om afkast og indskud.",
+      cap_fire: "Hvornår kan du gå på pension — med skat, pensionstyper og inflation regnet med."
     },
     en: {
       title: "Portfolio Dashboard — your portfolio, live on Mac",
@@ -697,8 +766,22 @@
       file_lead: "Already have an export from your bank? Use it instead — the file type is detected automatically.",
       shots_h2: "See it in use",
       shots_lead: "The screenshots show a demo portfolio — not real holdings.",
-      shot_1_cap: "Holdings: every position with price, value, cost basis and return.",
-      shot_2_cap: "Analysis: concentration, what analysts think, and where the dividends come from."
+      tab_index: "Overview",
+      tab_holdings: "Holdings",
+      tab_dividends: "Dividends",
+      tab_analysis: "Analysis",
+      tab_udvikling: "Performance",
+      tab_earnings: "Earnings",
+      tab_fremskrivning: "Projection",
+      tab_fire: "FIRE",
+      cap_index: "Total value, today's move, dividends and allocation — for one account or across all of them.",
+      cap_holdings: "Every position in one table: price, value, cost basis, return and yield.",
+      cap_dividends: "Dividends received year by year, what is coming, and which companies pay it.",
+      cap_analysis: "Concentration, what analysts think, and where the dividends come from.",
+      cap_udvikling: "The account's value and return, month by month and year by year.",
+      cap_earnings: "When your companies report, and what analysts expect them to deliver.",
+      cap_fremskrivning: "Project the account forward on your own assumptions about return and contributions.",
+      cap_fire: "When can you retire — with tax, pension types and inflation taken into account."
     }
   };
 
@@ -746,5 +829,43 @@
 <!-- Vercel Web Analytics (static-site integration) -->
 <script defer src="/_vercel/insights/script.js"></script>
 
+<div class="lightbox" id="lightbox" hidden><img id="lightbox-img" src="" alt="" /></div>
+<script>
+  // Fanevaelgeren. Alle otte figurer staar i DOM'en og skjules -- saa er
+  // billedteksterne almindelige data-i18n-elementer, og sprogskiftet rammer
+  // dem uden at dette script kender ét eneste ord.
+  // ⚠️ De skjulte billeder er loading="lazy": browseren henter dem foerst naar
+  // fanen vaelges, saa siden koster ét billede, ikke otte.
+  (function () {
+    var tabs = document.querySelectorAll(".tabshot-tab");
+    var figs = document.querySelectorAll(".tabshot-fig");
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var key = tab.dataset.shot;
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle("active", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        figs.forEach(function (f) { f.hidden = f.dataset.shot !== key; });
+      });
+    });
+
+    // Klik paa et skaermbillede viser det i fuld stoerrelse.
+    var box = document.getElementById("lightbox");
+    var boxImg = document.getElementById("lightbox-img");
+    document.querySelectorAll(".tabshot-fig img, .shot img, .shots-2 img").forEach(function (img) {
+      img.addEventListener("click", function () {
+        boxImg.src = img.currentSrc || img.src;
+        boxImg.alt = img.alt;
+        box.hidden = false;
+        document.body.style.overflow = "hidden";
+      });
+    });
+    function close() { box.hidden = true; boxImg.src = ""; document.body.style.overflow = ""; }
+    box.addEventListener("click", close);
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !box.hidden) close(); });
+  })();
+</script>
 </body>
 </html>
